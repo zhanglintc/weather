@@ -1,7 +1,7 @@
 todos:
   1. Connect to weather API.
   2. Parse JSON data.
-  3. Disign GUI.
+  3. Design GUI.
 
 
 
