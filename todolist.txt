@@ -3,6 +3,7 @@ todos:
   2. Parse JSON data.
   3. Design GUI.
   4. Use thread to handle http request.
+  5. Get user's position(by GPS or whatever).
 
 
 
