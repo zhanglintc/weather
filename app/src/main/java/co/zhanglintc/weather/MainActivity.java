@@ -1,5 +1,6 @@
 package co.zhanglintc.weather;
 
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,8 +13,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /********************************************
+        Network data cannot be handle in MAIN thread.
+        Solutions:
+          1. Use StrictMode.
+          2. Use another thread.
+        See: http://www.cnblogs.com/purediy/p/3225093.html
+        /********************************************/
+        StrictMode.setThreadPolicy(
+            new StrictMode.ThreadPolicy.Builder()
+            .detectDiskReads()
+            .detectDiskWrites()
+            .detectNetwork()
+            .penaltyLog()
+            .build()
+        );
+        StrictMode.setVmPolicy(
+            new StrictMode.VmPolicy.Builder()
+            .detectLeakedSqlLiteObjects()
+            .detectLeakedClosableObjects()
+            .penaltyLog()
+            .penaltyDeath().build()
+        );
+
         httpHandler http = new httpHandler();
-        http.logSth();
+        http.get();
     }
 
     @Override
