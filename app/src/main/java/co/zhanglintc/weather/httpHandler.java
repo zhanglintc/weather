@@ -18,7 +18,7 @@ public class httpHandler {
         Log.i("httpHandler", APIurl);
     }
 
-    // TODO: 10/30/15 connect APIurl using httpClient
+    // TODO: 10/31/15 use thread to handle network things
     void get() {
         String baseUrl = "http://zhanglintc.co/JS-Prac";
 
@@ -32,11 +32,9 @@ public class httpHandler {
             Log.i("http", "result = " + EntityUtils.toString(response.getEntity(), "utf-8"));
         }
         catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
