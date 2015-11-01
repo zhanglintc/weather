@@ -3,6 +3,7 @@ package co.zhanglintc.weather;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -12,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String APIurl = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&nu%20m_of_days=3&format=json&lang=zh";
 
         /********************************************
         Network data cannot be handle in MAIN thread.
@@ -37,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         );
 
         httpHandler http = new httpHandler();
-        http.get();
+        String s = http.get(APIurl);
+        Log.i("http", s);
     }
 
     @Override

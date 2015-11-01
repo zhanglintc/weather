@@ -1,9 +1,6 @@
 package co.zhanglintc.weather;
 
-import android.util.Log;
-
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -12,13 +9,26 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 public class httpHandler {
-    String APIurl = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&nu%20m_of_days=3&format=json&lang=zh";
+    // TODO: 10/31/15 use thread to handle network things
 
-    void logSth() {
-        Log.i("httpHandler", APIurl);
+    String get(String url) {
+        HttpGet getMethod = new HttpGet(url);
+        HttpClient httpClient = new DefaultHttpClient();
+        String resultContent = null;
+        HttpResponse response;
+
+        try {
+            response = httpClient.execute(getMethod);
+            resultContent = EntityUtils.toString(response.getEntity(), "utf-8");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return resultContent;
     }
 
-    // TODO: 10/31/15 use thread to handle network things
+    /* remove this code in the future
     void get() {
         String baseUrl = "http://zhanglintc.co/JS-Prac";
 
@@ -38,4 +48,5 @@ public class httpHandler {
             e.printStackTrace();
         }
     }
+    */
 }
