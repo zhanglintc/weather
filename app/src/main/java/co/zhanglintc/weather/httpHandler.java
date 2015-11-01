@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class httpHandler {
     // TODO: 10/31/15 use thread to handle network things
-
+    // TODO: 11/01/15 make it return a JSON object
     String get(String url) {
         HttpGet getMethod = new HttpGet(url);
         HttpClient httpClient = new DefaultHttpClient();
