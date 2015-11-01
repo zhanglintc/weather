@@ -1,5 +1,5 @@
 todos:
-  1. Connect to weather API.
+√ 1. Connect to weather API.
   2. Parse JSON data.
   3. Design GUI.
   4. Use thread to handle http request.
