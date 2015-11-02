@@ -1,6 +1,6 @@
 todos:
 √ 1. Connect to weather API.
-  2. Parse JSON data.
+√ 2. Parse JSON data.
   3. Design GUI.
   4. Use thread to handle http request.
   5. Get user's position(by GPS or whatever).
