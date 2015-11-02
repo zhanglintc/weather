@@ -7,6 +7,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -32,16 +36,25 @@ public class MainActivity extends AppCompatActivity {
             .build()
         );
         StrictMode.setVmPolicy(
-            new StrictMode.VmPolicy.Builder()
-            .detectLeakedSqlLiteObjects()
-            .detectLeakedClosableObjects()
-            .penaltyLog()
-            .penaltyDeath().build()
+                new StrictMode.VmPolicy.Builder()
+                        .detectLeakedSqlLiteObjects()
+                        .detectLeakedClosableObjects()
+                        .penaltyLog()
+                        .penaltyDeath().build()
         );
 
         httpHandler http = new httpHandler();
         String s = http.get(APIurl);
-        Log.i("http", s);
+        try {
+            JSONObject json = new JSONObject(new JSONTokener(s));
+            String temp_C = json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getString("temp_C");
+            String status = json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
+            Log.i("http", "Current temperature: " + temp_C);
+            Log.i("http", "Current status: " + status);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
