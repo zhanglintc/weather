@@ -1,0 +1,728 @@
+{
+    "data" : 
+    {
+        "current_condition" : [ 
+        {
+            "cloudcover" : "0", "FeelsLikeC" : "20", "FeelsLikeF" : "68", "humidity" : "49", "lang_zh" : [ {
+                "value" : "晴天" 
+            } ], "observation_time" : "06:20 AM", "precipMM" : "0.0", "pressure" : "1021", "temp_C" : "20", 
+            "temp_F" : "68", "visibility" : "10", "weatherCode" : "113", "weatherDesc" : [ {
+                "value" : "Sunny" 
+            } ], "weatherIconUrl" : [ 
+            {
+                "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0001_sunny.png" 
+            } ], "winddir16Point" : "ENE", "winddirDegree" : "65", "windspeedKmph" : "0", "windspeedMiles" : "0" 
+        } ],
+
+        "request" : [ {
+            "query" : "Chongqing, China", "type" : "City" 
+        } ],
+
+        "weather" : [ 
+        {
+            "astronomy" : [ {
+                "moonrise" : "11:36 PM", "moonset" : "12:27 PM", "sunrise" : "07:07 AM", "sunset" : "06:07 PM" 
+            } ], "date" : "2015-11-02", "hourly" : [ 
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "98", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "12", "DewPointC" : "10", 
+                "DewPointF" : "49", "FeelsLikeC" : "15", "FeelsLikeF" : "59", "HeatIndexC" : "15", "HeatIndexF" : "59", 
+                "humidity" : "70", "lang_zh" : [ {
+                    "value" : "晴朗" 
+                } ], "precipMM" : "0.0", "pressure" : "1025", "tempC" : "15", "tempF" : "59", "time" : "200", 
+                "visibility" : "10", "weatherCode" : "113", "weatherDesc" : [ {
+                    "value" : "Clear" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0008_clear_sky_night.png" 
+                } ], "WindChillC" : "15", "WindChillF" : "59", "winddir16Point" : "ENE", "winddirDegree" : "56", 
+                "WindGustKmph" : "9", "WindGustMiles" : "6", "windspeedKmph" : "6", "windspeedMiles" : "4" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "99", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "10", "DewPointC" : "10", 
+                "DewPointF" : "50", "FeelsLikeC" : "15", "FeelsLikeF" : "59", "HeatIndexC" : "15", "HeatIndexF" : "58", 
+                "humidity" : "73", "lang_zh" : [ {
+                    "value" : "晴朗" 
+                } ], "precipMM" : "0.0", "pressure" : "1023", "tempC" : "15", "tempF" : "58", "time" : "500", 
+                "visibility" : "10", "weatherCode" : "113", "weatherDesc" : [ {
+                    "value" : "Clear" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0008_clear_sky_night.png" 
+                } ], "WindChillC" : "15", "WindChillF" : "59", "winddir16Point" : "ENE", "winddirDegree" : "63", 
+                "WindGustKmph" : "8", "WindGustMiles" : "5", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "98", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "12", "DewPointC" : "11", 
+                "DewPointF" : "52", "FeelsLikeC" : "16", "FeelsLikeF" : "61", "HeatIndexC" : "16", "HeatIndexF" : "61", 
+                "humidity" : "72", "lang_zh" : [ {
+                    "value" : "晴天" 
+                } ], "precipMM" : "0.0", "pressure" : "1023", "tempC" : "16", "tempF" : "61", "time" : "800", 
+                "visibility" : "10", "weatherCode" : "113", "weatherDesc" : [ {
+                    "value" : "Sunny" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0001_sunny.png" 
+                } ], "WindChillC" : "16", "WindChillF" : "61", "winddir16Point" : "ENE", "winddirDegree" : "58", 
+                "WindGustKmph" : "6", "WindGustMiles" : "4", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "97", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "28", "DewPointC" : "11", 
+                "DewPointF" : "52", "FeelsLikeC" : "19", "FeelsLikeF" : "67", "HeatIndexC" : "19", "HeatIndexF" : "67", 
+                "humidity" : "58", "lang_zh" : [ {
+                    "value" : "局部多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1023", "tempC" : "19", "tempF" : "67", "time" : "1100", 
+                "visibility" : "10", "weatherCode" : "116", "weatherDesc" : [ {
+                    "value" : "Partly Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0002_sunny_intervals.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "67", "winddir16Point" : "ENE", "winddirDegree" : "66", 
+                "WindGustKmph" : "6", "WindGustMiles" : "4", "windspeedKmph" : "6", "windspeedMiles" : "4" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "10", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "96", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "34", "DewPointC" : "12", 
+                "DewPointF" : "53", "FeelsLikeC" : "25", "FeelsLikeF" : "77", "HeatIndexC" : "25", "HeatIndexF" : "77", 
+                "humidity" : "48", "lang_zh" : [ {
+                    "value" : "局部多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1020", "tempC" : "23", "tempF" : "74", "time" : "1400", 
+                "visibility" : "10", "weatherCode" : "116", "weatherDesc" : [ {
+                    "value" : "Partly Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0002_sunny_intervals.png" 
+                } ], "WindChillC" : "23", "WindChillF" : "74", "winddir16Point" : "ENE", "winddirDegree" : "65", 
+                "WindGustKmph" : "9", "WindGustMiles" : "6", "windspeedKmph" : "8", "windspeedMiles" : "5" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "16", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "85", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "28", "DewPointC" : "12", 
+                "DewPointF" : "53", "FeelsLikeC" : "25", "FeelsLikeF" : "77", "HeatIndexC" : "25", "HeatIndexF" : "77", 
+                "humidity" : "46", "lang_zh" : [ {
+                    "value" : "局部多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1018", "tempC" : "24", "tempF" : "76", "time" : "1700", 
+                "visibility" : "10", "weatherCode" : "116", "weatherDesc" : [ {
+                    "value" : "Partly Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0002_sunny_intervals.png" 
+                } ], "WindChillC" : "24", "WindChillF" : "76", "winddir16Point" : "NNE", "winddirDegree" : "34", 
+                "WindGustKmph" : "12", "WindGustMiles" : "7", "windspeedKmph" : "10", "windspeedMiles" : "6" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "94", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "26", "DewPointC" : "12", 
+                "DewPointF" : "53", "FeelsLikeC" : "20", "FeelsLikeF" : "69", "HeatIndexC" : "22", "HeatIndexF" : "72", 
+                "humidity" : "61", "lang_zh" : [ {
+                    "value" : "局部多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1019", "tempC" : "20", "tempF" : "69", "time" : "2000", 
+                "visibility" : "10", "weatherCode" : "116", "weatherDesc" : [ {
+                    "value" : "Partly Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "20", "WindChillF" : "69", "winddir16Point" : "NE", "winddirDegree" : "35", 
+                "WindGustKmph" : "22", "WindGustMiles" : "13", "windspeedKmph" : "14", "windspeedMiles" : "9" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "87", "DewPointC" : "12", 
+                "DewPointF" : "53", "FeelsLikeC" : "18", "FeelsLikeF" : "64", "HeatIndexC" : "18", "HeatIndexF" : "64", 
+                "humidity" : "67", "lang_zh" : [ {
+                    "value" : "多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1020", "tempC" : "18", "tempF" : "64", "time" : "2300", 
+                "visibility" : "10", "weatherCode" : "119", "weatherDesc" : [ {
+                    "value" : "Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "64", "winddir16Point" : "ENE", "winddirDegree" : "65", 
+                "WindGustKmph" : "11", "WindGustMiles" : "7", "windspeedKmph" : "6", "windspeedMiles" : "4" 
+            } ], "maxtempC" : "24", "maxtempF" : "76", "mintempC" : "18", "mintempF" : "64", "uvIndex" : "5" 
+        },
+
+        {
+            "astronomy" : [ 
+            {
+                "moonrise" : "No moonrise", "moonset" : "01:12 PM", "sunrise" : "07:08 AM", "sunset" : "06:06 PM" 
+            } ], "date" : "2015-11-03", "hourly" : [ 
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "71", "DewPointC" : "11", 
+                "DewPointF" : "53", "FeelsLikeC" : "18", "FeelsLikeF" : "65", "HeatIndexC" : "18", "HeatIndexF" : "65", 
+                "humidity" : "64", "lang_zh" : [ {
+                    "value" : "多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1019", "tempC" : "18", "tempF" : "65", "time" : "200", 
+                "visibility" : "10", "weatherCode" : "119", "weatherDesc" : [ {
+                    "value" : "Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "65", "winddir16Point" : "E", "winddirDegree" : "80", 
+                "WindGustKmph" : "8", "WindGustMiles" : "5", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "57", "DewPointC" : "11", 
+                "DewPointF" : "52", "FeelsLikeC" : "18", "FeelsLikeF" : "64", "HeatIndexC" : "18", "HeatIndexF" : "64", 
+                "humidity" : "65", "lang_zh" : [ {
+                    "value" : "局部多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1017", "tempC" : "18", "tempF" : "64", "time" : "500", 
+                "visibility" : "10", "weatherCode" : "116", "weatherDesc" : [ {
+                    "value" : "Partly Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "64", "winddir16Point" : "ESE", "winddirDegree" : "115", 
+                "WindGustKmph" : "6", "WindGustMiles" : "4", "windspeedKmph" : "4", "windspeedMiles" : "2" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "66", "DewPointC" : "12", 
+                "DewPointF" : "54", "FeelsLikeC" : "19", "FeelsLikeF" : "67", "HeatIndexC" : "19", "HeatIndexF" : "67", 
+                "humidity" : "63", "lang_zh" : [ {
+                    "value" : "多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1019", "tempC" : "19", "tempF" : "67", "time" : "800", 
+                "visibility" : "10", "weatherCode" : "119", "weatherDesc" : [ {
+                    "value" : "Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0003_white_cloud.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "67", "winddir16Point" : "ESE", "winddirDegree" : "109", 
+                "WindGustKmph" : "5", "WindGustMiles" : "3", "windspeedKmph" : "4", "windspeedMiles" : "3" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "87", "DewPointC" : "10", 
+                "DewPointF" : "49", "FeelsLikeC" : "21", "FeelsLikeF" : "70", "HeatIndexC" : "21", "HeatIndexF" : "70", 
+                "humidity" : "48", "lang_zh" : [ {
+                    "value" : "多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1020", "tempC" : "21", "tempF" : "70", "time" : "1100", 
+                "visibility" : "10", "weatherCode" : "119", "weatherDesc" : [ {
+                    "value" : "Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0003_white_cloud.png" 
+                } ], "WindChillC" : "21", "WindChillF" : "70", "winddir16Point" : "ESE", "winddirDegree" : "113", 
+                "WindGustKmph" : "8", "WindGustMiles" : "5", "windspeedKmph" : "7", "windspeedMiles" : "4" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "88", "DewPointC" : "10", 
+                "DewPointF" : "50", "FeelsLikeC" : "21", "FeelsLikeF" : "70", "HeatIndexC" : "24", "HeatIndexF" : "76", 
+                "humidity" : "50", "lang_zh" : [ {
+                    "value" : "阴天" 
+                } ], "precipMM" : "0.0", "pressure" : "1017", "tempC" : "21", "tempF" : "70", "time" : "1400", 
+                "visibility" : "10", "weatherCode" : "122", "weatherDesc" : [ {
+                    "value" : "Overcast" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "21", "WindChillF" : "70", "winddir16Point" : "E", "winddirDegree" : "81", 
+                "WindGustKmph" : "13", "WindGustMiles" : "8", "windspeedKmph" : "12", "windspeedMiles" : "7" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "91", "DewPointC" : "11", 
+                "DewPointF" : "52", "FeelsLikeC" : "20", "FeelsLikeF" : "69", "HeatIndexC" : "20", "HeatIndexF" : "69", 
+                "humidity" : "55", "lang_zh" : [ {
+                    "value" : "阴天" 
+                } ], "precipMM" : "0.0", "pressure" : "1017", "tempC" : "20", "tempF" : "69", "time" : "1700", 
+                "visibility" : "10", "weatherCode" : "122", "weatherDesc" : [ {
+                    "value" : "Overcast" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "20", "WindChillF" : "69", "winddir16Point" : "ENE", "winddirDegree" : "62", 
+                "WindGustKmph" : "15", "WindGustMiles" : "10", "windspeedKmph" : "13", "windspeedMiles" : "8" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "80", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "98", "DewPointC" : "11", 
+                "DewPointF" : "52", "FeelsLikeC" : "19", "FeelsLikeF" : "67", "HeatIndexC" : "19", "HeatIndexF" : "67", 
+                "humidity" : "59", "lang_zh" : [ {
+                    "value" : "阴天" 
+                } ], "precipMM" : "0.0", "pressure" : "1019", "tempC" : "19", "tempF" : "67", "time" : "2000", 
+                "visibility" : "10", "weatherCode" : "122", "weatherDesc" : [ {
+                    "value" : "Overcast" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "67", "winddir16Point" : "NE", "winddirDegree" : "47", 
+                "WindGustKmph" : "11", "WindGustMiles" : "7", "windspeedKmph" : "9", "windspeedMiles" : "6" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "44", 
+                "chanceofrain" : "1", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "11", 
+                "DewPointF" : "53", "FeelsLikeC" : "19", "FeelsLikeF" : "66", "HeatIndexC" : "19", "HeatIndexF" : "66", 
+                "humidity" : "63", "lang_zh" : [ {
+                    "value" : "阴天" 
+                } ], "precipMM" : "0.0", "pressure" : "1020", "tempC" : "19", "tempF" : "66", "time" : "2300", 
+                "visibility" : "10", "weatherCode" : "122", "weatherDesc" : [ {
+                    "value" : "Overcast" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "66", "winddir16Point" : "ENE", "winddirDegree" : "57", 
+                "WindGustKmph" : "7", "WindGustMiles" : "4", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            } ], "maxtempC" : "21", "maxtempF" : "70", "mintempC" : "17", "mintempF" : "62", "uvIndex" : "3" 
+        },
+
+        {
+            "astronomy" : [ {
+                "moonrise" : "12:30 AM", "moonset" : "01:52 PM", "sunrise" : "07:09 AM", "sunset" : "06:05 PM" 
+            } ], "date" : "2015-11-04", "hourly" : [ 
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "1", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "69", "DewPointC" : "11", 
+                "DewPointF" : "52", "FeelsLikeC" : "18", "FeelsLikeF" : "64", "HeatIndexC" : "18", "HeatIndexF" : "64", 
+                "humidity" : "67", "lang_zh" : [ {
+                    "value" : "多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1019", "tempC" : "18", "tempF" : "64", "time" : "200", 
+                "visibility" : "10", "weatherCode" : "119", "weatherDesc" : [ {
+                    "value" : "Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "64", "winddir16Point" : "ENE", "winddirDegree" : "71", 
+                "WindGustKmph" : "7", "WindGustMiles" : "4", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "75", "DewPointC" : "12", 
+                "DewPointF" : "53", "FeelsLikeC" : "17", "FeelsLikeF" : "62", "HeatIndexC" : "17", "HeatIndexF" : "62", 
+                "humidity" : "72", "lang_zh" : [ {
+                    "value" : "多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1018", "tempC" : "17", "tempF" : "62", "time" : "500", 
+                "visibility" : "10", "weatherCode" : "119", "weatherDesc" : [ {
+                    "value" : "Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "17", "WindChillF" : "62", "winddir16Point" : "ESE", "winddirDegree" : "111", 
+                "WindGustKmph" : "5", "WindGustMiles" : "3", "windspeedKmph" : "4", "windspeedMiles" : "2" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "1", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "91", "DewPointC" : "14", 
+                "DewPointF" : "57", "FeelsLikeC" : "19", "FeelsLikeF" : "66", "HeatIndexC" : "19", "HeatIndexF" : "66", 
+                "humidity" : "74", "lang_zh" : [ {
+                    "value" : "阴天" 
+                } ], "precipMM" : "0.1", "pressure" : "1019", "tempC" : "19", "tempF" : "66", "time" : "800", 
+                "visibility" : "10", "weatherCode" : "122", "weatherDesc" : [ {
+                    "value" : "Overcast" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "66", "winddir16Point" : "E", "winddirDegree" : "92", 
+                "WindGustKmph" : "4", "WindGustMiles" : "2", "windspeedKmph" : "4", "windspeedMiles" : "2" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "1", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "64", "DewPointC" : "15", 
+                "DewPointF" : "59", "FeelsLikeC" : "21", "FeelsLikeF" : "71", "HeatIndexC" : "25", "HeatIndexF" : "76", 
+                "humidity" : "66", "lang_zh" : [ {
+                    "value" : "多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1019", "tempC" : "22", "tempF" : "71", "time" : "1100", 
+                "visibility" : "10", "weatherCode" : "119", "weatherDesc" : [ {
+                    "value" : "Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0003_white_cloud.png" 
+                } ], "WindChillC" : "21", "WindChillF" : "71", "winddir16Point" : "ENE", "winddirDegree" : "75", 
+                "WindGustKmph" : "6", "WindGustMiles" : "4", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "100", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "55", "DewPointC" : "14", 
+                "DewPointF" : "57", "FeelsLikeC" : "25", "FeelsLikeF" : "76", "HeatIndexC" : "25", "HeatIndexF" : "76", 
+                "humidity" : "60", "lang_zh" : [ {
+                    "value" : "局部多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1016", "tempC" : "22", "tempF" : "72", "time" : "1400", 
+                "visibility" : "10", "weatherCode" : "116", "weatherDesc" : [ {
+                    "value" : "Partly Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0002_sunny_intervals.png" 
+                } ], "WindChillC" : "22", "WindChillF" : "72", "winddir16Point" : "ENE", "winddirDegree" : "66", 
+                "WindGustKmph" : "11", "WindGustMiles" : "7", "windspeedKmph" : "10", "windspeedMiles" : "6" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "100", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "52", "DewPointC" : "14", 
+                "DewPointF" : "58", "FeelsLikeC" : "22", "FeelsLikeF" : "71", "HeatIndexC" : "25", "HeatIndexF" : "76", 
+                "humidity" : "62", "lang_zh" : [ {
+                    "value" : "局部多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1014", "tempC" : "22", "tempF" : "71", "time" : "1700", 
+                "visibility" : "10", "weatherCode" : "116", "weatherDesc" : [ {
+                    "value" : "Partly Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0002_sunny_intervals.png" 
+                } ], "WindChillC" : "22", "WindChillF" : "71", "winddir16Point" : "ENE", "winddirDegree" : "60", 
+                "WindGustKmph" : "17", "WindGustMiles" : "11", "windspeedKmph" : "15", "windspeedMiles" : "9" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "77", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "14", 
+                "DewPointF" : "57", "FeelsLikeC" : "19", "FeelsLikeF" : "66", "HeatIndexC" : "19", "HeatIndexF" : "66", 
+                "humidity" : "73", "lang_zh" : [ {
+                    "value" : "小阵雨" 
+                } ], "precipMM" : "1.1", "pressure" : "1015", "tempC" : "19", "tempF" : "66", "time" : "2000", 
+                "visibility" : "10", "weatherCode" : "353", "weatherDesc" : [ {
+                    "value" : "Light rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0025_light_rain_showers_night.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "66", "winddir16Point" : "NE", "winddirDegree" : "44", 
+                "WindGustKmph" : "17", "WindGustMiles" : "11", "windspeedKmph" : "13", "windspeedMiles" : "8" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "76", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "84", "DewPointC" : "15", 
+                "DewPointF" : "59", "FeelsLikeC" : "18", "FeelsLikeF" : "64", "HeatIndexC" : "18", "HeatIndexF" : "64", 
+                "humidity" : "84", "lang_zh" : [ {
+                    "value" : "中雨或大阵雨" 
+                } ], "precipMM" : "6.1", "pressure" : "1017", "tempC" : "18", "tempF" : "64", "time" : "2300", 
+                "visibility" : "7", "weatherCode" : "356", "weatherDesc" : [ {
+                    "value" : "Moderate or heavy rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0026_heavy_rain_showers_night.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "64", "winddir16Point" : "NNE", "winddirDegree" : "30", 
+                "WindGustKmph" : "21", "WindGustMiles" : "13", "windspeedKmph" : "11", "windspeedMiles" : "7" 
+            } ], "maxtempC" : "22", "maxtempF" : "72", "mintempC" : "17", "mintempF" : "63", "uvIndex" : "4" 
+        },
+
+        {
+            "astronomy" : [ {
+                "moonrise" : "01:24 AM", "moonset" : "02:28 PM", "sunrise" : "07:10 AM", "sunset" : "06:05 PM" 
+            } ], "date" : "2015-11-05", "hourly" : [ 
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "75", 
+                "chanceofrain" : "75", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "15", 
+                "DewPointF" : "60", "FeelsLikeC" : "17", "FeelsLikeF" : "63", "HeatIndexC" : "17", "HeatIndexF" : "63", 
+                "humidity" : "89", "lang_zh" : [ {
+                    "value" : "中雨或大阵雨" 
+                } ], "precipMM" : "3.9", "pressure" : "1015", "tempC" : "17", "tempF" : "63", "time" : "200", 
+                "visibility" : "7", "weatherCode" : "356", "weatherDesc" : [ {
+                    "value" : "Moderate or heavy rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0026_heavy_rain_showers_night.png" 
+                } ], "WindChillC" : "17", "WindChillF" : "63", "winddir16Point" : "N", "winddirDegree" : "11", 
+                "WindGustKmph" : "12", "WindGustMiles" : "8", "windspeedKmph" : "8", "windspeedMiles" : "5" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "74", 
+                "chanceofrain" : "74", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "15", 
+                "DewPointF" : "59", "FeelsLikeC" : "17", "FeelsLikeF" : "63", "HeatIndexC" : "17", "HeatIndexF" : "63", 
+                "humidity" : "88", "lang_zh" : [ {
+                    "value" : "细雨" 
+                } ], "precipMM" : "0.5", "pressure" : "1014", "tempC" : "17", "tempF" : "63", "time" : "500", 
+                "visibility" : "2", "weatherCode" : "266", "weatherDesc" : [ {
+                    "value" : "Light drizzle" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0033_cloudy_with_light_rain_night.png" 
+                } ], "WindChillC" : "17", "WindChillF" : "63", "winddir16Point" : "NE", "winddirDegree" : "35", 
+                "WindGustKmph" : "4", "WindGustMiles" : "3", "windspeedKmph" : "4", "windspeedMiles" : "2" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "73", 
+                "chanceofrain" : "73", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "16", 
+                "DewPointF" : "61", "FeelsLikeC" : "18", "FeelsLikeF" : "65", "HeatIndexC" : "18", "HeatIndexF" : "65", 
+                "humidity" : "89", "lang_zh" : [ {
+                    "value" : "细雨" 
+                } ], "precipMM" : "0.2", "pressure" : "1015", "tempC" : "18", "tempF" : "65", "time" : "800", 
+                "visibility" : "2", "weatherCode" : "266", "weatherDesc" : [ {
+                    "value" : "Light drizzle" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0017_cloudy_with_light_rain.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "65", "winddir16Point" : "NNE", "winddirDegree" : "19", 
+                "WindGustKmph" : "2", "WindGustMiles" : "1", "windspeedKmph" : "1", "windspeedMiles" : "1" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "72", 
+                "chanceofrain" : "72", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "16", 
+                "DewPointF" : "60", "FeelsLikeC" : "18", "FeelsLikeF" : "65", "HeatIndexC" : "18", "HeatIndexF" : "65", 
+                "humidity" : "84", "lang_zh" : [ {
+                    "value" : "小阵雨" 
+                } ], "precipMM" : "0.7", "pressure" : "1015", "tempC" : "18", "tempF" : "65", "time" : "1100", 
+                "visibility" : "10", "weatherCode" : "353", "weatherDesc" : [ {
+                    "value" : "Light rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0009_light_rain_showers.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "65", "winddir16Point" : "NNE", "winddirDegree" : "23", 
+                "WindGustKmph" : "2", "WindGustMiles" : "1", "windspeedKmph" : "2", "windspeedMiles" : "1" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "22", 
+                "chanceofrain" : "71", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "16", 
+                "DewPointF" : "62", "FeelsLikeC" : "19", "FeelsLikeF" : "66", "HeatIndexC" : "19", "HeatIndexF" : "66", 
+                "humidity" : "86", "lang_zh" : [ {
+                    "value" : "小阵雨" 
+                } ], "precipMM" : "1.7", "pressure" : "1011", "tempC" : "19", "tempF" : "66", "time" : "1400", 
+                "visibility" : "10", "weatherCode" : "353", "weatherDesc" : [ {
+                    "value" : "Light rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0009_light_rain_showers.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "66", "winddir16Point" : "NNE", "winddirDegree" : "22", 
+                "WindGustKmph" : "8", "WindGustMiles" : "5", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "8", 
+                "chanceofrain" : "70", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "16", 
+                "DewPointF" : "60", "FeelsLikeC" : "19", "FeelsLikeF" : "65", "HeatIndexC" : "19", "HeatIndexF" : "65", 
+                "humidity" : "83", "lang_zh" : [ {
+                    "value" : "小阵雨" 
+                } ], "precipMM" : "2.1", "pressure" : "1010", "tempC" : "19", "tempF" : "65", "time" : "1700", 
+                "visibility" : "10", "weatherCode" : "353", "weatherDesc" : [ {
+                    "value" : "Light rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0009_light_rain_showers.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "65", "winddir16Point" : "NE", "winddirDegree" : "42", 
+                "WindGustKmph" : "15", "WindGustMiles" : "10", "windspeedKmph" : "10", "windspeedMiles" : "6" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "58", 
+                "chanceofrain" : "69", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "16", 
+                "DewPointF" : "61", "FeelsLikeC" : "18", "FeelsLikeF" : "64", "HeatIndexC" : "18", "HeatIndexF" : "64", 
+                "humidity" : "90", "lang_zh" : [ {
+                    "value" : "中雨或大阵雨" 
+                } ], "precipMM" : "3.1", "pressure" : "1011", "tempC" : "18", "tempF" : "64", "time" : "2000", 
+                "visibility" : "7", "weatherCode" : "356", "weatherDesc" : [ {
+                    "value" : "Moderate or heavy rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0026_heavy_rain_showers_night.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "64", "winddir16Point" : "NNE", "winddirDegree" : "30", 
+                "WindGustKmph" : "15", "WindGustMiles" : "10", "windspeedKmph" : "9", "windspeedMiles" : "6" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "68", 
+                "chanceofrain" : "68", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "16", 
+                "DewPointF" : "61", "FeelsLikeC" : "18", "FeelsLikeF" : "64", "HeatIndexC" : "18", "HeatIndexF" : "64", 
+                "humidity" : "92", "lang_zh" : [ {
+                    "value" : "中雨或大阵雨" 
+                } ], "precipMM" : "3.8", "pressure" : "1013", "tempC" : "18", "tempF" : "64", "time" : "2300", 
+                "visibility" : "7", "weatherCode" : "356", "weatherDesc" : [ {
+                    "value" : "Moderate or heavy rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0026_heavy_rain_showers_night.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "64", "winddir16Point" : "N", "winddirDegree" : "6", 
+                "WindGustKmph" : "9", "WindGustMiles" : "5", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            } ], "maxtempC" : "19", "maxtempF" : "66", "mintempC" : "18", "mintempF" : "64", "uvIndex" : "2" 
+        },
+
+        {
+            "astronomy" : [ {
+                "moonrise" : "02:15 AM", "moonset" : "03:03 PM", "sunrise" : "07:10 AM", "sunset" : "06:04 PM" 
+            } ], "date" : "2015-11-06", "hourly" : [ 
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "67", 
+                "chanceofrain" : "67", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "17", 
+                "DewPointF" : "63", "FeelsLikeC" : "18", "FeelsLikeF" : "65", "HeatIndexC" : "18", "HeatIndexF" : "65", 
+                "humidity" : "93", "lang_zh" : [ {
+                    "value" : "小阵雨" 
+                } ], "precipMM" : "2.2", "pressure" : "1011", "tempC" : "18", "tempF" : "65", "time" : "200", 
+                "visibility" : "10", "weatherCode" : "353", "weatherDesc" : [ {
+                    "value" : "Light rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0025_light_rain_showers_night.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "65", "winddir16Point" : "WNW", "winddirDegree" : "294", 
+                "WindGustKmph" : "4", "WindGustMiles" : "3", "windspeedKmph" : "3", "windspeedMiles" : "2" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "65", 
+                "chanceofrain" : "65", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "17", 
+                "DewPointF" : "62", "FeelsLikeC" : "18", "FeelsLikeF" : "64", "HeatIndexC" : "18", "HeatIndexF" : "64", 
+                "humidity" : "93", "lang_zh" : [ {
+                    "value" : "周边有零星小雨" 
+                } ], "precipMM" : "0.1", "pressure" : "1011", "tempC" : "18", "tempF" : "64", "time" : "500", 
+                "visibility" : "10", "weatherCode" : "176", "weatherDesc" : [ {
+                    "value" : "Patchy rain nearby" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0025_light_rain_showers_night.png" 
+                } ], "WindChillC" : "18", "WindChillF" : "64", "winddir16Point" : "SW", "winddirDegree" : "218", 
+                "WindGustKmph" : "3", "WindGustMiles" : "2", "windspeedKmph" : "2", "windspeedMiles" : "1" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "64", 
+                "chanceofrain" : "6", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "17", 
+                "DewPointF" : "63", "FeelsLikeC" : "19", "FeelsLikeF" : "65", "HeatIndexC" : "19", "HeatIndexF" : "65", 
+                "humidity" : "92", "lang_zh" : [ {
+                    "value" : "阴天" 
+                } ], "precipMM" : "0.1", "pressure" : "1013", "tempC" : "19", "tempF" : "65", "time" : "800", 
+                "visibility" : "10", "weatherCode" : "122", "weatherDesc" : [ {
+                    "value" : "Overcast" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "65", "winddir16Point" : "WSW", "winddirDegree" : "250", 
+                "WindGustKmph" : "3", "WindGustMiles" : "2", "windspeedKmph" : "3", "windspeedMiles" : "2" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "63", 
+                "chanceofrain" : "45", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "17", 
+                "DewPointF" : "63", "FeelsLikeC" : "21", "FeelsLikeF" : "69", "HeatIndexC" : "21", "HeatIndexF" : "69", 
+                "humidity" : "79", "lang_zh" : [ {
+                    "value" : "周边有零星小雨" 
+                } ], "precipMM" : "0.1", "pressure" : "1014", "tempC" : "21", "tempF" : "69", "time" : "1100", 
+                "visibility" : "10", "weatherCode" : "176", "weatherDesc" : [ {
+                    "value" : "Patchy rain nearby" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0009_light_rain_showers.png" 
+                } ], "WindChillC" : "21", "WindChillF" : "69", "winddir16Point" : "W", "winddirDegree" : "276", 
+                "WindGustKmph" : "3", "WindGustMiles" : "2", "windspeedKmph" : "2", "windspeedMiles" : "1" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "3", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "0", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "18", 
+                "DewPointF" : "64", "FeelsLikeC" : "25", "FeelsLikeF" : "76", "HeatIndexC" : "25", "HeatIndexF" : "76", 
+                "humidity" : "75", "lang_zh" : [ {
+                    "value" : "阴天" 
+                } ], "precipMM" : "0.1", "pressure" : "1010", "tempC" : "22", "tempF" : "72", "time" : "1400", 
+                "visibility" : "10", "weatherCode" : "122", "weatherDesc" : [ {
+                    "value" : "Overcast" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "22", "WindChillF" : "72", "winddir16Point" : "NNE", "winddirDegree" : "18", 
+                "WindGustKmph" : "5", "WindGustMiles" : "3", "windspeedKmph" : "5", "windspeedMiles" : "3" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "1", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "4", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "84", "DewPointC" : "17", 
+                "DewPointF" : "62", "FeelsLikeC" : "22", "FeelsLikeF" : "71", "HeatIndexC" : "25", "HeatIndexF" : "76", 
+                "humidity" : "73", "lang_zh" : [ {
+                    "value" : "多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1010", "tempC" : "22", "tempF" : "71", "time" : "1700", 
+                "visibility" : "10", "weatherCode" : "119", "weatherDesc" : [ {
+                    "value" : "Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0003_white_cloud.png" 
+                } ], "WindChillC" : "22", "WindChillF" : "71", "winddir16Point" : "NE", "winddirDegree" : "43", 
+                "WindGustKmph" : "13", "WindGustMiles" : "8", "windspeedKmph" : "11", "windspeedMiles" : "7" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "0", 
+                "chanceofrain" : "0", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "55", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "34", "DewPointC" : "17", 
+                "DewPointF" : "63", "FeelsLikeC" : "20", "FeelsLikeF" : "67", "HeatIndexC" : "20", "HeatIndexF" : "67", 
+                "humidity" : "86", "lang_zh" : [ {
+                    "value" : "局部多云" 
+                } ], "precipMM" : "0.0", "pressure" : "1011", "tempC" : "20", "tempF" : "67", "time" : "2000", 
+                "visibility" : "10", "weatherCode" : "116", "weatherDesc" : [ {
+                    "value" : "Partly Cloudy" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png" 
+                } ], "WindChillC" : "20", "WindChillF" : "67", "winddir16Point" : "NE", "winddirDegree" : "38", 
+                "WindGustKmph" : "15", "WindGustMiles" : "9", "windspeedKmph" : "12", "windspeedMiles" : "7" 
+            },
+
+            {
+                "chanceoffog" : "0", "chanceoffrost" : "0", "chanceofhightemp" : "0", "chanceofovercast" : "59", 
+                "chanceofrain" : "59", "chanceofremdry" : "0", "chanceofsnow" : "0", "chanceofsunshine" : "1", 
+                "chanceofthunder" : "0", "chanceofwindy" : "0", "cloudcover" : "100", "DewPointC" : "17", 
+                "DewPointF" : "63", "FeelsLikeC" : "19", "FeelsLikeF" : "66", "HeatIndexC" : "19", "HeatIndexF" : "66", 
+                "humidity" : "90", "lang_zh" : [ {
+                    "value" : "小阵雨" 
+                } ], "precipMM" : "1.3", "pressure" : "1013", "tempC" : "19", "tempF" : "66", "time" : "2300", 
+                "visibility" : "10", "weatherCode" : "353", "weatherDesc" : [ {
+                    "value" : "Light rain shower" 
+                } ], "weatherIconUrl" : [ 
+                {
+                    "value" : "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0025_light_rain_showers_night.png" 
+                } ], "WindChillC" : "19", "WindChillF" : "66", "winddir16Point" : "NNE", "winddirDegree" : "11", 
+                "WindGustKmph" : "13", "WindGustMiles" : "8", "windspeedKmph" : "9", "windspeedMiles" : "6" 
+            } ], "maxtempC" : "22", "maxtempF" : "72", "mintempC" : "18", "mintempF" : "64", "uvIndex" : "3" 
+        } ] 
+    }
+}
