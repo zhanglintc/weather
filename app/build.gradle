@@ -28,6 +28,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'
-    compile files('/Users/lane/Github/weather/lib/httpclient-4.0.jar')
-    compile files('/Users/lane/Github/weather/lib/httpcore-4.0.jar')
+    compile files('../lib/httpclient-4.0.jar')
+    compile files('../lib/httpcore-4.0.jar')
 }
