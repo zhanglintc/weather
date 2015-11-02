@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,18 +44,24 @@ public class MainActivity extends AppCompatActivity {
                         .penaltyDeath().build()
         );
 
+        String temp_C = null;
+        String status = null;
+
         httpHandler http = new httpHandler();
         String s = http.get(APIurl);
         try {
             JSONObject json = new JSONObject(new JSONTokener(s));
-            String temp_C = json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getString("temp_C");
-            String status = json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
+            temp_C = json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getString("temp_C");
+            status = json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
             Log.i("http", "Current temperature: " + temp_C);
             Log.i("http", "Current status: " + status);
         }
         catch (JSONException e) {
             e.printStackTrace();
         }
+        TextView todayTemp = (TextView) super.findViewById(R.id.todayTemp);
+        todayTemp.setText("Current temperature: " + temp_C);
+
     }
 
     @Override
