@@ -9,6 +9,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
+        <ImageView
+            android:id="@+id/imview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+            <!--android:background="http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0004_black_low_cloud.png"-->
+
         <TextView
             android:id="@+id/todayTemp"
             android:text="@string/hello_world"
@@ -22,5 +28,6 @@
             android:layout_height="wrap_content"
             />
     </LinearLayout>
+
 
 </RelativeLayout>
