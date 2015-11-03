@@ -3,6 +3,9 @@ Developed by [zhanglintc](https://github.com/zhanglintc) and [smilebin818](https
 
 ---
 
+### Realated tools:
+- API analyzer: [weather-helper](https://github.com/zhanglintc/weather-helper) 
+
 ### Build environment:
 - **Android Studio**
 - **Target SDK: 23**
