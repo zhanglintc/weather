@@ -2,9 +2,9 @@ package co.zhanglintc.weather;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -85,10 +83,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void run() {
-            // true process:
+            // true process
             String s = http.get(APIurl);
 
-            // fake process:
+            // fake process
             /*
             String s = rawJsonData;
             try {
@@ -99,20 +97,24 @@ public class MainActivity extends AppCompatActivity {
             }
             */
             final String temp_C;
-            final String status;
+            final String weatherDesc;
+            final String iconURL;
             try {
-                final JSONObject json = new JSONObject(new JSONTokener(s));
-                temp_C = json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getString("temp_C");
-                status = json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
-                bmImg  = returnBitMap(json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherIconUrl").getJSONObject(0).getString("value"));
+                // final JSONObject json = new JSONObject(new JSONTokener(s));
+                WeatherParser we = new WeatherParser(s);
+                temp_C = we.getCurTemp_C();
+                weatherDesc = we.getCurWeatherDesc();
+                iconURL = we.getCurWeatherIconUrl();
+                bmImg  = returnBitMap(iconURL);
                 Log.i("http", "Current temperature: " + temp_C);
-                Log.i("http", "Current status: " + status);
+                Log.i("http", "Current condition: " + weatherDesc);
+                Log.i("http", "Current weather icon URL: " + iconURL);
                 runOnUiThread(
                         new Runnable() {
                             @Override
                             public void run() {
                                 todayTemp.setText("Current temperature: " + temp_C);
-                                todayStatus.setText("Current status: " + status);
+                                todayStatus.setText("Current status: " + weatherDesc);
                                 imView.setImageBitmap(bmImg);
                             }
                         }
@@ -144,6 +146,11 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Created by Yanbin on 11/3/15.
+     * return a Bitmap.
+     */
     public Bitmap returnBitMap(String url) {
 
         URL myFileUrl = null;
