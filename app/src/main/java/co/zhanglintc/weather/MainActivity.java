@@ -1,10 +1,8 @@
 package co.zhanglintc.weather;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Looper;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -13,13 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONException;
-import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         String temp_C = null;
         String status = null;
-//        new Thread(urlRun).start();
+        new Thread(urlRun).start();
 
         httpHandler http = new httpHandler();
         TextView todayTemp = (TextView) super.findViewById(R.id.todayTemp);
@@ -124,11 +117,11 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 InputStream inputStream = WeatherUtils.getXML("http://115.29.192.240/language.xml");
-                cityMap = PullXMLTools.parseXML(inputStream,"UTF-8",WeatherUtils.getLanguge());
+                cityMap = PullXMLTools.parseXML(inputStream, "UTF-8", WeatherUtils.getLanguge());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Log.i("http", "city: " + cityMap.get("city"));
+            Log.i("xml", "city: " + cityMap.get("city"));
 
             Looper.loop();
         }

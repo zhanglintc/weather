@@ -9,8 +9,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,6 +23,33 @@ import java.util.Locale;
  */
 public class WeatherUtils {
 
+    public static String convertStreamToString(InputStream is) {
+        /*
+          * To convert the InputStream to String we use the BufferedReader.readLine()
+          * method. We iterate until the BufferedReader return null which means
+          * there's no more data to read. Each line will appended to a StringBuilder
+          * and returned as String.
+          */
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+
+        String line = null;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return sb.toString();
+    }
 
     /**
      * 从网络地址上取得图片
@@ -70,14 +99,14 @@ public class WeatherUtils {
 //         try {
 //             HttpResponse response = httpClient.execute(getMethod);
 //
-//             inputStream = (InputStream)response.getEntity().getContent();
+//             inputStream = response.getEntity().getContent();
 //         } catch (IOException e) {
 //             e.printStackTrace();
 //         }
 //         return inputStream;
 //
-//
-//
+
+
          InputStream inputStream = null;
          try {
              URL url = new URL(path);
