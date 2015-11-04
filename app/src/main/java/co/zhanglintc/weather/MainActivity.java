@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         todayStatus.setText("");
         myThread t = new myThread(http, todayTemp, todayStatus, imView);
         t.start();
-
     }
 
     // test data below
@@ -116,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
             Map<String,Object> cityMap = new HashMap();
 
             try {
-                InputStream inputStream = WeatherUtils.getXML("http://115.29.192.240/language.xml");
+                // InputStream inputStream = WeatherUtils.getXML("http://115.29.192.240/language.xml");
+                InputStream inputStream = getAssets().open("language.xml");
                 cityMap = PullXMLTools.parseXML(inputStream, "UTF-8", WeatherUtils.getLanguge());
             } catch (Exception e) {
                 e.printStackTrace();

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <language id="zh">
+        <city>重庆</city>
+        <today>今天</today>
+        <tomorrow>明天</tomorrow>
+    </language>
+    <language id="en">
+        <city>chongqing</city>
+        <today>today</today>
+        <tomorrow>tomorrow</tomorrow>
+    </language>
+    <language id="ja">
+        <city>東京</city>
+        <today>今日</today>
+        <tomorrow>明日</tomorrow>
+    </language>
+</data>
