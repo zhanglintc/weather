@@ -3,6 +3,7 @@ package co.zhanglintc.weather;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Looper;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,12 +13,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONException;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
+import co.zhanglintc.weather.common.PullXMLTools;
+import co.zhanglintc.weather.common.WeatherUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,34 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /********************************************
-         Network data cannot be handle in MAIN thread.
-         Solutions:
-         1. Use StrictMode.
-         2. Use another thread.
-         See: http://www.cnblogs.com/purediy/p/3225093.html
-         /********************************************/
-        StrictMode.setThreadPolicy(
-                new StrictMode.ThreadPolicy.Builder()
-                        .detectDiskReads()
-                        .detectDiskWrites()
-                        .detectNetwork()
-                        .penaltyLog()
-                        .build()
-        );
-        StrictMode.setVmPolicy(
-                new StrictMode.VmPolicy.Builder()
-                        .detectLeakedSqlLiteObjects()
-                        .detectLeakedClosableObjects()
-                        .penaltyLog()
-                        .penaltyDeath().build()
-        );
-
         String temp_C = null;
         String status = null;
+//        new Thread(urlRun).start();
 
         httpHandler http = new httpHandler();
         TextView todayTemp = (TextView) super.findViewById(R.id.todayTemp);
@@ -62,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         todayStatus.setText("");
         myThread t = new myThread(http, todayTemp, todayStatus, imView);
         t.start();
+
     }
 
     // test data below
@@ -105,10 +92,11 @@ public class MainActivity extends AppCompatActivity {
                 temp_C = we.getCurTemp_C();
                 weatherDesc = we.getCurWeatherDesc();
                 iconURL = we.getCurWeatherIconUrl();
-                bmImg  = returnBitMap(iconURL);
+                bmImg  = WeatherUtils.returnBitMap(iconURL);
                 Log.i("http", "Current temperature: " + temp_C);
                 Log.i("http", "Current condition: " + weatherDesc);
                 Log.i("http", "Current weather icon URL: " + iconURL);
+
                 runOnUiThread(
                         new Runnable() {
                             @Override
@@ -124,6 +112,27 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    Runnable urlRun = new Runnable(){
+        @Override
+        public void run() {
+
+            Looper.prepare();
+
+            // TEST
+            Map<String,Object> cityMap = new HashMap();
+
+            try {
+                InputStream inputStream = WeatherUtils.getXML("http://115.29.192.240/language.xml");
+                cityMap = PullXMLTools.parseXML(inputStream,"UTF-8",WeatherUtils.getLanguge());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Log.i("http", "city: " + cityMap.get("city"));
+
+            Looper.loop();
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -145,37 +154,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Created by Yanbin on 11/3/15.
-     * return a Bitmap.
-     */
-    public Bitmap returnBitMap(String url) {
-
-        URL myFileUrl = null;
-        Bitmap bitmap = null;
-
-        try {
-            myFileUrl = new URL(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
-            conn.setDoInput(true);
-
-            conn.connect();
-            InputStream is = conn.getInputStream();
-
-            bitmap = BitmapFactory.decodeStream(is);
-            is.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return bitmap;
     }
 }
