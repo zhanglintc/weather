@@ -48,10 +48,10 @@ def read3Lines(line, f):
 def main():
     cd_command = "cd {0} &&".format(sys.path[0])
     os.system('{0} git pull'.format(cd_command))
-    os.system('git log -100 > {0}'.format(gitLogFile))
+    os.system('{0} git log -100 > {1}'.format(cd_command, gitLogFile))
     
     # get date of today
-    os.system('date > {0}'.format(todayFile))
+    os.system('{0} date > {1}'.format(cd_command, todayFile))
     fdate = open(todayFile)
     today = fdate.read()[:10]
     os.remove(todayFile)
