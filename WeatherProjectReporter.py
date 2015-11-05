@@ -13,7 +13,7 @@ USERNAME = "zhanglintc@163.com"
 SMTPSERV = "smtp.163.com"
 PASSWORD = None
 MAILLIST = [
-    "zhanglintc623@gmail.com",
+    "zhanglintc623@foxmail.com",
 ]
 
 # try to get password in your user folder
