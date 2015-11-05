@@ -1,5 +1,5 @@
 # Weather app
-Developed by [zhanglintc](https://github.com/zhanglintc) and [smilebin818](https://github.com/smilebin818).
+Developed by [zhanglintc](https://github.com/zhanglintc), [smilebin818](https://github.com/smilebin818) and [liulu110210](https://github.com/liulu110210).
 
 ---
 
