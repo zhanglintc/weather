@@ -7,6 +7,36 @@ import python_send
 todayFile  = "today.txt"
 gitLogFile = "gitlog.txt"
 
+# mail setting
+SENDFROM = "zhanglintc@163.com"
+USERNAME = "zhanglintc@163.com"
+SMTPSERV = "smtp.163.com"
+PASSWORD = None
+MAILLIST = [
+    "zhanglintc623@gmail.com",
+]
+
+# try to get password in your user folder
+try:
+    with open(os.path.expanduser('~') + '/.smpass', 'rb') as fr:
+        PASSWORD = fr.read().strip()
+except:
+    pass
+
+# if failed, try to get password in the script's folder
+if not PASSWORD:
+    try:
+        with open(sys.path[0] + '/.smpass', 'rb') as fr:
+            PASSWORD = fr.read().strip()
+    except:
+        pass
+
+# if still failed, use password in the script
+if not PASSWORD:
+    PASSWORD = "YOURPASSWORD~"
+else:
+    pass
+
 # return 3 lines as a string
 def read3Lines(line, f):
     for i in range(2):
@@ -50,14 +80,31 @@ def main():
     # convert commitCounter to list and make it sorted
     commitCounter = sorted(commitCounter.items(), key = lambda d: d[1], reverse = True)
 
-    sendContent = "今日项目贡献排行({0}):\n\n".format(today)
+    # fill up sendContent
+    sendContent = "今日项目贡献排行:\n\n"
     idx = 1
     for item in commitCounter:
         sendContent += ("{0}. {1:12} {2} {3}\n".format(idx, item[0], item[1], "commit" if item[1] <= 1 else "commits"))
         idx += 1
+    sendContent += "\n"
+    sendContent += "https://github.com/zhanglintc/weather"
 
-    print sendContent
+    # remove gitLogFile
     os.remove(gitLogFile)
+
+    # debug use only
+    print sendContent
+
+    # send email
+    python_send.sendEmail(
+        to_addr = MAILLIST,
+        from_addr = SENDFROM,
+        alias = "Weather Project Admin".encode("utf-8"),
+        password = PASSWORD,
+        smtp_server = SMTPSERV,
+        subject = "项目每日贡献报告 - {0}".format(today),
+        content = sendContent,
+    )
 
 if __name__ == '__main__':
     main()
