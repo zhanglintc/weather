@@ -33,7 +33,7 @@ def main():
             regex = "Author: (.*) <(.*)>\nDate:\s*(.{10})" # group(1): user | group(2): email | group(3): date
             cmi = re.search(regex, commitBlock) # commit info
             if cmi:
-                user  = cmi.group(1)
+                user  = cmi.group(1).lower()
                 email = cmi.group(2)
                 date  = cmi.group(3)
 
