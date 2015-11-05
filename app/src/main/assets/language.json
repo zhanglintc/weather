@@ -1,0 +1,23 @@
+{
+    "data":
+    [
+        {
+            "id": "zh",
+            "city": "重庆",
+            "today": "今天",
+            "tomorrow": "明天"
+        },
+        {
+            "id": "en",
+            "city": "chongqing",
+            "today": "today",
+            "tomorrow": "tomorrow"
+        },
+        {
+            "id": "ja",
+            "city": "東京",
+            "today": "今日",
+            "tomorrow": "明日"
+        }
+    ]
+}
