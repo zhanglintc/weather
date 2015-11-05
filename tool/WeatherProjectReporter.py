@@ -52,12 +52,12 @@ def main():
     
     # get date of today
     os.system('{0} date > {1}'.format(cd_command, todayFile))
-    fdate = open(todayFile)
+    fdate = open("{0}/{1}".format(sys.path[0], todayFile))
     today = fdate.read()[:10]
-    os.remove(todayFile)
+    os.remove("{0}/{1}".format(sys.path[0], todayFile))
 
     # open gitlog
-    flog  = open(gitLogFile)
+    flog  = open("{0}/{1}".format(sys.path[0], gitLogFile))
 
     commitCounter = {}
     line = True
@@ -89,7 +89,7 @@ def main():
     sendContent += "https://github.com/zhanglintc/weather"
 
     # remove gitLogFile
-    os.remove(gitLogFile)
+    os.remove("{0}/{1}".format(sys.path[0], gitLogFile))
 
     # debug use only
     print sendContent
