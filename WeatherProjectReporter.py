@@ -53,8 +53,7 @@ def main():
     # get date of today
     os.system('date > {0}'.format(todayFile))
     fdate = open(todayFile)
-    # today = fdate.read()[:10]
-    today = "Tue Nov  3"
+    today = fdate.read()[:10]
     os.remove(todayFile)
 
     # open gitlog
