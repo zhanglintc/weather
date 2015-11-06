@@ -1,19 +1,19 @@
 # Weather app
-Developed by [zhanglintc](https://github.com/zhanglintc), [smilebin818](https://github.com/smilebin818) and [liulu110210](https://github.com/liulu110210).
+开发者 [zhanglintc](https://github.com/zhanglintc), [smilebin818](https://github.com/smilebin818),  [liulu110210](https://github.com/liulu110210).
 
 ---
 
-### Realated tools:
+### 相关工具:
 - API analyzer: [weather-helper](https://github.com/zhanglintc/weather-helper) 
 
-### Build environment:
+### 编译环境:
 - **Android Studio**
-- **Target SDK: 23**
-- **Min SDK: 14**
+- **Compile Sdk version: 23**
+- **Minimal Sdk version: 14**
 
-\- Note: **Android Support Library** MUST be installed. (Please fetch it using **Android SDK Manager**)
+\- 注意: 必须安装**Android Support Library**. (请使用**Android SDK Manager**下载)
 
-### Presentation:
+### 展示:
 ![demo](https://raw.githubusercontent.com/zhanglintc/weather/master/gif/demo.gif)
 
 
