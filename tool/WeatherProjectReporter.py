@@ -81,11 +81,14 @@ def main():
 
     # fill up sendContent
     sendContent = "今日项目贡献排行:\n\n"
-    idx = 1
-    for item in commitCounter:
-        sendContent += ("{0}. {1:12} {2} {3}\n".format(idx, item[0], item[1], "commit" if item[1] <= 1 else "commits"))
-        idx += 1
-    sendContent += "\n"
+    if not commitCounter:
+        sendContent += "很遗憾今天没有人上传代码\n"
+    else:
+        idx = 1
+        for item in commitCounter:
+            sendContent += ("{0}. {1:12} {2} {3}\n".format(idx, item[0], item[1], "commit" if item[1] <= 1 else "commits"))
+            idx += 1
+        sendContent += "\n"
     sendContent += "https://github.com/zhanglintc/weather"
 
     # remove gitLogFile
