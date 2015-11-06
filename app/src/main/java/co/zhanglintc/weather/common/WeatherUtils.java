@@ -1,13 +1,9 @@
 package co.zhanglintc.weather.common;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,12 +12,39 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Created by yanbin on 2015/11/04.
  */
 public class WeatherUtils {
+
+    /**
+     * 名字我没改, 沿用的urlRun
+     * 但是实际我觉得只是一段测试代码
+     * 随时可以删掉, 或者最好改个名字
+     * @param activity
+     */
+    public static void urlRun(Activity activity) {
+        // To yanbin: Looper无用代码 ?
+        // Looper.prepare();
+
+        // TEST
+        Map<String,Object> cityMap = new HashMap();
+
+        try {
+            InputStream inputStream = activity.getAssets().open("language.xml");
+            cityMap = PullXMLTools.parseXML(inputStream, "UTF-8", WeatherUtils.getLanguge());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Log.i("xml", "city: " + cityMap.get("city"));
+
+        // To yanbin: Looper无用代码 ?
+        // Looper.loop();
+    }
 
     public static String convertStreamToString(InputStream is) {
         /*
