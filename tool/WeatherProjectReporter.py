@@ -40,8 +40,8 @@ else:
     pass
 
 # return 3 lines as a string
-def read3Lines(line, f):
-    for i in range(2):
+def read5Lines(line, f):
+    for i in range(4):
         line += f.readline()
 
     return line
@@ -62,35 +62,56 @@ def main():
     flog  = open("{0}/{1}".format(sys.path[0], gitLogFile))
 
     commitCounter = {}
+    commitDetail  = {}
     line = True
     while line:
         line = flog.readline()
         cmb = re.search("^commit", line)
         if cmb: # commit block
-            commitBlock = read3Lines(line, flog)
-            regex = "Author: (.*) <(.*)>\nDate:\s*(.{10})" # group(1): user | group(2): email | group(3): date
+            commitBlock = read5Lines(line, flog)
+            regex = "Author: (.*) <(.*)>\nDate:\s*(.{10}).*\n\s*(.*$)" # group(1): user | group(2): email | group(3): date | group(4): detail
             cmi = re.search(regex, commitBlock) # commit info
             if cmi:
-                user  = cmi.group(1).lower()
-                email = cmi.group(2)
-                date  = cmi.group(3)
+                user   = cmi.group(1).lower()
+                email  = cmi.group(2)
+                date   = cmi.group(3)
+                detail = cmi.group(4)
 
                 if date.replace(" ", "") == today.replace(" ", ""):
+                    # fill up commitCounter
                     commitCounter[user] = commitCounter.get(user, 0) + 1
+
+                    # fill up commitDetail
+                    if not commitDetail.get(user):
+                        # initialize commitDetail[user]
+                        commitDetail[user] = []
+                        
+                    commitDetail[user].append(detail)
 
     # convert commitCounter to list and make it sorted
     commitCounter = sorted(commitCounter.items(), key = lambda d: d[1], reverse = True)
 
     # fill up sendContent
     sendContent = "今日项目贡献排行:\n\n"
+
     if not commitCounter:
         sendContent += "很遗憾今天没有人上传代码\n"
+
     else:
         idx = 1
         for item in commitCounter:
             sendContent += ("{0}. {1:12} {2} {3}\n".format(idx, item[0], item[1], "commit" if item[1] <= 1 else "commits"))
             idx += 1
         sendContent += "\n"
+
+        sendContent += "\n个人贡献详情(从新到旧排序):\n"
+
+        for item in commitCounter:
+            sendContent += "\n{0}:\n".format(item[0])
+            for detail in commitDetail[item[0]]:
+                sendContent += "- {0}\n".format(detail)
+
+    sendContent += "\n"
     sendContent += "https://github.com/zhanglintc/weather"
 
     # remove gitLogFile
@@ -100,15 +121,16 @@ def main():
     print sendContent
 
     # send email
-    python_send.sendEmail(
-        to_addr = MAILLIST,
-        from_addr = SENDFROM,
-        alias = "Weather Project Admin".encode("utf-8"),
-        password = PASSWORD,
-        smtp_server = SMTPSERV,
-        subject = "项目每日贡献报告 - {0}".format(today),
-        content = sendContent,
-    )
+    if True: # debug switcher
+        python_send.sendEmail(
+            to_addr = MAILLIST,
+            from_addr = SENDFROM,
+            alias = "Weather Project Admin".encode("utf-8"),
+            password = PASSWORD,
+            smtp_server = SMTPSERV,
+            subject = "项目每日贡献报告 - {0}".format(today),
+            content = sendContent,
+        )
 
 if __name__ == '__main__':
     main()
