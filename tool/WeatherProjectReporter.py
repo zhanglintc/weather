@@ -14,6 +14,8 @@ SMTPSERV = "smtp.163.com"
 PASSWORD = None
 MAILLIST = [
     "zhanglintc623@foxmail.com",
+    "522081447@qq.com", # yb
+    "619847439@qq.com", # ll
 ]
 
 # try to get password in your user folder
