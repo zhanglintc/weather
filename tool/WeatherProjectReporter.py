@@ -69,15 +69,19 @@ def main():
         cmb = re.search("^commit", line)
         if cmb: # commit block
             commitBlock = read5Lines(line, flog)
-            regex = "Author: (.*) <(.*)>\nDate:\s*(.{10}).*\n\s*(.*$)" # group(1): user | group(2): email | group(3): date | group(4): detail
+
+            # group(1): user | group(2): email | group(3): date | group(4): time | group(5): detail
+            regex = "Author: (.*) <(.*)>\nDate:\s*(.{10})\s(.{5}).*\n\s*(.*$)"
+
             cmi = re.search(regex, commitBlock) # commit info
             if cmi:
                 user   = cmi.group(1).lower()
                 email  = cmi.group(2)
                 date   = cmi.group(3)
-                detail = cmi.group(4)
+                time   = cmi.group(4)
+                detail = cmi.group(5)
 
-                if date.replace(" ", "") == today.replace(" ", ""):
+                if date.replace(" ", "") == today.replace(" ", ""): # "TueNov3" ## debug use only
                     # fill up commitCounter
                     commitCounter[user] = commitCounter.get(user, 0) + 1
 
@@ -86,7 +90,7 @@ def main():
                         # initialize commitDetail[user]
                         commitDetail[user] = []
                         
-                    commitDetail[user].append(detail)
+                    commitDetail[user].append("{0} {1}".format(time, detail))
 
     # convert commitCounter to list and make it sorted
     commitCounter = sorted(commitCounter.items(), key = lambda d: d[1], reverse = True)
@@ -95,12 +99,12 @@ def main():
     sendContent = "今日项目贡献排行:\n\n"
 
     if not commitCounter:
-        sendContent += "很遗憾今天没有人上传代码\n"
+        sendContent += "很遗憾今天居然没有人上传代码\n"
 
     else:
         idx = 1
         for item in commitCounter:
-            sendContent += ("{0}. {1:12} {2} {3}\n".format(idx, item[0], item[1], "commit" if item[1] <= 1 else "commits"))
+            sendContent += ("No.{0}: {1:2} {2:7} by {3}\n".format(idx, item[1], "commit" if item[1] <= 1 else "commits", item[0]))
             idx += 1
         sendContent += "\n"
 
