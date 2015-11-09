@@ -57,11 +57,18 @@ public class BackgroundUpdateThread extends Thread {
         final String temp_C;
         final String weatherDesc;
         final String iconURL;
+        final String systemLang;
         try {
+
+            systemLang = WeatherUtils.getLanguge();
             // final JSONObject json = new JSONObject(new JSONTokener(s));
             WeatherParser we = new WeatherParser(s);
             temp_C = we.getCurTemp_C();
-            weatherDesc = we.getCurWeatherLang(WeatherUtils.getLanguge());
+            if ("en".equals(systemLang)) {
+                weatherDesc = we.getCurWeatherDesc();
+            } else {
+                weatherDesc = we.getCurWeatherLang(systemLang);
+            }
             iconURL = we.getCurWeatherIconUrl();
             bmImg  = WeatherUtils.returnBitMap(iconURL);
             Log.i("http", "Current temperature: " + temp_C);
