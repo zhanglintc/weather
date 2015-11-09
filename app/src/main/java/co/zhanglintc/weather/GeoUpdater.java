@@ -25,8 +25,8 @@ public class GeoUpdater {
         // GPS related -S
         // To yanbin: 虽然取到值了, 但是完全不能理解这是什么鬼
         double latitude, longitude =0.0;
-        TextView lat = (TextView) activity.findViewById(R.id.lat);
-        TextView lng = (TextView) activity.findViewById(R.id.lng);
+        // TextView lat = (TextView) activity.findViewById(R.id.lat);
+        // TextView lng = (TextView) activity.findViewById(R.id.lng);
 
         LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
         // if enabled
@@ -35,8 +35,8 @@ public class GeoUpdater {
             if(location != null) {
                 latitude = location.getLatitude(); //经度
                 longitude = location.getLongitude(); //纬度
-                lat.setText("lat: " + latitude);
-                lng.setText("lng: " + longitude);
+                // lat.setText("lat: " + latitude);
+                // lng.setText("lng: " + longitude);
             }
         }
         // if not enabled
@@ -63,8 +63,8 @@ public class GeoUpdater {
             if (location != null){
                 latitude = location.getLatitude(); //经度
                 longitude = location.getLongitude(); //纬度
-                lat.setText("lat: " + latitude);
-                lng.setText("lng: " + longitude);
+                // lat.setText("lat: " + latitude);
+                // lng.setText("lng: " + longitude);
             }
         }
         // GPS related -E
