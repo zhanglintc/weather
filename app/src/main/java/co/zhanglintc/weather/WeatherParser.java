@@ -45,4 +45,12 @@ public class WeatherParser {
     public String getCurWeatherIconUrl() throws JSONException {
         return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherIconUrl").getJSONObject(0).getString("value");
     }
+
+    /**
+     * Return lang_(city).
+     * eg:ch ja en ...
+     */
+    public String getCurWeatherLang(String language) throws JSONException {
+        return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("lang_" + language).getJSONObject(0).getString("value");
+    }
 }

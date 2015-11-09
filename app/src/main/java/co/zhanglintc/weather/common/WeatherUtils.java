@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -25,6 +27,7 @@ public class WeatherUtils {
      * 名字我没改, 沿用的urlRun
      * 但是实际我觉得只是一段测试代码
      * 随时可以删掉, 或者最好改个名字
+     *
      * @param activity
      */
     public static void urlRun(Activity activity) {
@@ -32,7 +35,7 @@ public class WeatherUtils {
         // Looper.prepare();
 
         // TEST
-        Map<String,Object> cityMap = new HashMap();
+        Map<String, Object> cityMap = new HashMap();
 
         try {
             InputStream inputStream = activity.getAssets().open("language.xml");
@@ -110,10 +113,10 @@ public class WeatherUtils {
     public static String getLanguge() {
         String language = Locale.getDefault().getLanguage();
 
-        return  language;
+        return language;
     }
 
-     public static InputStream getXML(String path) {
+    public static InputStream getXML(String path) {
 
 //         HttpGet getMethod = new HttpGet(path);
 //         HttpClient httpClient = new DefaultHttpClient();
@@ -130,23 +133,31 @@ public class WeatherUtils {
 //
 
 
-         InputStream inputStream = null;
-         try {
-             URL url = new URL(path);
+        InputStream inputStream = null;
+        try {
+            URL url = new URL(path);
 
-             if (url != null) {
-                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                 connection.setConnectTimeout(1000000);
-                 connection.setDoInput(true);
-                 connection.setRequestMethod("GET");
-                 int code = connection.getResponseCode();
-                 if (code == 200) {
-                     inputStream = connection.getInputStream();
-                 }
-             }
-         } catch (Exception e) {
-                e.printStackTrace();
-         }
-         return inputStream;
+            if (url != null) {
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setConnectTimeout(1000000);
+                connection.setDoInput(true);
+                connection.setRequestMethod("GET");
+                int code = connection.getResponseCode();
+                if (code == 200) {
+                    inputStream = connection.getInputStream();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return inputStream;
+    }
+
+    public static String getSystemTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss ");
+        Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+        String str = formatter.format(curDate);
+
+        return str;
     }
 }

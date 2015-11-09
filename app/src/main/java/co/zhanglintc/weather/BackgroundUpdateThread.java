@@ -15,18 +15,27 @@ import co.zhanglintc.weather.common.WeatherUtils;
  */
 public class BackgroundUpdateThread extends Thread {
     Bitmap bmImg;
-    String APIurl = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&nu%20m_of_days=3&format=json&lang=zh";
+    String APIurl;
     TextView todayTemp;
     TextView todayStatus;
     ImageView imView;
     Activity activity;
     String rawJsonData;
 
+    TextView city;
+    TextView systemTime;
+
     BackgroundUpdateThread(Activity activity) {
         this.activity = activity;
         this.todayTemp = (TextView) activity.findViewById(R.id.todayTemp);
         this.todayStatus = (TextView) activity.findViewById(R.id.todayStatus);
         this.imView = (ImageView) activity.findViewById(R.id.imview);
+
+        this.city = (TextView) activity.findViewById(R.id.city);
+        this.systemTime = (TextView) activity.findViewById(R.id.systemTime);
+
+        this.APIurl = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&nu%20m_of_days=3&format=json&lang=" + WeatherUtils.getLanguge();
+
         rawJsonData = activity.getResources().getString(R.string.rawJsonData);
     }
 
@@ -52,7 +61,7 @@ public class BackgroundUpdateThread extends Thread {
             // final JSONObject json = new JSONObject(new JSONTokener(s));
             WeatherParser we = new WeatherParser(s);
             temp_C = we.getCurTemp_C();
-            weatherDesc = we.getCurWeatherDesc();
+            weatherDesc = we.getCurWeatherLang(WeatherUtils.getLanguge());
             iconURL = we.getCurWeatherIconUrl();
             bmImg  = WeatherUtils.returnBitMap(iconURL);
             Log.i("http", "Current temperature: " + temp_C);
@@ -63,9 +72,11 @@ public class BackgroundUpdateThread extends Thread {
                     new Runnable() {
                         @Override
                         public void run() {
-                            todayTemp.setText("Current temperature: " + temp_C);
-                            todayStatus.setText("Current status: " + weatherDesc);
+                            todayTemp.setText(temp_C + "°");
+                            todayStatus.setText(weatherDesc);
                             imView.setImageBitmap(bmImg);
+                            city.setText("重慶");
+                            systemTime.setText(WeatherUtils.getSystemTime());
                         }
                     }
             );
