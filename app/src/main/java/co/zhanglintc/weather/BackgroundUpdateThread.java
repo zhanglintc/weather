@@ -77,6 +77,14 @@ public class BackgroundUpdateThread extends Thread {
             Log.i("http", "Current condition: " + weatherDesc);
             Log.i("http", "Current weather icon URL: " + iconURL);
             Log.i("http", "Requested city: " + cityName);
+            // 登录: http://www.worldweatheronline.com
+            // 选择 FULL FORECAST 确认数据正确性
+            Log.i("http", "Tomorrow date: " + we.get2ndDayDate());
+            Log.i("http", "Tomorrow high: " + we.get2ndDayMaxTempC());
+            Log.i("http", "Tomorrow low: "  + we.get2ndDayMinTempC());
+            Log.i("http", "Day after tomorrow date: " + we.get3rdDayDate());
+            Log.i("http", "Day after tomorrow high: " + we.get3rdDayMaxTempC());
+            Log.i("http", "Day after tomorrow low: "  + we.get3rdDayMinTempC());
 
             activity.runOnUiThread(
                     new Runnable() {
