@@ -13,7 +13,7 @@ import co.zhanglintc.weather.common.WeatherUtils;
 /**
  * Created by zhanglin on 2015/11/06.
  */
-public class BackgroundUpdateThread extends Thread {
+public class BGupdater extends Thread {
     Bitmap bmImg;
     String APIurl;
     TextView todayTemp;
@@ -25,7 +25,7 @@ public class BackgroundUpdateThread extends Thread {
     TextView city;
     TextView systemTime;
 
-    BackgroundUpdateThread(Activity activity) {
+    BGupdater(Activity activity) {
         this.activity = activity;
         this.todayTemp = (TextView) activity.findViewById(R.id.todayTemp);
         this.todayStatus = (TextView) activity.findViewById(R.id.todayStatus);
@@ -40,21 +40,10 @@ public class BackgroundUpdateThread extends Thread {
     }
 
     public void run() {
-        // true process
-        httpHandler http = new httpHandler();
         Log.i("http", "Getting weather data...");
+        httpHandler http = new httpHandler();
         String s = http.get(APIurl);
 
-        // fake process
-            /*
-            String s = rawJsonData;
-            try {
-                sleep(1000 * 2);
-            }
-            catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            */
         final String temp_C;
         final String weatherDesc;
         final String iconURL;

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_refresh) {
-            new BackgroundUpdateThread(this).start();
+            new BGupdater(this).start();
             return true;
         }
 
