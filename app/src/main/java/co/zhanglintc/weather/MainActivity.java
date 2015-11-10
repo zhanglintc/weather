@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.ant.liao.GifView;
+
 import co.zhanglintc.weather.common.WeatherUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,15 +16,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_loading);
+        GifView gifView = (GifView) super.findViewById(R.id.gifView);
+        gifView.setGifImage(R.drawable.loading);
+        gifView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
 
-        TextView todayTemp = (TextView) super.findViewById(R.id.todayTemp);
-        TextView todayStatus = (TextView) super.findViewById(R.id.todayStatus);
-        todayTemp.setText("Updating weather data...");
-        todayStatus.setText("");
+        // To yanbin: 这里是暂时注释掉的
+//        TextView todayTemp = (TextView) super.findViewById(R.id.todayTemp);
+//        TextView todayStatus = (TextView) super.findViewById(R.id.todayStatus);
+//        GifView gifView = (GifView) super.findViewById(R.id.gifView);
+//        gifView.setGifImage(R.drawable.loading);
+//        gifView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
+//        todayTemp.setText("Updating weather data...");
+//        todayStatus.setText("");
 
-        new BackgroundUpdateThread(this).start();
-        WeatherUtils.urlRun(this);
+//        new BackgroundUpdateThread(this).start();
+//        WeatherUtils.urlRun(this);
     }
 
     @Override

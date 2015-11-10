@@ -30,4 +30,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile files('../lib/httpclient-4.0.jar')
     compile files('../lib/httpcore-4.0.jar')
+    compile files('../lib/GifView.jar')
 }

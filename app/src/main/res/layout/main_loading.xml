@@ -10,13 +10,23 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
         <TextView
             android:id="@+id/loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Loading..."
             android:textSize="40sp" />
+        <!--
+        使用 开源项目 GifView 来显示动态Gif
+        Ref1: http://blog.csdn.net/iamlazybone/article/details/5972234
+        Ref2: http://www.qiushurong.cn/2014/07/11/gifview/
+        -->
+        <com.ant.liao.GifView
+            android:id="@+id/gifView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter" />
     </LinearLayout>
 
 </RelativeLayout>
