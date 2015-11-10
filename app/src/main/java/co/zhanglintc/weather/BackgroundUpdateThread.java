@@ -42,6 +42,7 @@ public class BackgroundUpdateThread extends Thread {
     public void run() {
         // true process
         httpHandler http = new httpHandler();
+        Log.i("http", "Getting weather data...");
         String s = http.get(APIurl);
 
         // fake process
@@ -58,11 +59,13 @@ public class BackgroundUpdateThread extends Thread {
         final String weatherDesc;
         final String iconURL;
         final String systemLang;
+        final String cityName;
         try {
 
             systemLang = WeatherUtils.getLanguge();
             WeatherParser we = new WeatherParser(s);
             temp_C = we.getCurTemp_C();
+            cityName = we.getRequestCity();
             if ("en".equals(systemLang)) {
                 weatherDesc = we.getCurWeatherDesc();
             } else {
@@ -73,6 +76,7 @@ public class BackgroundUpdateThread extends Thread {
             Log.i("http", "Current temperature: " + temp_C);
             Log.i("http", "Current condition: " + weatherDesc);
             Log.i("http", "Current weather icon URL: " + iconURL);
+            Log.i("http", "Requested city: " + cityName);
 
             activity.runOnUiThread(
                     new Runnable() {
@@ -81,7 +85,7 @@ public class BackgroundUpdateThread extends Thread {
                             todayTemp.setText(temp_C + "°");
                             todayStatus.setText(weatherDesc);
                             imView.setImageBitmap(bmImg);
-                            city.setText("重慶");
+                            city.setText(cityName);
                             systemTime.setText(WeatherUtils.getSystemTime());
                         }
                     }

@@ -53,4 +53,12 @@ public class WeatherParser {
     public String getCurWeatherIconUrl() throws JSONException {
         return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherIconUrl").getJSONObject(0).getString("value");
     }
+
+    /**
+     * Return requested city name.
+     * eg: 1. Chongqing, China 2. Lanzhou, China
+     */
+    public String getRequestCity() throws  JSONException {
+        return this.json.getJSONObject("data").getJSONArray("request").getJSONObject(0).getString("query");
+    }
 }
