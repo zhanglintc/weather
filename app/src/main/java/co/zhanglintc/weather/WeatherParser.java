@@ -38,19 +38,19 @@ public class WeatherParser {
     }
 
     /**
+     * Return translated weather condition.
+     * eg: 1. 晴天(zh) 2. 暴雨(zh) 3. 所により曇り(ja)
+     */
+    public String getCurWeatherDescTranslation(String language) throws JSONException {
+        return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("lang_" + language).getJSONObject(0).getString("value");
+    }
+
+    /**
      * Created by lane on 11/3/15.
      * Return icon URL of current weather condition.
      * eg: http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0008_clear_sky_night.png
      */
     public String getCurWeatherIconUrl() throws JSONException {
         return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherIconUrl").getJSONObject(0).getString("value");
-    }
-
-    /**
-     * Return lang_(city).
-     * eg:ch ja en ...
-     */
-    public String getCurWeatherLang(String language) throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("lang_" + language).getJSONObject(0).getString("value");
     }
 }

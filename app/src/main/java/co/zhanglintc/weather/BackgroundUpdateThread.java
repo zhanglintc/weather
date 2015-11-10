@@ -61,13 +61,12 @@ public class BackgroundUpdateThread extends Thread {
         try {
 
             systemLang = WeatherUtils.getLanguge();
-            // final JSONObject json = new JSONObject(new JSONTokener(s));
             WeatherParser we = new WeatherParser(s);
             temp_C = we.getCurTemp_C();
             if ("en".equals(systemLang)) {
                 weatherDesc = we.getCurWeatherDesc();
             } else {
-                weatherDesc = we.getCurWeatherLang(systemLang);
+                weatherDesc = we.getCurWeatherDescTranslation(systemLang);
             }
             iconURL = we.getCurWeatherIconUrl();
             bmImg  = WeatherUtils.returnBitMap(iconURL);
