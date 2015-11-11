@@ -1,8 +1,18 @@
 package co.zhanglintc.weather;
 
+import android.util.Log;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by lane on 11/3/15.
@@ -16,7 +26,7 @@ public class WeatherParser {
      * Constructor of WeatherParser.
      */
     public WeatherParser(String s) throws JSONException {
-            json = new JSONObject(new JSONTokener(s));
+        json = new JSONObject(new JSONTokener(s));
     }
 
     // 1st day's data (today)
@@ -85,6 +95,40 @@ public class WeatherParser {
         return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(1).getString("mintempC");
     }
 
+    /**
+     * Return tomorrow's weather condition.
+     * 取出所有的可能的天气状态作为HashMap, 然后排序, 取出第0个数据(最大的数据, 可能性最大的数据)
+     * eg: 1. Clear 2. Overcast 3. Rainy
+     */
+    public String get2ndDayWeatherDesc() throws JSONException {
+        // HashMap & ArrayList
+        HashMap<String, Integer> WeatherDesc = new HashMap<>();
+        List<Map.Entry<String, Integer>> WeatherDescSorted;
+
+        // Get hourly
+        JSONArray hourly = this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(1).getJSONArray("hourly");
+
+        // Fill up WeatherDesc
+        String key;
+        for (int i = 0; i < hourly.length(); i++) {
+            Log.i("test", hourly.getJSONObject(i).getJSONArray("weatherDesc").getJSONObject(0).getString("value"));
+            key = hourly.getJSONObject(i).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
+            WeatherDesc.put(key, WeatherDesc.containsKey(key) ? WeatherDesc.get(key) + 1 : 1);
+        }
+
+        // Make HashMap sorted and change it to ArrayList
+        WeatherDescSorted = new ArrayList<>(WeatherDesc.entrySet());
+        Collections.sort(WeatherDescSorted, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                // Refer: http://www.cnblogs.com/lovebread/archive/2009/11/23/1609121.html
+                // return o1.getKey().compareTo(o2.getKey());   // 按键排序
+                return (o2.getValue() - o1.getValue());         // 按值排序
+            }
+        });
+
+        return WeatherDescSorted.get(0).getKey();
+    }
+
     // 3rd day's data (the day after tomorrow)
     /**
      * Return tomorrow's date.
@@ -108,5 +152,39 @@ public class WeatherParser {
      */
     public String get3rdDayMinTempC() throws JSONException {
         return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(2).getString("mintempC");
+    }
+
+    /**
+     * Return tomorrow's weather condition.
+     * 取出所有的可能的天气状态作为HashMap, 然后排序, 取出第0个数据(最大的数据, 可能性最大的数据)
+     * eg: 1. Clear 2. Overcast 3. Rainy
+     */
+    public String get3rdDayWeatherDesc() throws JSONException {
+        // HashMap & ArrayList
+        HashMap<String, Integer> WeatherDesc = new HashMap<>();
+        List<Map.Entry<String, Integer>> WeatherDescSorted;
+
+        // Get hourly
+        JSONArray hourly = this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(2).getJSONArray("hourly");
+
+        // Fill up WeatherDesc
+        String key;
+        for (int i = 0; i < hourly.length(); i++) {
+            Log.i("test", hourly.getJSONObject(i).getJSONArray("weatherDesc").getJSONObject(0).getString("value"));
+            key = hourly.getJSONObject(i).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
+            WeatherDesc.put(key, WeatherDesc.containsKey(key) ? WeatherDesc.get(key) + 1 : 1);
+        }
+
+        // Make HashMap sorted and change it to ArrayList
+        WeatherDescSorted = new ArrayList<>(WeatherDesc.entrySet());
+        Collections.sort(WeatherDescSorted, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                // Refer: http://www.cnblogs.com/lovebread/archive/2009/11/23/1609121.html
+                // return o1.getKey().compareTo(o2.getKey());   // 按键排序
+                return (o2.getValue() - o1.getValue());         // 按值排序
+            }
+        });
+
+        return WeatherDescSorted.get(0).getKey();
     }
 }

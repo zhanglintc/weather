@@ -67,9 +67,11 @@ public class BGupdater extends Thread {
             Log.i("http", "Tomorrow date: " + we.get2ndDayDate());
             Log.i("http", "Tomorrow high: " + we.get2ndDayMaxTempC());
             Log.i("http", "Tomorrow low: "  + we.get2ndDayMinTempC());
+            Log.i("http", "Tomorrow condition: "  + we.get2ndDayWeatherDesc());
             Log.i("http", "Day after tomorrow date: " + we.get3rdDayDate());
             Log.i("http", "Day after tomorrow high: " + we.get3rdDayMaxTempC());
             Log.i("http", "Day after tomorrow low: "  + we.get3rdDayMinTempC());
+            Log.i("http", "Day after tomorrow condition: " + we.get3rdDayWeatherDesc());
 
             activity.runOnUiThread(
                     new Runnable() {
