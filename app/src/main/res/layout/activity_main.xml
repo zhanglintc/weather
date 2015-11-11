@@ -2,16 +2,19 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/DefaultRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/MainLinearLayout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/TopLayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -20,20 +23,23 @@
 
             <!-- 当前获取的城市名-->
             <TextView
+                android:id="@+id/city"
+                android:text="Chongqing, China"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:id="@+id/city"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                android:layout_weight="1" />
 
             <LinearLayout
+                android:id="@+id/Image_TemperatureLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="140dp"
                 android:background="#00aa00"
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/ImageLayout"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
@@ -44,11 +50,13 @@
                     <!-- 当前的天气图片-->
                     <ImageView
                         android:id="@+id/imview"
+                        android:src="@mipmap/ic_launcher"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/TemperatureLayout"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -57,35 +65,38 @@
 
                     <!-- 当前温度-->
                     <TextView
+                        android:id="@+id/todayTemp"
+                        android:text="17°C"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:gravity="center"
-                        android:id="@+id/todayTemp"
                         android:textSize="50dp" />
                 </LinearLayout>
             </LinearLayout>
 
             <!-- 天气状况：小雨/暴雨-->
             <TextView
+                android:id="@+id/todayDesc"
+                android:text="Sunny"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:id="@+id/todayStatus"
                 android:textSize="20dp" />
 
             <!-- 显示系统时间-->
             <TextView
+                android:id="@+id/systemTime"
+                android:text="2015/11/11 12:30"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:id="@+id/systemTime"
-                android:text="2015/11/11 12:30"
                 android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/FutureLayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
@@ -93,6 +104,7 @@
 
             <!-- 明天的天气概要-->
             <LinearLayout
+                android:id="@+id/TomorrowLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -100,33 +112,37 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/_2ndDay"
+                    android:text="11-11"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:textSize="30dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/_2ndDayTemp"
+                    android:text="15°C"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="明天"
                     android:textSize="30dp" />
 
                 <TextView
+                    android:id="@+id/_2ndDayDesc"
+                    android:text="Cloudy"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="12°"
-                    android:textSize="30dp" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="阴天"
                     android:textSize="30dp" />
 
             </LinearLayout>
 
             <!-- 后天的天气概要-->
             <LinearLayout
+                android:id="@+id/DayAfterTomorrowLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -134,27 +150,30 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/_3rdDay"
+                    android:text="11-12"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="后天"
                     android:textSize="30dp" />
 
                 <TextView
+                    android:id="@+id/_3rdDayTemp"
+                    android:text="16°C"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="12°"
                     android:textSize="30dp" />
 
                 <TextView
+                    android:id="@+id/_3rdDayDesc"
+                    android:text="Rainy"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="阴天"
                     android:textSize="30dp" />
 
             </LinearLayout>

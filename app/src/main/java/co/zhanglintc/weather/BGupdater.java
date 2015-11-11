@@ -82,7 +82,7 @@ public class BGupdater extends Thread {
                             // TextView
                             city = (TextView) activity.findViewById(R.id.city);
                             todayTemp = (TextView) activity.findViewById(R.id.todayTemp);
-                            todayStatus = (TextView) activity.findViewById(R.id.todayStatus);
+                            todayStatus = (TextView) activity.findViewById(R.id.todayDesc);
                             systemTime = (TextView) activity.findViewById(R.id.systemTime);
 
                             // ImageView
@@ -91,7 +91,7 @@ public class BGupdater extends Thread {
 
                             // Set Text
                             city.setText(cityName);
-                            todayTemp.setText(temp_C + "°");
+                            todayTemp.setText(temp_C + "°C");
                             todayStatus.setText(weatherDesc);
                             systemTime.setText(WeatherUtils.getSystemTime());
 
