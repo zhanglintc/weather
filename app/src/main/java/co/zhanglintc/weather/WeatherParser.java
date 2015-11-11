@@ -82,7 +82,7 @@ public class WeatherParser {
      * eg: 16
      */
     public String get2ndDayMinTempC() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(2).getString("mintempC");
+        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(1).getString("mintempC");
     }
 
     // 3rd day's data (the day after tomorrow)
