@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ant.liao.GifView;
+
 import org.json.JSONException;
 
 import co.zhanglintc.weather.common.WeatherUtils;
@@ -29,6 +31,7 @@ public class BGupdater extends Thread {
 
     Bitmap curDescIcon;
     ImageView curDescIconView;
+    GifView rfsIconView;
 
     String rawJsonData;
     String sysLang;
@@ -112,6 +115,8 @@ public class BGupdater extends Thread {
                             // ImageView
                             curDescIconView = (ImageView) activity.findViewById(R.id.curDescIcon);
 
+                            rfsIconView = (GifView) activity.findViewById(R.id.rfsIcon);
+
                             // ------------------------------------------------------------------
 
                             // Set Text
@@ -126,6 +131,8 @@ public class BGupdater extends Thread {
 
                             // Set Image
                             curDescIconView.setImageBitmap(curDescIcon);
+
+                            rfsIconView.setGifImage(R.mipmap.ic_launcher); // anything here can disable gif display
                         }
                     }
             );

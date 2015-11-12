@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_refresh) {
+            GifView rfsIconView;
+            setContentView(R.layout.activity_main);
+            rfsIconView = (GifView) super.findViewById(R.id.rfsIcon);
+            rfsIconView.setGifImage(R.drawable.loading);
+            rfsIconView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
             new BGupdater(this).start();
             return true;
         }

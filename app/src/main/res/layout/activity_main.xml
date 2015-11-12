@@ -22,21 +22,40 @@
             android:orientation="vertical">
 
             <!-- 当前获取的城市名-->
-            <TextView
-                android:id="@+id/cityName"
-                android:text="Chongqing, China"
+            <LinearLayout
+                android:id="@+id/FirstRowLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="30dp"
-                android:layout_weight="1" />
+                android:orientation="horizontal"
+                android:layout_weight="10">
+
+                <TextView
+                    android:id="@+id/cityName"
+                    android:text="Chongqing, China"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:layout_weight="2"
+                    android:gravity="center" />
+
+                <com.ant.liao.GifView
+                    android:id="@+id/rfsIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/loading"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:gravity="center" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/Image_TemperatureLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="140dp"
                 android:background="#00aa00"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="1">
 
                 <LinearLayout
                     android:id="@+id/ImageLayout"
