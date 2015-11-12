@@ -23,7 +23,7 @@
 
             <!-- 当前获取的城市名-->
             <TextView
-                android:id="@+id/city"
+                android:id="@+id/cityName"
                 android:text="Chongqing, China"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
 
                     <!-- 当前的天气图片-->
                     <ImageView
-                        android:id="@+id/imview"
+                        android:id="@+id/curDescIcon"
                         android:src="@mipmap/ic_launcher"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -65,7 +65,7 @@
 
                     <!-- 当前温度-->
                     <TextView
-                        android:id="@+id/todayTemp"
+                        android:id="@+id/curTempC"
                         android:text="17°C"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -76,7 +76,7 @@
 
             <!-- 天气状况：小雨/暴雨-->
             <TextView
-                android:id="@+id/todayDesc"
+                android:id="@+id/curDesc"
                 android:text="Sunny"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
 
             <!-- 显示系统时间-->
             <TextView
-                android:id="@+id/systemTime"
+                android:id="@+id/sysTime"
                 android:text="2015/11/11 12:30"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/_2ndDay"
+                    android:id="@+id/tmrDate"
                     android:text="11-11"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -121,7 +121,7 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/_2ndDayTemp"
+                    android:id="@+id/tmrTempC"
                     android:text="15°C"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -130,7 +130,7 @@
                     android:textSize="30dp" />
 
                 <TextView
-                    android:id="@+id/_2ndDayDesc"
+                    android:id="@+id/tmrDesc"
                     android:text="Cloudy"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -150,7 +150,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/_3rdDay"
+                    android:id="@+id/datDate"
                     android:text="11-12"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -159,7 +159,7 @@
                     android:textSize="30dp" />
 
                 <TextView
-                    android:id="@+id/_3rdDayTemp"
+                    android:id="@+id/datTempC"
                     android:text="16°C"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -168,7 +168,7 @@
                     android:textSize="30dp" />
 
                 <TextView
-                    android:id="@+id/_3rdDayDesc"
+                    android:id="@+id/datDesc"
                     android:text="Rainy"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
