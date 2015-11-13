@@ -2,8 +2,11 @@ package co.zhanglintc.weather;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.ant.liao.GifView;
 
@@ -39,11 +42,15 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_refresh) {
-            GifView rfsIconView;
-            setContentView(R.layout.activity_main);
-            rfsIconView = (GifView) super.findViewById(R.id.rfsIcon);
+            View view = getWindow().getDecorView().findViewById(android.R.id.content);
+            GifView rfsIconView = (GifView) view.findViewById(R.id.rfsIcon);
             rfsIconView.setGifImage(R.drawable.loading);
             rfsIconView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
+
+            TextView cityNameView = (TextView) findViewById(R.id.cityName);
+            Log.i("iii", (String) cityNameView.getText());
+            cityNameView.setText("updating");
+
             new BGupdater(this).start();
             return true;
         }
