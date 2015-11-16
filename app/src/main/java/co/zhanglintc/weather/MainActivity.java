@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             TextView cityNameView = (TextView) findViewById(R.id.cityName);
             Log.i("iii", (String) cityNameView.getText());
-            cityNameView.setText("updating");
+            // cityNameView.setText("updating");
 
             new BGupdater(this).start();
             return true;

@@ -25,28 +25,40 @@
             <LinearLayout
                 android:id="@+id/FirstRowLayout"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_height="120dp"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:layout_weight="10">
 
-                <TextView
-                    android:id="@+id/cityName"
-                    android:text="Chongqing, China"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="30dp"
-                    android:layout_weight="2"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:layout_weight="9">
 
-                <com.ant.liao.GifView
-                    android:id="@+id/rfsIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/loading"
+                    <TextView
+                        android:id="@+id/cityName"
+                        android:text="Chongqing, China"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:textSize="25sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="15sp"
+                    android:layout_height="15sp"
                     android:layout_weight="1"
-                    android:scaleType="fitCenter"
-                    android:gravity="center" />
+                    android:layout_gravity="center">
+
+                    <com.ant.liao.GifView
+                        android:id="@+id/rfsIcon"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:src="@drawable/loading"/>
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
