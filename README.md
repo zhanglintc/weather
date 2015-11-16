@@ -4,7 +4,8 @@
 ---
 
 ### 相关工具:
-- API analyzer: [weather-helper](https://github.com/zhanglintc/weather-helper) 
+- API analyzer: [weather-helper](https://github.com/zhanglintc/weather-helper)
+- Loading GIF: [loading-GIF](http://zhanglintc.co/JS-Prac/loading/loading)
 
 ### 编译环境:
 - **Android Studio**
