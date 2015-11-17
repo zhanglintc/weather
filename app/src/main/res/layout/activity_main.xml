@@ -5,6 +5,7 @@
     android:id="@+id/DefaultRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgd"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -18,7 +19,6 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="#00aa00"
             android:orientation="vertical">
 
             <!-- 当前获取的城市名-->
@@ -65,7 +65,6 @@
                 android:id="@+id/Image_TemperatureLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="140dp"
-                android:background="#00aa00"
                 android:orientation="horizontal"
                 android:layout_weight="1">
 
@@ -75,7 +74,6 @@
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#00aa00"
                     android:orientation="horizontal">
 
                     <!-- 当前的天气图片-->
@@ -91,7 +89,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:background="#00aa00"
                     android:orientation="horizontal">
 
                     <!-- 当前温度-->
@@ -139,7 +136,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#FFDEAD"
                 android:orientation="vertical">
 
                 <TextView
@@ -177,7 +173,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="#FFD39B"
                 android:orientation="vertical">
 
                 <TextView
