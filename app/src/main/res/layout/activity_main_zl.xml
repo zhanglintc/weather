@@ -10,28 +10,50 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/nullTop"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1.25">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cityLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="3.89">
+
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:gravity="center|bottom"
+            android:textColor="#FFFFFF"
+            android:text="Chongqing, China"
+            android:textSize="25sp"
+            android:layout_weight="4"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/todayInfoLayout"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="2">
+        android:orientation="horizontal"
+        android:layout_weight="6"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp">
 
-        <LinearLayout
-            android:id="@+id/cityLayout"
+        <TextView
             android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/TemperatureLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="3">
-        </LinearLayout>
-
+            android:layout_height="match_parent"
+            android:text="25°C"
+            android:textColor="#FFFFFF"
+            android:textSize="100sp"
+            android:gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -39,6 +61,98 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="5.19">
+
+        <LinearLayout
+            android:id="@+id/nextDay1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/nextDay1Date"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="center|bottom"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:text="Tue"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/nextDay1Temperature"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="center|top"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:text="22~27°C"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nextDay2"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/nextDay2Date"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="center|bottom"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:text="Wed"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/nextDay2Temperature"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="center|top"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:text="18~20°C"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nextDay3"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/nextDay3Date"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:gravity="center|bottom"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:text="Thu"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/nextDay3Temperature"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:text="20~25°C"
+                android:layout_weight="1"
+                android:gravity="center|top" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nullBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="2.23">
     </LinearLayout>
 </LinearLayout>
