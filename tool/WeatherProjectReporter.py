@@ -4,8 +4,9 @@
 import os, sys, re
 import python_send
 
-todayFile  = "today.txt"
-gitLogFile = "gitlog.txt"
+todayFile      = "today.txt"
+yesterdayFile  = "yesterday.txt"
+gitLogFile     = "gitlog.txt"
 
 # mail setting
 SENDFROM = "zhanglintc@163.com"
@@ -56,7 +57,15 @@ def main():
     os.system('{0} date > {1}'.format(cd_command, todayFile))
     fdate = open("{0}/{1}".format(sys.path[0], todayFile))
     today = fdate.read()[:10]
+    fdate.close()
     os.remove("{0}/{1}".format(sys.path[0], todayFile))
+
+    # get date of yesterday
+    os.system('{0} date -d yesterday > {1}'.format(cd_command, yesterdayFile))
+    fdate = open("{0}/{1}".format(sys.path[0], yesterdayFile))
+    yesterday = fdate.read()[:10]
+    fdate.close()
+    os.remove("{0}/{1}".format(sys.path[0], yesterdayFile))
 
     # open gitlog
     flog  = open("{0}/{1}".format(sys.path[0], gitLogFile))
@@ -81,7 +90,7 @@ def main():
                 time   = cmi.group(4)
                 detail = cmi.group(5)
 
-                if date.replace(" ", "") == today.replace(" ", ""): # "TueNov3" ## debug use only
+                if date.replace(" ", "") == yesterday.replace(" ", ""): # "TueNov3" ## debug use only
                     # fill up commitCounter
                     commitCounter[user] = commitCounter.get(user, 0) + 1
 
@@ -96,7 +105,7 @@ def main():
     commitCounter = sorted(commitCounter.items(), key = lambda d: d[1], reverse = True)
 
     # fill up sendContent
-    sendContent = "今日项目贡献排行:\n\n"
+    sendContent = "昨日项目贡献排行({0}):\n\n".format(yesterday)
 
     if not commitCounter:
         sendContent += "很遗憾今天居然没有人上传代码\n"
