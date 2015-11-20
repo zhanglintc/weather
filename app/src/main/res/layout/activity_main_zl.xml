@@ -10,19 +10,11 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/nullTop"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1.25">
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/cityLayout"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="3.89">
+        android:layout_weight="3.68">
 
         <TextView
             android:id="@+id/cityName"
@@ -30,8 +22,8 @@
             android:layout_height="fill_parent"
             android:gravity="center|bottom"
             android:textColor="#FFFFFF"
-            android:text="Chongqing, China"
-            android:textSize="25sp"
+            android:text="Chongqing"
+            android:textSize="15sp"
             android:layout_weight="4"/>
 
     </LinearLayout>
@@ -40,8 +32,8 @@
         android:id="@+id/todayInfoLayout"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="6"
+        android:orientation="vertical"
+        android:layout_weight="6.59"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="0dp"
@@ -49,11 +41,36 @@
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:text="25°C"
             android:textColor="#FFFFFF"
-            android:textSize="100sp"
+            android:textSize="85sp"
+            android:gravity="center"
+            android:id="@+id/Temp_C"
+            android:layout_weight="3.05" />
+
+        <TextView
+            android:id="@+id/todayDesc"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:text="Sunny"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textColor="#ffffff"
             android:gravity="center" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:text="2015.11.11 Wed"
+            android:id="@+id/todayDate"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:gravity="center" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -61,7 +78,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="5.19">
+        android:layout_weight="8.36">
 
         <LinearLayout
             android:id="@+id/nextDay1"
@@ -76,7 +93,7 @@
                 android:layout_height="0dp"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
-                android:textSize="25sp"
+                android:textSize="28sp"
                 android:text="Tue"
                 android:layout_weight="1"/>
 
@@ -86,7 +103,7 @@
                 android:layout_height="0dp"
                 android:gravity="center|top"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="22~27°C"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -104,7 +121,7 @@
                 android:layout_height="0dp"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
-                android:textSize="25sp"
+                android:textSize="28sp"
                 android:text="Wed"
                 android:layout_weight="1"/>
 
@@ -114,7 +131,7 @@
                 android:layout_height="0dp"
                 android:gravity="center|top"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="18~20°C"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -132,7 +149,7 @@
                 android:layout_height="0dp"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
-                android:textSize="25sp"
+                android:textSize="28sp"
                 android:text="Thu"
                 android:layout_weight="1"/>
 
@@ -141,18 +158,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="20~25°C"
                 android:layout_weight="1"
                 android:gravity="center|top" />
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/nullBottom"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="2.23">
-    </LinearLayout>
 </LinearLayout>
