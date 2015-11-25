@@ -108,7 +108,7 @@ def main():
     sendContent = "昨日项目贡献排行({0}):\n\n".format(yesterday)
 
     if not commitCounter:
-        sendContent += "很遗憾今天居然没有人上传代码\n"
+        sendContent += "很遗憾昨天居然没有人上传代码\n"
 
     else:
         idx = 1
