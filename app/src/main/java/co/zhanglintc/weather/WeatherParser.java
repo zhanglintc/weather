@@ -29,7 +29,7 @@ public class WeatherParser {
         json = new JSONObject(new JSONTokener(s));
     }
 
-    // 1st day's data (today)
+    // Today's data
     /**
      * Return current temperature celsius.
      * eg: 23
@@ -70,102 +70,47 @@ public class WeatherParser {
         return this.json.getJSONObject("data").getJSONArray("request").getJSONObject(0).getString("query");
     }
 
-    // 2nd day's data (tomorrow)
+    // Future's data
+    // Nth == 1 means tomorrow
+    // Nth == 2 means the day after tomorrow
+    // etc
     /**
-     * Return tomorrow's date.
+     * Return the next Nth day's date.
      * eg: 2015-11-11
      */
-    public String get2ndDayDate() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(1).getString("date");
+    public String getNextNthDayDate(int Nth) throws JSONException {
+        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(Nth).getString("date");
     }
 
     /**
-     * Return tomorrow's max temperature celsius.
+     * Return the next Nth day's max temperature celsius.
      * eg: 19
      */
-    public String get2ndDayMaxTempC() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(1).getString("maxtempC");
+    public String getNextNthDayMaxTempC(int Nth) throws JSONException {
+        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(Nth).getString("maxtempC");
     }
 
+
     /**
-     * Return tomorrow's min temperature celsius.
+     * Return next Nth day's min temperature celsius.
      * eg: 16
      */
-    public String get2ndDayMinTempC() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(1).getString("mintempC");
+    public String getNextNthDayMinTempC(int Nth) throws JSONException {
+        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(Nth).getString("mintempC");
     }
 
     /**
-     * Return tomorrow's weather condition.
+     * Return next Nth day's weather condition.
      * 取出所有的可能的天气状态作为HashMap, 然后排序, 取出第0个数据(最大的数据, 可能性最大的数据)
      * eg: 1. Clear 2. Overcast 3. Rainy
      */
-    public String get2ndDayWeatherDesc() throws JSONException {
+    public String getNextNthDayWeatherDesc(int Nth) throws JSONException {
         // HashMap & ArrayList
         HashMap<String, Integer> WeatherDesc = new HashMap<>();
         List<Map.Entry<String, Integer>> WeatherDescSorted;
 
         // Get hourly
-        JSONArray hourly = this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(1).getJSONArray("hourly");
-
-        // Fill up WeatherDesc
-        String key;
-        for (int i = 0; i < hourly.length(); i++) {
-            Log.i("test", hourly.getJSONObject(i).getJSONArray("weatherDesc").getJSONObject(0).getString("value"));
-            key = hourly.getJSONObject(i).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
-            WeatherDesc.put(key, WeatherDesc.containsKey(key) ? WeatherDesc.get(key) + 1 : 1);
-        }
-
-        // Make HashMap sorted and change it to ArrayList
-        WeatherDescSorted = new ArrayList<>(WeatherDesc.entrySet());
-        Collections.sort(WeatherDescSorted, new Comparator<Map.Entry<String, Integer>>() {
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                // Refer: http://www.cnblogs.com/lovebread/archive/2009/11/23/1609121.html
-                // return o1.getKey().compareTo(o2.getKey());   // 按键排序
-                return (o2.getValue() - o1.getValue());         // 按值排序
-            }
-        });
-
-        return WeatherDescSorted.get(0).getKey();
-    }
-
-    // 3rd day's data (the day after tomorrow)
-    /**
-     * Return tomorrow's date.
-     * eg: 2015-11-12
-     */
-    public String get3rdDayDate() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(2).getString("date");
-    }
-
-    /**
-     * Return tomorrow's max temperature celsius.
-     * eg: 19
-     */
-    public String get3rdDayMaxTempC() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(2).getString("maxtempC");
-    }
-
-    /**
-     * Return tomorrow's min temperature celsius.
-     * eg: 16
-     */
-    public String get3rdDayMinTempC() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(2).getString("mintempC");
-    }
-
-    /**
-     * Return tomorrow's weather condition.
-     * 取出所有的可能的天气状态作为HashMap, 然后排序, 取出第0个数据(最大的数据, 可能性最大的数据)
-     * eg: 1. Clear 2. Overcast 3. Rainy
-     */
-    public String get3rdDayWeatherDesc() throws JSONException {
-        // HashMap & ArrayList
-        HashMap<String, Integer> WeatherDesc = new HashMap<>();
-        List<Map.Entry<String, Integer>> WeatherDescSorted;
-
-        // Get hourly
-        JSONArray hourly = this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(2).getJSONArray("hourly");
+        JSONArray hourly = this.json.getJSONObject("data").getJSONArray("weather").getJSONObject(Nth).getJSONArray("hourly");
 
         // Fill up WeatherDesc
         String key;

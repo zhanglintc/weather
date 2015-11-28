@@ -62,10 +62,10 @@ public class BGupdater extends Thread {
 
             curTempC = wp.getCurTemp_C();
             cityName = wp.getRequestCity();
-            tmrMaxTemp = wp.get2ndDayMaxTempC();
-            tmrMinTemp = wp.get2ndDayMinTempC();
-            datMaxTemp = wp.get3rdDayMaxTempC();
-            datMinTemp = wp.get3rdDayMinTempC();
+            tmrMaxTemp = wp.getNextNthDayMaxTempC(1);
+            tmrMinTemp = wp.getNextNthDayMinTempC(1);
+            datMaxTemp = wp.getNextNthDayMaxTempC(2);
+            datMinTemp = wp.getNextNthDayMinTempC(2);
 
             curDescIcon  = WeatherUtils.returnBitMap(wp.getCurWeatherIconUrl());
 
@@ -83,14 +83,14 @@ public class BGupdater extends Thread {
             Log.i("http", "Requested city: " + wp.getRequestCity());
             // 登录: http://www.worldweatheronline.com
             // 选择 FULL FORECAST 确认数据正确性
-            Log.i("http", "Tomorrow date: " + wp.get2ndDayDate());
-            Log.i("http", "Tomorrow high: " + wp.get2ndDayMaxTempC());
-            Log.i("http", "Tomorrow low: "  + wp.get2ndDayMinTempC());
-            Log.i("http", "Tomorrow condition: "  + wp.get2ndDayWeatherDesc());
-            Log.i("http", "Day after tomorrow date: " + wp.get3rdDayDate());
-            Log.i("http", "Day after tomorrow high: " + wp.get3rdDayMaxTempC());
-            Log.i("http", "Day after tomorrow low: "  + wp.get3rdDayMinTempC());
-            Log.i("http", "Day after tomorrow condition: " + wp.get3rdDayWeatherDesc());
+            Log.i("http", "Tomorrow date: " + wp.getNextNthDayDate(1));
+            Log.i("http", "Tomorrow high: " + wp.getNextNthDayMaxTempC(1));
+            Log.i("http", "Tomorrow low: "  + wp.getNextNthDayMinTempC(1));
+            Log.i("http", "Tomorrow condition: "  + wp.getNextNthDayWeatherDesc(1));
+            Log.i("http", "Day after tomorrow date: " + wp.getNextNthDayDate(2));
+            Log.i("http", "Day after tomorrow high: " + wp.getNextNthDayMaxTempC(2));
+            Log.i("http", "Day after tomorrow low: "  + wp.getNextNthDayMinTempC(2));
+            Log.i("http", "Day after tomorrow condition: " + wp.getNextNthDayWeatherDesc(2));
 
             activity.runOnUiThread(
                     new Runnable() {
