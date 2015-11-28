@@ -21,17 +21,17 @@ public class BGupdater extends Thread {
     TextView cityNameView;
     TextView curTempCView;
     TextView curDescView;
-    TextView tmrDateView;
-    TextView tmrTempCView;
-    TextView tmrDescView;
-    TextView datDateView;
-    TextView datTempCView;
-    TextView datDescView;
-    TextView sysTimeView;
+    TextView curTimeView;
+    TextView nd1DateView;
+    TextView nd1TempCView;
+    TextView nd2DateView;
+    TextView nd2TempCView;
+    TextView nd3DateView;
+    TextView nd3TempCView;
 
     Bitmap curDescIcon;
-    ImageView curDescIconView;
-    GifView rfsIconView;
+    // ImageView curDescIconView;
+    // GifView rfsIconView;
 
     String rawJsonData;
     String sysLang;
@@ -41,10 +41,12 @@ public class BGupdater extends Thread {
     String curDesc;
     String cityName;
 
-    String tmrMaxTemp;
-    String tmrMinTemp;
-    String datMaxTemp;
-    String datMinTemp;
+    String nd1MaxTempC;
+    String nd1MinTempC;
+    String nd2MaxTempC;
+    String nd2MinTempC;
+    String nd3MaxTempC;
+    String nd3MinTempC;
 
     BGupdater(Activity activity) {
         this.activity = activity;
@@ -62,10 +64,12 @@ public class BGupdater extends Thread {
 
             curTempC = wp.getCurTemp_C();
             cityName = wp.getRequestCity();
-            tmrMaxTemp = wp.getNextNthDayMaxTempC(1);
-            tmrMinTemp = wp.getNextNthDayMinTempC(1);
-            datMaxTemp = wp.getNextNthDayMaxTempC(2);
-            datMinTemp = wp.getNextNthDayMinTempC(2);
+            nd1MaxTempC = wp.getNextNthDayMaxTempC(1);
+            nd1MinTempC = wp.getNextNthDayMinTempC(1);
+            nd2MaxTempC = wp.getNextNthDayMaxTempC(2);
+            nd2MinTempC = wp.getNextNthDayMinTempC(2);
+            nd3MaxTempC = wp.getNextNthDayMaxTempC(3);
+            nd3MinTempC = wp.getNextNthDayMinTempC(3);
 
             curDescIcon  = WeatherUtils.returnBitMap(wp.getCurWeatherIconUrl());
 
@@ -103,19 +107,21 @@ public class BGupdater extends Thread {
                             curTempCView = (TextView) activity.findViewById(R.id.curTempC);
                             curDescView = (TextView) activity.findViewById(R.id.curDesc);
 
-                            tmrDateView = (TextView) activity.findViewById(R.id.tmrDate);
-                            tmrTempCView = (TextView) activity.findViewById(R.id.tmrTempC);
-                            tmrDescView = (TextView) activity.findViewById(R.id.tmrDesc);
-                            datDateView = (TextView) activity.findViewById(R.id.datDate);
-                            datTempCView = (TextView) activity.findViewById(R.id.datTempC);
-                            datDescView = (TextView) activity.findViewById(R.id.datDesc);
+                            nd1DateView = (TextView) activity.findViewById(R.id.nextDay1Date);
+                            nd1TempCView = (TextView) activity.findViewById(R.id.nextDay1TempC);
 
-                            sysTimeView = (TextView) activity.findViewById(R.id.sysTime);
+                            nd2DateView = (TextView) activity.findViewById(R.id.nextDay2Date);
+                            nd2TempCView = (TextView) activity.findViewById(R.id.nextDay2TempC);
+
+                            nd3DateView = (TextView) activity.findViewById(R.id.nextDay3Date);
+                            nd3TempCView = (TextView) activity.findViewById(R.id.nextDay3TempC);
+
+                            curTimeView = (TextView) activity.findViewById(R.id.curTime);
 
                             // ImageView
-                            curDescIconView = (ImageView) activity.findViewById(R.id.curDescIcon);
+                            // curDescIconView = (ImageView) activity.findViewById(R.id.curDescIcon);
 
-                            rfsIconView = (GifView) activity.findViewById(R.id.rfsIcon);
+                            // rfsIconView = (GifView) activity.findViewById(R.id.rfsIcon);
 
                             // ------------------------------------------------------------------
 
@@ -123,16 +129,16 @@ public class BGupdater extends Thread {
                             cityNameView.setText(cityName);
                             curTempCView.setText(curTempC + "°C");
                             curDescView.setText(curDesc);
+                            curTimeView.setText(WeatherUtils.getSystemTime());
 
-                            tmrTempCView.setText(tmrMinTemp + "~" + tmrMaxTemp + "°C");
-                            datTempCView.setText(datMinTemp + "~" + datMaxTemp + "°C");
-
-                            sysTimeView.setText(WeatherUtils.getSystemTime());
+                            nd1TempCView.setText(nd1MinTempC + "~" + nd1MaxTempC + "°C");
+                            nd2TempCView.setText(nd2MinTempC + "~" + nd2MaxTempC + "°C");
+                            nd3TempCView.setText(nd3MinTempC + "~" + nd3MaxTempC + "°C");
 
                             // Set Image
-                            curDescIconView.setImageBitmap(curDescIcon);
+                            // curDescIconView.setImageBitmap(curDescIcon);
 
-                            rfsIconView.setGifImage(R.mipmap.ic_launcher); // anything here can disable gif display
+                            // rfsIconView.setGifImage(R.mipmap.ic_launcher); // anything here can disable gif display
                         }
                     }
             );

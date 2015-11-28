@@ -43,13 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_refresh) {
             View view = getWindow().getDecorView().findViewById(android.R.id.content);
-            GifView rfsIconView = (GifView) view.findViewById(R.id.rfsIcon);
-            rfsIconView.setGifImage(R.drawable.loading);
-            rfsIconView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
 
             TextView cityNameView = (TextView) findViewById(R.id.cityName);
             Log.i("iii", (String) cityNameView.getText());
-            // cityNameView.setText("updating");
 
             new BGupdater(this).start();
             return true;
