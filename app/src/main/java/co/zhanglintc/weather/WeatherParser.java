@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import co.zhanglintc.weather.common.WeatherUtils;
+
 /**
  * Created by lane on 11/3/15.
  * Parse given raw JSON string data.
@@ -104,7 +106,7 @@ public class WeatherParser {
      * 取出所有的可能的天气状态作为HashMap, 然后排序, 取出第0个数据(最大的数据, 可能性最大的数据)
      * eg: 1. Clear 2. Overcast 3. Rainy
      */
-    public String getNextNthDayWeatherDesc(int Nth) throws JSONException {
+    public String getNextNthDayWeatherDesc(int Nth, boolean translation) throws JSONException {
         // HashMap & ArrayList
         HashMap<String, Integer> WeatherDesc = new HashMap<>();
         List<Map.Entry<String, Integer>> WeatherDescSorted;
@@ -114,9 +116,10 @@ public class WeatherParser {
 
         // Fill up WeatherDesc
         String key;
+        String DescKey = translation ? "lang_" + WeatherUtils.getLanguge() : "weatherDesc";
         for (int i = 0; i < hourly.length(); i++) {
-            Log.i("test", hourly.getJSONObject(i).getJSONArray("weatherDesc").getJSONObject(0).getString("value"));
-            key = hourly.getJSONObject(i).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
+            Log.i("test", hourly.getJSONObject(i).getJSONArray(DescKey).getJSONObject(0).getString("value"));
+            key = hourly.getJSONObject(i).getJSONArray(DescKey).getJSONObject(0).getString("value");
             WeatherDesc.put(key, WeatherDesc.containsKey(key) ? WeatherDesc.get(key) + 1 : 1);
         }
 

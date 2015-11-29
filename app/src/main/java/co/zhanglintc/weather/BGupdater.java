@@ -77,18 +77,20 @@ public class BGupdater extends Thread {
             nd3MaxTempC = wp.getNextNthDayMaxTempC(3);
             nd3MinTempC = wp.getNextNthDayMinTempC(3);
 
-            nd1Desc = wp.getNextNthDayWeatherDesc(1);
-            nd2Desc = wp.getNextNthDayWeatherDesc(2);
-            nd3Desc = wp.getNextNthDayWeatherDesc(3);
-
             curDescIcon  = WeatherUtils.returnBitMap(wp.getCurWeatherIconUrl());
 
             sysLang = WeatherUtils.getLanguge();
             if ("en".equals(sysLang)) {
                 curDesc = wp.getCurWeatherDesc();
+                nd1Desc = wp.getNextNthDayWeatherDesc(1, false);
+                nd2Desc = wp.getNextNthDayWeatherDesc(2, false);
+                nd3Desc = wp.getNextNthDayWeatherDesc(3, false);
             }
             else {
                 curDesc = wp.getCurWeatherDescTranslation(sysLang);
+                nd1Desc = wp.getNextNthDayWeatherDesc(1, true);
+                nd2Desc = wp.getNextNthDayWeatherDesc(2, true);
+                nd3Desc = wp.getNextNthDayWeatherDesc(3, true);
             }
 
             Log.i("http", "Current temperature: " + wp.getCurTemp_C());
@@ -100,11 +102,11 @@ public class BGupdater extends Thread {
             Log.i("http", "Tomorrow date: " + wp.getNextNthDayDate(1));
             Log.i("http", "Tomorrow high: " + wp.getNextNthDayMaxTempC(1));
             Log.i("http", "Tomorrow low: "  + wp.getNextNthDayMinTempC(1));
-            Log.i("http", "Tomorrow condition: "  + wp.getNextNthDayWeatherDesc(1));
+            Log.i("http", "Tomorrow condition: "  + wp.getNextNthDayWeatherDesc(1, false));
             Log.i("http", "Day after tomorrow date: " + wp.getNextNthDayDate(2));
             Log.i("http", "Day after tomorrow high: " + wp.getNextNthDayMaxTempC(2));
             Log.i("http", "Day after tomorrow low: "  + wp.getNextNthDayMinTempC(2));
-            Log.i("http", "Day after tomorrow condition: " + wp.getNextNthDayWeatherDesc(2));
+            Log.i("http", "Day after tomorrow condition: " + wp.getNextNthDayWeatherDesc(2, false));
 
             activity.runOnUiThread(
                     new Runnable() {
