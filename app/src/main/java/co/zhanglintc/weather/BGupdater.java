@@ -19,6 +19,7 @@ public class BGupdater extends Thread {
     Activity activity;
 
     TextView cityNameView;
+    TextView curTimeView;
     TextView curTempCView;
     TextView curDescView;
     TextView curDateView;
@@ -104,6 +105,7 @@ public class BGupdater extends Thread {
 
                             // TextView
                             cityNameView = (TextView) activity.findViewById(R.id.cityName);
+                            curTimeView = (TextView) activity.findViewById(R.id.curTime);
                             curTempCView = (TextView) activity.findViewById(R.id.curTempC);
                             curDescView = (TextView) activity.findViewById(R.id.curDesc);
 
@@ -127,9 +129,10 @@ public class BGupdater extends Thread {
 
                             // Set Text
                             cityNameView.setText(cityName);
+                            curTimeView.setText(WeatherUtils.getSysTime());
                             curTempCView.setText(curTempC + "°C");
                             curDescView.setText(curDesc);
-                            curDateView.setText(WeatherUtils.getSystemTime());
+                            curDateView.setText(WeatherUtils.getSysDate());
 
                             nd1TempCView.setText(nd1MinTempC + "~" + nd1MaxTempC + "°C");
                             nd2TempCView.setText(nd2MinTempC + "~" + nd2MaxTempC + "°C");
