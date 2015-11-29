@@ -81,13 +81,13 @@ public class BGupdater extends Thread {
 
             sysLang = WeatherUtils.getLanguge();
             if ("en".equals(sysLang)) {
-                curDesc = wp.getCurWeatherDesc();
+                curDesc = wp.getCurWeatherDesc(false);
                 nd1Desc = wp.getNextNthDayWeatherDesc(1, false);
                 nd2Desc = wp.getNextNthDayWeatherDesc(2, false);
                 nd3Desc = wp.getNextNthDayWeatherDesc(3, false);
             }
             else {
-                curDesc = wp.getCurWeatherDescTranslation(sysLang);
+                curDesc = wp.getCurWeatherDesc(true);
                 nd1Desc = wp.getNextNthDayWeatherDesc(1, true);
                 nd2Desc = wp.getNextNthDayWeatherDesc(2, true);
                 nd3Desc = wp.getNextNthDayWeatherDesc(3, true);

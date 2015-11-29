@@ -43,17 +43,11 @@ public class WeatherParser {
     /**
      * Return current weather condition.
      * eg: 1. Clear 2. Overcast 3. Rainy
+     *     4. 晴天(zh) 5. 暴雨(zh) 6. 所により曇り(ja)
      */
-    public String getCurWeatherDesc() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
-    }
-
-    /**
-     * Return translated weather condition.
-     * eg: 1. 晴天(zh) 2. 暴雨(zh) 3. 所により曇り(ja)
-     */
-    public String getCurWeatherDescTranslation(String language) throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("lang_" + language).getJSONObject(0).getString("value");
+    public String getCurWeatherDesc(boolean translate) throws JSONException {
+        String DescKey = translate ? "lang_" + WeatherUtils.getLanguge() : "weatherDesc";
+        return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray(DescKey).getJSONObject(0).getString("value");
     }
 
     /**
@@ -106,7 +100,7 @@ public class WeatherParser {
      * 取出所有的可能的天气状态作为HashMap, 然后排序, 取出第0个数据(最大的数据, 可能性最大的数据)
      * eg: 1. Clear 2. Overcast 3. Rainy
      */
-    public String getNextNthDayWeatherDesc(int Nth, boolean translation) throws JSONException {
+    public String getNextNthDayWeatherDesc(int Nth, boolean translate) throws JSONException {
         // HashMap & ArrayList
         HashMap<String, Integer> WeatherDesc = new HashMap<>();
         List<Map.Entry<String, Integer>> WeatherDescSorted;
@@ -116,7 +110,7 @@ public class WeatherParser {
 
         // Fill up WeatherDesc
         String key;
-        String DescKey = translation ? "lang_" + WeatherUtils.getLanguge() : "weatherDesc";
+        String DescKey = translate ? "lang_" + WeatherUtils.getLanguge() : "weatherDesc";
         for (int i = 0; i < hourly.length(); i++) {
             Log.i("test", hourly.getJSONObject(i).getJSONArray(DescKey).getJSONObject(0).getString("value"));
             key = hourly.getJSONObject(i).getJSONArray(DescKey).getJSONObject(0).getString("value");
