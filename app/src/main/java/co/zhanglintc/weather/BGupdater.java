@@ -3,10 +3,7 @@ package co.zhanglintc.weather;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.util.Log;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.ant.liao.GifView;
 
 import org.json.JSONException;
 
@@ -23,6 +20,7 @@ public class BGupdater extends Thread {
     TextView curTempCView;
     TextView curDescView;
     TextView curDateView;
+    TextView curWeekView;
     TextView nd1WeekView;
     TextView nd1TempCView;
     TextView nd2WeekView;
@@ -108,6 +106,8 @@ public class BGupdater extends Thread {
                             curTimeView = (TextView) activity.findViewById(R.id.curTime);
                             curTempCView = (TextView) activity.findViewById(R.id.curTempC);
                             curDescView = (TextView) activity.findViewById(R.id.curDesc);
+                            curDateView = (TextView) activity.findViewById(R.id.curDate);
+                            curWeekView = (TextView) activity.findViewById(R.id.curWeek);
 
                             nd1WeekView = (TextView) activity.findViewById(R.id.nextDay1Week);
                             nd1TempCView = (TextView) activity.findViewById(R.id.nextDay1TempC);
@@ -118,8 +118,6 @@ public class BGupdater extends Thread {
                             nd3WeekView = (TextView) activity.findViewById(R.id.nextDay3Week);
                             nd3TempCView = (TextView) activity.findViewById(R.id.nextDay3TempC);
 
-                            curDateView = (TextView) activity.findViewById(R.id.curDate);
-
                             // ImageView
                             // curDescIconView = (ImageView) activity.findViewById(R.id.curDescIcon);
 
@@ -129,11 +127,15 @@ public class BGupdater extends Thread {
 
                             // Set Text
                             cityNameView.setText(cityName);
-                            curTimeView.setText(WeatherUtils.getSysTime());
+                            curTimeView.setText("更新于 " + WeatherUtils.getSysTime());
                             curTempCView.setText(curTempC + "°C");
                             curDescView.setText(curDesc);
                             curDateView.setText(WeatherUtils.getSysDate());
+                            curWeekView.setText(WeatherUtils.getWeek(0));
 
+                            nd1WeekView.setText(WeatherUtils.getWeek(1));
+                            nd2WeekView.setText(WeatherUtils.getWeek(2));
+                            nd3WeekView.setText(WeatherUtils.getWeek(3));
                             nd1TempCView.setText(nd1MinTempC + "~" + nd1MaxTempC + "°C");
                             nd2TempCView.setText(nd2MinTempC + "~" + nd2MaxTempC + "°C");
                             nd3TempCView.setText(nd3MinTempC + "~" + nd3MaxTempC + "°C");

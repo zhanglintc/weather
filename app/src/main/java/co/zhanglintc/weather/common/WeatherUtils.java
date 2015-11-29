@@ -153,6 +153,15 @@ public class WeatherUtils {
         return inputStream;
     }
 
+    public static String getWeek(int day) {
+        long offset = 86400 * 1000;
+
+        SimpleDateFormat formatter = new SimpleDateFormat("EEE");
+        Date curWeek = new Date(System.currentTimeMillis() + offset * day);
+
+        return formatter.format(curWeek);
+    }
+
     public static String getSysDate() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
         Date curDate = new Date(System.currentTimeMillis());
@@ -162,8 +171,8 @@ public class WeatherUtils {
 
     public static String getSysTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
-        Date curDate = new Date(System.currentTimeMillis());
+        Date curTime = new Date(System.currentTimeMillis());
 
-        return formatter.format(curDate);
+        return formatter.format(curTime);
     }
 }
