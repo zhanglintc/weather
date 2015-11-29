@@ -14,7 +14,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="0dp"
@@ -33,7 +33,17 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="25°C"
+            android:text="15:32:21"
+            android:id="@+id/curTime"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_marginTop="10sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="25°F"
             android:textColor="#FFFFFF"
             android:textSize="85sp"
             android:gravity="center"
@@ -52,8 +62,19 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="2015.11.11 Wed"
-            android:id="@+id/curTime"
+            android:text="2015.11.11"
+            android:id="@+id/curDate"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_marginTop="10sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Monday"
+            android:id="@+id/curWeek"
             android:layout_gravity="center_horizontal"
             android:textColor="#ffffff"
             android:textSize="15sp"
@@ -67,7 +88,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="2">
 
         <LinearLayout
             android:id="@+id/nextDay1"
@@ -77,14 +98,14 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/nextDay1Date"
+                android:id="@+id/nextDay1Week"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
                 android:text="Tue"
-                android:layout_marginTop="80sp" />
+                android:layout_marginTop="45sp" />
 
             <TextView
                 android:id="@+id/nextDay1TempC"
@@ -105,14 +126,14 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/nextDay2Date"
+                android:id="@+id/nextDay2Week"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
                 android:text="Wed"
-                android:layout_marginTop="80sp" />
+                android:layout_marginTop="45sp" />
 
             <TextView
                 android:id="@+id/nextDay2TempC"
@@ -133,14 +154,14 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/nextDay3Date"
+                android:id="@+id/nextDay3Week"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
                 android:text="Thu"
-                android:layout_marginTop="80sp" />
+                android:layout_marginTop="45sp" />
 
             <TextView
                 android:id="@+id/nextDay3TempC"

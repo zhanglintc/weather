@@ -21,12 +21,12 @@ public class BGupdater extends Thread {
     TextView cityNameView;
     TextView curTempCView;
     TextView curDescView;
-    TextView curTimeView;
-    TextView nd1DateView;
+    TextView curDateView;
+    TextView nd1WeekView;
     TextView nd1TempCView;
-    TextView nd2DateView;
+    TextView nd2WeekView;
     TextView nd2TempCView;
-    TextView nd3DateView;
+    TextView nd3WeekView;
     TextView nd3TempCView;
 
     Bitmap curDescIcon;
@@ -107,16 +107,16 @@ public class BGupdater extends Thread {
                             curTempCView = (TextView) activity.findViewById(R.id.curTempC);
                             curDescView = (TextView) activity.findViewById(R.id.curDesc);
 
-                            nd1DateView = (TextView) activity.findViewById(R.id.nextDay1Date);
+                            nd1WeekView = (TextView) activity.findViewById(R.id.nextDay1Week);
                             nd1TempCView = (TextView) activity.findViewById(R.id.nextDay1TempC);
 
-                            nd2DateView = (TextView) activity.findViewById(R.id.nextDay2Date);
+                            nd2WeekView = (TextView) activity.findViewById(R.id.nextDay2Week);
                             nd2TempCView = (TextView) activity.findViewById(R.id.nextDay2TempC);
 
-                            nd3DateView = (TextView) activity.findViewById(R.id.nextDay3Date);
+                            nd3WeekView = (TextView) activity.findViewById(R.id.nextDay3Week);
                             nd3TempCView = (TextView) activity.findViewById(R.id.nextDay3TempC);
 
-                            curTimeView = (TextView) activity.findViewById(R.id.curTime);
+                            curDateView = (TextView) activity.findViewById(R.id.curDate);
 
                             // ImageView
                             // curDescIconView = (ImageView) activity.findViewById(R.id.curDescIcon);
@@ -129,7 +129,7 @@ public class BGupdater extends Thread {
                             cityNameView.setText(cityName);
                             curTempCView.setText(curTempC + "°C");
                             curDescView.setText(curDesc);
-                            curTimeView.setText(WeatherUtils.getSystemTime());
+                            curDateView.setText(WeatherUtils.getSystemTime());
 
                             nd1TempCView.setText(nd1MinTempC + "~" + nd1MaxTempC + "°C");
                             nd2TempCView.setText(nd2MinTempC + "~" + nd2MaxTempC + "°C");
