@@ -23,10 +23,13 @@ public class BGupdater extends Thread {
     TextView curWeekView;
     TextView nd1WeekView;
     TextView nd1TempCView;
+    TextView nd1DescView;
     TextView nd2WeekView;
     TextView nd2TempCView;
+    TextView nd2DescView;
     TextView nd3WeekView;
     TextView nd3TempCView;
+    TextView nd3DescView;
 
     Bitmap curDescIcon;
     // ImageView curDescIconView;
@@ -46,6 +49,10 @@ public class BGupdater extends Thread {
     String nd2MinTempC;
     String nd3MaxTempC;
     String nd3MinTempC;
+
+    String nd1Desc;
+    String nd2Desc;
+    String nd3Desc;
 
     BGupdater(Activity activity) {
         this.activity = activity;
@@ -69,6 +76,10 @@ public class BGupdater extends Thread {
             nd2MinTempC = wp.getNextNthDayMinTempC(2);
             nd3MaxTempC = wp.getNextNthDayMaxTempC(3);
             nd3MinTempC = wp.getNextNthDayMinTempC(3);
+
+            nd1Desc = wp.getNextNthDayWeatherDesc(1);
+            nd2Desc = wp.getNextNthDayWeatherDesc(2);
+            nd3Desc = wp.getNextNthDayWeatherDesc(3);
 
             curDescIcon  = WeatherUtils.returnBitMap(wp.getCurWeatherIconUrl());
 
@@ -111,12 +122,15 @@ public class BGupdater extends Thread {
 
                             nd1WeekView = (TextView) activity.findViewById(R.id.nextDay1Week);
                             nd1TempCView = (TextView) activity.findViewById(R.id.nextDay1TempC);
+                            nd1DescView = (TextView) activity.findViewById(R.id.nextDay1Desc);
 
                             nd2WeekView = (TextView) activity.findViewById(R.id.nextDay2Week);
                             nd2TempCView = (TextView) activity.findViewById(R.id.nextDay2TempC);
+                            nd2DescView = (TextView) activity.findViewById(R.id.nextDay2Desc);
 
                             nd3WeekView = (TextView) activity.findViewById(R.id.nextDay3Week);
                             nd3TempCView = (TextView) activity.findViewById(R.id.nextDay3TempC);
+                            nd3DescView = (TextView) activity.findViewById(R.id.nextDay3Desc);
 
                             // ImageView
                             // curDescIconView = (ImageView) activity.findViewById(R.id.curDescIcon);
@@ -139,6 +153,9 @@ public class BGupdater extends Thread {
                             nd1TempCView.setText(nd1MinTempC + "~" + nd1MaxTempC + "°C");
                             nd2TempCView.setText(nd2MinTempC + "~" + nd2MaxTempC + "°C");
                             nd3TempCView.setText(nd3MinTempC + "~" + nd3MaxTempC + "°C");
+                            nd1DescView.setText(nd1Desc);
+                            nd2DescView.setText(nd2Desc);
+                            nd3DescView.setText(nd3Desc);
 
                             // Set Image
                             // curDescIconView.setImageBitmap(curDescIcon);
