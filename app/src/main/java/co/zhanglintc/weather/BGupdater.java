@@ -147,11 +147,11 @@ public class BGupdater extends Thread {
                             curTempCView.setText(curTempC + "°C");
                             curDescView.setText(curDesc);
                             curDateView.setText(WeatherUtils.getSysDate());
-                            curWeekView.setText(WeatherUtils.getWeek(0));
+                            curWeekView.setText(WeatherUtils.getWeek(0, false));
 
-                            nd1WeekView.setText(WeatherUtils.getWeek(1));
-                            nd2WeekView.setText(WeatherUtils.getWeek(2));
-                            nd3WeekView.setText(WeatherUtils.getWeek(3));
+                            nd1WeekView.setText(WeatherUtils.getWeek(1, true));
+                            nd2WeekView.setText(WeatherUtils.getWeek(2, true));
+                            nd3WeekView.setText(WeatherUtils.getWeek(3, true));
                             nd1TempCView.setText(nd1MinTempC + "~" + nd1MaxTempC + "°C");
                             nd2TempCView.setText(nd2MinTempC + "~" + nd2MaxTempC + "°C");
                             nd3TempCView.setText(nd3MinTempC + "~" + nd3MaxTempC + "°C");

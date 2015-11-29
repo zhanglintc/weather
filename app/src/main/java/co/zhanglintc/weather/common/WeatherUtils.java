@@ -153,10 +153,11 @@ public class WeatherUtils {
         return inputStream;
     }
 
-    public static String getWeek(int day) {
+    public static String getWeek(int day, boolean shorten) {
         long offset = 86400 * 1000;
 
-        SimpleDateFormat formatter = new SimpleDateFormat("EEE");
+        String format = shorten ? "EEE" : "EEEE";
+        SimpleDateFormat formatter = new SimpleDateFormat(format);
         Date curWeek = new Date(System.currentTimeMillis() + offset * day);
 
         return formatter.format(curWeek);

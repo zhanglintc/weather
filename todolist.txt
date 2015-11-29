@@ -2,8 +2,9 @@ todos:
 √ 1. Connect to weather API.
 √ 2. Parse JSON data.
   3. Design GUI.
-  4. Use thread to handle http request.
+√ 4. Use thread to handle http request.
   5. Get user's position(by GPS or whatever).
   6. Update weather data in background every 5? minutes.
+  7. Save yesterday's temperature data.
 
 
