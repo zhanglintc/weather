@@ -33,7 +33,8 @@
                 android:id="@+id/locationIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/locate" />
+                android:src="@drawable/pin_dot"
+                android:layout_marginRight="10sp" />
 
             <TextView
                 android:id="@+id/cityName"
@@ -41,8 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"
                 android:text="*Chongqing"
-                android:textSize="15sp"
-                android:layout_marginLeft="5sp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
         <TextView
