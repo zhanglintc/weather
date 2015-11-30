@@ -20,15 +20,30 @@
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp">
 
-        <TextView
-            android:id="@+id/cityName"
+        <LinearLayout
+            android:id="@+id/locationLayout"
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|bottom"
-            android:textColor="#FFFFFF"
-            android:text="*Chongqing"
-            android:textSize="15sp"
-            android:layout_marginTop="40sp" />
+            android:layout_marginTop="40sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/locate" />
+
+            <TextView
+                android:id="@+id/cityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:text="*Chongqing"
+                android:textSize="15sp"
+                android:layout_marginLeft="5sp" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"

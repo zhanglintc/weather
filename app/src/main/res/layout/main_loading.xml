@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
-            android:text="更新天气数据中"
+            android:text="正在获取天气数据"
             android:textSize="30sp" />
         <!--
         使用 开源项目 GifView 来显示动态Gif
