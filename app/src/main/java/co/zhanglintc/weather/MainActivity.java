@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_loading);
 
         GifView gifView = (GifView) super.findViewById(R.id.gifView);
-        gifView.setGifImage(R.drawable.loading);
+        gifView.setGifImage(R.drawable.welcome);
         gifView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
 
         new BGupdater(this).start();

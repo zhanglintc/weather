@@ -11,14 +11,14 @@
         android:layout_height="fill_parent"
         android:background="@drawable/bgd"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
         <TextView
             android:id="@+id/loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
-            android:text="Loading..."
-            android:textSize="40sp" />
+            android:text="更新天气数据中"
+            android:textSize="30sp" />
         <!--
         使用 开源项目 GifView 来显示动态Gif
         Ref1: http://blog.csdn.net/iamlazybone/article/details/5972234
@@ -28,7 +28,8 @@
             android:id="@+id/gifView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:layout_marginTop="50dp" />
     </LinearLayout>
 
 </RelativeLayout>
