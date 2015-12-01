@@ -81,16 +81,16 @@ public class BGupdater extends Thread {
 
             sysLang = WeatherUtils.getLanguge();
             if ("en".equals(sysLang)) {
-                curDesc = wp.getCurWeatherDesc(false);
-                nd1Desc = wp.getNextNthDayWeatherDesc(1, false);
-                nd2Desc = wp.getNextNthDayWeatherDesc(2, false);
-                nd3Desc = wp.getNextNthDayWeatherDesc(3, false);
+                curDesc = wp.getCurWeatherDesc(WeatherUtils.DO_NOT_TRANSLATE);
+                nd1Desc = wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE);
+                nd2Desc = wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_NOT_TRANSLATE);
+                nd3Desc = wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_NOT_TRANSLATE);
             }
             else {
-                curDesc = wp.getCurWeatherDesc(true);
-                nd1Desc = wp.getNextNthDayWeatherDesc(1, true);
-                nd2Desc = wp.getNextNthDayWeatherDesc(2, true);
-                nd3Desc = wp.getNextNthDayWeatherDesc(3, true);
+                curDesc = wp.getCurWeatherDesc(WeatherUtils.DO_TRANSLATE);
+                nd1Desc = wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_TRANSLATE);
+                nd2Desc = wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_TRANSLATE);
+                nd3Desc = wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_TRANSLATE);
             }
 
             Log.i("http", "Current temperature: " + wp.getCurTemp_C());
@@ -102,11 +102,11 @@ public class BGupdater extends Thread {
             Log.i("http", "Tomorrow date: " + wp.getNextNthDayDate(1));
             Log.i("http", "Tomorrow high: " + wp.getNextNthDayMaxTempC(1));
             Log.i("http", "Tomorrow low: "  + wp.getNextNthDayMinTempC(1));
-            Log.i("http", "Tomorrow condition: "  + wp.getNextNthDayWeatherDesc(1, false));
+            Log.i("http", "Tomorrow condition: "  + wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE));
             Log.i("http", "Day after tomorrow date: " + wp.getNextNthDayDate(2));
             Log.i("http", "Day after tomorrow high: " + wp.getNextNthDayMaxTempC(2));
             Log.i("http", "Day after tomorrow low: "  + wp.getNextNthDayMinTempC(2));
-            Log.i("http", "Day after tomorrow condition: " + wp.getNextNthDayWeatherDesc(2, false));
+            Log.i("http", "Day after tomorrow condition: " + wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_NOT_TRANSLATE));
 
             activity.runOnUiThread(
                     new Runnable() {
@@ -147,11 +147,11 @@ public class BGupdater extends Thread {
                             curTempCView.setText(curTempC + "°C");
                             curDescView.setText(curDesc);
                             curDateView.setText(WeatherUtils.getSysDate());
-                            curWeekView.setText(WeatherUtils.getWeek(0, false));
+                            curWeekView.setText(WeatherUtils.getWeek(0, WeatherUtils.LONG_FORMAT));
 
-                            nd1WeekView.setText(WeatherUtils.getWeek(1, true));
-                            nd2WeekView.setText(WeatherUtils.getWeek(2, true));
-                            nd3WeekView.setText(WeatherUtils.getWeek(3, true));
+                            nd1WeekView.setText(WeatherUtils.getWeek(1, WeatherUtils.SHORT_FORMAT));
+                            nd2WeekView.setText(WeatherUtils.getWeek(2, WeatherUtils.SHORT_FORMAT));
+                            nd3WeekView.setText(WeatherUtils.getWeek(3, WeatherUtils.SHORT_FORMAT));
                             nd1TempCView.setText(nd1MinTempC + "~" + nd1MaxTempC + "°C");
                             nd2TempCView.setText(nd2MinTempC + "~" + nd2MaxTempC + "°C");
                             nd3TempCView.setText(nd3MinTempC + "~" + nd3MaxTempC + "°C");

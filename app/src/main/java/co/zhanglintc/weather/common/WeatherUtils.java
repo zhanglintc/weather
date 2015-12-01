@@ -23,6 +23,12 @@ import java.util.Map;
  */
 public class WeatherUtils {
 
+    // Global static variable
+    final public static boolean DO_TRANSLATE = true;
+    final public static boolean DO_NOT_TRANSLATE = false;
+    final public static boolean LONG_FORMAT = false;
+    final public static boolean SHORT_FORMAT = true;
+
     /**
      * 名字我没改, 沿用的urlRun
      * 但是实际我觉得只是一段测试代码
