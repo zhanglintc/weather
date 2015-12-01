@@ -106,14 +106,14 @@
         android:layout_weight="2">
 
         <LinearLayout
-            android:id="@+id/nextDay1"
+            android:id="@+id/nd1Layout"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/nextDay1Week"
+                android:id="@+id/nd1Week"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
@@ -123,7 +123,7 @@
                 android:layout_marginTop="45sp" />
 
             <TextView
-                android:id="@+id/nextDay1TempC"
+                android:id="@+id/nd1TempC"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
@@ -133,7 +133,7 @@
                 android:layout_marginTop="10sp" />
 
             <TextView
-                android:id="@+id/nextDay1Desc"
+                android:id="@+id/nd1Desc"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
@@ -144,14 +144,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/nextDay2"
+            android:id="@+id/nd2Layout"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/nextDay2Week"
+                android:id="@+id/nd2Week"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
@@ -161,7 +161,7 @@
                 android:layout_marginTop="45sp" />
 
             <TextView
-                android:id="@+id/nextDay2TempC"
+                android:id="@+id/nd2TempC"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
@@ -171,7 +171,7 @@
                 android:layout_marginTop="10sp" />
 
             <TextView
-                android:id="@+id/nextDay2Desc"
+                android:id="@+id/nd2Desc"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
@@ -182,14 +182,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/nextDay3"
+            android:id="@+id/nd3Layout"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/nextDay3Week"
+                android:id="@+id/nd3Week"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
@@ -199,7 +199,7 @@
                 android:layout_marginTop="45sp" />
 
             <TextView
-                android:id="@+id/nextDay3TempC"
+                android:id="@+id/nd3TempC"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"
@@ -209,7 +209,7 @@
                 android:layout_marginTop="10sp" />
 
             <TextView
-                android:id="@+id/nextDay3Desc"
+                android:id="@+id/nd3Desc"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"

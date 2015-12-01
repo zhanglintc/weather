@@ -122,17 +122,17 @@ public class BGupdater extends Thread {
                             curDateView = (TextView) activity.findViewById(R.id.curDate);
                             curWeekView = (TextView) activity.findViewById(R.id.curWeek);
 
-                            nd1WeekView = (TextView) activity.findViewById(R.id.nextDay1Week);
-                            nd1TempCView = (TextView) activity.findViewById(R.id.nextDay1TempC);
-                            nd1DescView = (TextView) activity.findViewById(R.id.nextDay1Desc);
+                            nd1WeekView = (TextView) activity.findViewById(R.id.nd1Week);
+                            nd1TempCView = (TextView) activity.findViewById(R.id.nd1TempC);
+                            nd1DescView = (TextView) activity.findViewById(R.id.nd1Desc);
 
-                            nd2WeekView = (TextView) activity.findViewById(R.id.nextDay2Week);
-                            nd2TempCView = (TextView) activity.findViewById(R.id.nextDay2TempC);
-                            nd2DescView = (TextView) activity.findViewById(R.id.nextDay2Desc);
+                            nd2WeekView = (TextView) activity.findViewById(R.id.nd2Week);
+                            nd2TempCView = (TextView) activity.findViewById(R.id.nd2TempC);
+                            nd2DescView = (TextView) activity.findViewById(R.id.nd2Desc);
 
-                            nd3WeekView = (TextView) activity.findViewById(R.id.nextDay3Week);
-                            nd3TempCView = (TextView) activity.findViewById(R.id.nextDay3TempC);
-                            nd3DescView = (TextView) activity.findViewById(R.id.nextDay3Desc);
+                            nd3WeekView = (TextView) activity.findViewById(R.id.nd3Week);
+                            nd3TempCView = (TextView) activity.findViewById(R.id.nd3TempC);
+                            nd3DescView = (TextView) activity.findViewById(R.id.nd3Desc);
 
                             // ImageView
                             // curDescIconView = (ImageView) activity.findViewById(R.id.curDescIcon);
