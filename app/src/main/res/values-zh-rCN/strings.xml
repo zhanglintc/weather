@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">天气</string>
+    <string name="action_settings">设置</string>
+
+    <string name="welcome_loading">正在更新天气数据</string>
+    <string name="updated">更新于</string>
+
+</resources>

@@ -143,7 +143,7 @@ public class BGupdater extends Thread {
 
                             // Set Text
                             cityNameView.setText(cityName);
-                            curTimeView.setText("更新于 " + WeatherUtils.getSysTime());
+                            curTimeView.setText(activity.getString(R.string.updated) + " " + WeatherUtils.getSysTime());
                             curTempCView.setText(curTempC + "°C");
                             curDescView.setText(curDesc);
                             curDateView.setText(WeatherUtils.getSysDate());

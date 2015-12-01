@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">天気</string>
+    <string name="action_settings">設置</string>
+
+    <string name="welcome_loading">データ取得している</string>
+    <string name="updated">最終更新</string>
+
+</resources>
