@@ -7,7 +7,11 @@ import android.widget.TextView;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
+
 import co.zhanglintc.weather.common.WeatherUtils;
+import co.zhanglintc.weather.dao.DBManager;
+import co.zhanglintc.weather.dao.DayInfo;
 
 /**
  * Created by zhanglin on 2015/11/06.
@@ -31,10 +35,6 @@ public class BGupdater extends Thread {
     TextView nd3TempCView;
     TextView nd3DescView;
 
-    Bitmap curDescIcon;
-    // ImageView curDescIconView;
-    // GifView rfsIconView;
-
     String rawJsonData;
     String sysLang;
     String APIurl;
@@ -43,21 +43,21 @@ public class BGupdater extends Thread {
     String curDesc;
     String cityName;
 
-    String nd1MaxTempC;
-    String nd1MinTempC;
-    String nd2MaxTempC;
-    String nd2MinTempC;
-    String nd3MaxTempC;
-    String nd3MinTempC;
-
     String nd1Desc;
     String nd2Desc;
     String nd3Desc;
+
+    String sysDate;
+    String sysTime;
+
+    private DBManager mgr;
 
     BGupdater(Activity activity) {
         this.activity = activity;
         this.APIurl = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&nu%20m_of_days=3&format=json&lang=" + WeatherUtils.getLanguge();
         rawJsonData = activity.getResources().getString(R.string.rawJsonData);
+
+        mgr = new DBManager(activity);
     }
 
     public void run() {
@@ -65,19 +65,11 @@ public class BGupdater extends Thread {
         httpHandler http = new httpHandler();
         String retVal = http.get(APIurl);
 
+        final ArrayList<DayInfo> dayInfoList = new ArrayList<DayInfo>();
+
         try {
+
             WeatherParser wp = new WeatherParser(retVal);
-
-            curTempC = wp.getCurTemp_C();
-            cityName = wp.getRequestCity();
-            nd1MaxTempC = wp.getNextNthDayMaxTempC(1);
-            nd1MinTempC = wp.getNextNthDayMinTempC(1);
-            nd2MaxTempC = wp.getNextNthDayMaxTempC(2);
-            nd2MinTempC = wp.getNextNthDayMinTempC(2);
-            nd3MaxTempC = wp.getNextNthDayMaxTempC(3);
-            nd3MinTempC = wp.getNextNthDayMinTempC(3);
-
-            curDescIcon  = WeatherUtils.returnBitMap(wp.getCurWeatherIconUrl());
 
             sysLang = WeatherUtils.getLanguge();
             if ("en".equals(sysLang)) {
@@ -85,13 +77,57 @@ public class BGupdater extends Thread {
                 nd1Desc = wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE);
                 nd2Desc = wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_NOT_TRANSLATE);
                 nd3Desc = wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_NOT_TRANSLATE);
-            }
-            else {
+            } else {
                 curDesc = wp.getCurWeatherDesc(WeatherUtils.DO_TRANSLATE);
                 nd1Desc = wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_TRANSLATE);
                 nd2Desc = wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_TRANSLATE);
                 nd3Desc = wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_TRANSLATE);
             }
+
+            cityName = wp.getRequestCity();
+
+            sysDate = WeatherUtils.getSysDate();
+            sysTime = WeatherUtils.getSysTime();
+
+            // 当天天气情况
+            DayInfo dayInfo = new DayInfo();
+            dayInfo.setCityId("xxx");
+            dayInfo.setDay(sysDate);
+            dayInfo.setTime(sysTime);
+            dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.LONG_FORMAT));
+            dayInfo.setTempc(wp.getCurTemp_C());
+            dayInfo.setDesc(curDesc);
+            dayInfoList.add(dayInfo);
+
+            // 后一天天气情况
+            dayInfo = new DayInfo();
+            dayInfo.setCityId("xxx");
+            dayInfo.setDay(sysDate);
+            dayInfo.setTime(sysTime);
+            dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.SHORT_FORMAT));
+            dayInfo.setTempc(wp.getNextNthDayCompleteTempC(1));
+            dayInfo.setDesc(nd1Desc);
+            dayInfoList.add(dayInfo);
+
+            // 后二天天气情况
+            dayInfo = new DayInfo();
+            dayInfo.setCityId("xxx");
+            dayInfo.setDay(sysDate);
+            dayInfo.setTime(sysTime);
+            dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.SHORT_FORMAT));
+            dayInfo.setTempc(wp.getNextNthDayCompleteTempC(2));
+            dayInfo.setDesc(nd2Desc);
+            dayInfoList.add(dayInfo);
+
+            // 后三天天气情况
+            dayInfo = new DayInfo();
+            dayInfo.setCityId("xxx");
+            dayInfo.setDay(sysDate);
+            dayInfo.setTime(sysTime);
+            dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.SHORT_FORMAT));
+            dayInfo.setTempc(wp.getNextNthDayCompleteTempC(3));
+            dayInfo.setDesc(nd3Desc);
+            dayInfoList.add(dayInfo);
 
             Log.i("http", "Current temperature: " + wp.getCurTemp_C());
             Log.i("http", "Current condition: " + curDesc);
@@ -101,11 +137,11 @@ public class BGupdater extends Thread {
             // 选择 FULL FORECAST 确认数据正确性
             Log.i("http", "Tomorrow date: " + wp.getNextNthDayDate(1));
             Log.i("http", "Tomorrow high: " + wp.getNextNthDayMaxTempC(1));
-            Log.i("http", "Tomorrow low: "  + wp.getNextNthDayMinTempC(1));
-            Log.i("http", "Tomorrow condition: "  + wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE));
+            Log.i("http", "Tomorrow low: " + wp.getNextNthDayMinTempC(1));
+            Log.i("http", "Tomorrow condition: " + wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE));
             Log.i("http", "Day after tomorrow date: " + wp.getNextNthDayDate(2));
             Log.i("http", "Day after tomorrow high: " + wp.getNextNthDayMaxTempC(2));
-            Log.i("http", "Day after tomorrow low: "  + wp.getNextNthDayMinTempC(2));
+            Log.i("http", "Day after tomorrow low: " + wp.getNextNthDayMinTempC(2));
             Log.i("http", "Day after tomorrow condition: " + wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_NOT_TRANSLATE));
 
             activity.runOnUiThread(
@@ -114,60 +150,60 @@ public class BGupdater extends Thread {
                         public void run() {
                             activity.setContentView(R.layout.activity_main);
 
-                            // TextView
-                            cityNameView = (TextView) activity.findViewById(R.id.cityName);
-                            curTimeView = (TextView) activity.findViewById(R.id.curTime);
-                            curTempCView = (TextView) activity.findViewById(R.id.curTempC);
-                            curDescView = (TextView) activity.findViewById(R.id.curDesc);
-                            curDateView = (TextView) activity.findViewById(R.id.curDate);
-                            curWeekView = (TextView) activity.findViewById(R.id.curWeek);
-
-                            nd1WeekView = (TextView) activity.findViewById(R.id.nd1Week);
-                            nd1TempCView = (TextView) activity.findViewById(R.id.nd1TempC);
-                            nd1DescView = (TextView) activity.findViewById(R.id.nd1Desc);
-
-                            nd2WeekView = (TextView) activity.findViewById(R.id.nd2Week);
-                            nd2TempCView = (TextView) activity.findViewById(R.id.nd2TempC);
-                            nd2DescView = (TextView) activity.findViewById(R.id.nd2Desc);
-
-                            nd3WeekView = (TextView) activity.findViewById(R.id.nd3Week);
-                            nd3TempCView = (TextView) activity.findViewById(R.id.nd3TempC);
-                            nd3DescView = (TextView) activity.findViewById(R.id.nd3Desc);
-
-                            // ImageView
-                            // curDescIconView = (ImageView) activity.findViewById(R.id.curDescIcon);
-
-                            // rfsIconView = (GifView) activity.findViewById(R.id.rfsIcon);
-
-                            // ------------------------------------------------------------------
-
-                            // Set Text
-                            cityNameView.setText(cityName);
-                            curTimeView.setText(activity.getString(R.string.updated) + " " + WeatherUtils.getSysTime());
-                            curTempCView.setText(curTempC + "°C");
-                            curDescView.setText(curDesc);
-                            curDateView.setText(WeatherUtils.getSysDate());
-                            curWeekView.setText(WeatherUtils.getWeek(0, WeatherUtils.LONG_FORMAT));
-
-                            nd1WeekView.setText(WeatherUtils.getWeek(1, WeatherUtils.SHORT_FORMAT));
-                            nd2WeekView.setText(WeatherUtils.getWeek(2, WeatherUtils.SHORT_FORMAT));
-                            nd3WeekView.setText(WeatherUtils.getWeek(3, WeatherUtils.SHORT_FORMAT));
-                            nd1TempCView.setText(nd1MinTempC + "~" + nd1MaxTempC + "°C");
-                            nd2TempCView.setText(nd2MinTempC + "~" + nd2MaxTempC + "°C");
-                            nd3TempCView.setText(nd3MinTempC + "~" + nd3MaxTempC + "°C");
-                            nd1DescView.setText(nd1Desc);
-                            nd2DescView.setText(nd2Desc);
-                            nd3DescView.setText(nd3Desc);
-
-                            // Set Image
-                            // curDescIconView.setImageBitmap(curDescIcon);
-
-                            // rfsIconView.setGifImage(R.mipmap.ic_launcher); // anything here can disable gif display
+                            setTextView(dayInfoList);
                         }
                     }
             );
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setTextView(ArrayList<DayInfo> dayInfoList){
+
+        // TextView
+        cityNameView = (TextView) activity.findViewById(R.id.cityName);
+        curTimeView = (TextView) activity.findViewById(R.id.curTime);
+        curTempCView = (TextView) activity.findViewById(R.id.curTempC);
+        curDescView = (TextView) activity.findViewById(R.id.curDesc);
+        curDateView = (TextView) activity.findViewById(R.id.curDate);
+        curWeekView = (TextView) activity.findViewById(R.id.curWeek);
+
+        nd1WeekView = (TextView) activity.findViewById(R.id.nd1Week);
+        nd1TempCView = (TextView) activity.findViewById(R.id.nd1TempC);
+        nd1DescView = (TextView) activity.findViewById(R.id.nd1Desc);
+
+        nd2WeekView = (TextView) activity.findViewById(R.id.nd2Week);
+        nd2TempCView = (TextView) activity.findViewById(R.id.nd2TempC);
+        nd2DescView = (TextView) activity.findViewById(R.id.nd2Desc);
+
+        nd3WeekView = (TextView) activity.findViewById(R.id.nd3Week);
+        nd3TempCView = (TextView) activity.findViewById(R.id.nd3TempC);
+        nd3DescView = (TextView) activity.findViewById(R.id.nd3Desc);
+
+        // Set Text
+        cityNameView.setText(cityName);
+        curDateView.setText(sysDate);
+        curTimeView.setText(activity.getString(R.string.updated) + " " + sysTime);
+
+        // 当天天气状况
+        curTempCView.setText(dayInfoList.get(0).getTempc());
+        curDescView.setText(dayInfoList.get(0).getDesc());
+        curWeekView.setText(dayInfoList.get(0).getWeek());
+
+        // 后一天天气情况
+        nd1TempCView.setText(dayInfoList.get(1).getTempc());
+        nd1DescView.setText(dayInfoList.get(1).getDesc());
+        nd1WeekView.setText(dayInfoList.get(1).getWeek());
+
+        // 后二天天气情况
+        nd2TempCView.setText(dayInfoList.get(2).getTempc());
+        nd2DescView.setText(dayInfoList.get(2).getDesc());
+        nd2WeekView.setText(dayInfoList.get(2).getWeek());
+
+        // 后三天天气情况
+        nd3TempCView.setText(dayInfoList.get(3).getTempc());
+        nd3DescView.setText(dayInfoList.get(3).getDesc());
+        nd3WeekView.setText(dayInfoList.get(3).getWeek());
     }
 }
