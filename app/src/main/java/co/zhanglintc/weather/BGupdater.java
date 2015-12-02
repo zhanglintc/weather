@@ -104,7 +104,7 @@ public class BGupdater extends Thread {
             dayInfo.setCityId("xxx");
             dayInfo.setDay(sysDate);
             dayInfo.setTime(sysTime);
-            dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.SHORT_FORMAT));
+            dayInfo.setWeek(WeatherUtils.getWeek(1, WeatherUtils.SHORT_FORMAT));
             dayInfo.setTempc(wp.getNextNthDayCompleteTempC(1));
             dayInfo.setDesc(nd1Desc);
             dayInfoList.add(dayInfo);
@@ -114,7 +114,7 @@ public class BGupdater extends Thread {
             dayInfo.setCityId("xxx");
             dayInfo.setDay(sysDate);
             dayInfo.setTime(sysTime);
-            dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.SHORT_FORMAT));
+            dayInfo.setWeek(WeatherUtils.getWeek(2, WeatherUtils.SHORT_FORMAT));
             dayInfo.setTempc(wp.getNextNthDayCompleteTempC(2));
             dayInfo.setDesc(nd2Desc);
             dayInfoList.add(dayInfo);
@@ -124,7 +124,7 @@ public class BGupdater extends Thread {
             dayInfo.setCityId("xxx");
             dayInfo.setDay(sysDate);
             dayInfo.setTime(sysTime);
-            dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.SHORT_FORMAT));
+            dayInfo.setWeek(WeatherUtils.getWeek(3, WeatherUtils.SHORT_FORMAT));
             dayInfo.setTempc(wp.getNextNthDayCompleteTempC(3));
             dayInfo.setDesc(nd3Desc);
             dayInfoList.add(dayInfo);
