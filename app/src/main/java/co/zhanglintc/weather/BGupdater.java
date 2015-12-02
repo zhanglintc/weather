@@ -1,7 +1,6 @@
 package co.zhanglintc.weather;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -135,14 +134,18 @@ public class BGupdater extends Thread {
             Log.i("http", "Requested city: " + wp.getRequestCity());
             // 登录: http://www.worldweatheronline.com
             // 选择 FULL FORECAST 确认数据正确性
-            Log.i("http", "Tomorrow date: " + wp.getNextNthDayDate(1));
-            Log.i("http", "Tomorrow high: " + wp.getNextNthDayMaxTempC(1));
-            Log.i("http", "Tomorrow low: " + wp.getNextNthDayMinTempC(1));
-            Log.i("http", "Tomorrow condition: " + wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE));
-            Log.i("http", "Day after tomorrow date: " + wp.getNextNthDayDate(2));
-            Log.i("http", "Day after tomorrow high: " + wp.getNextNthDayMaxTempC(2));
-            Log.i("http", "Day after tomorrow low: " + wp.getNextNthDayMinTempC(2));
-            Log.i("http", "Day after tomorrow condition: " + wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_NOT_TRANSLATE));
+            Log.i("http", "D1 date: " + wp.getNextNthDayDate(1));
+            Log.i("http", "D1 high: " + wp.getNextNthDayMaxTempC(1));
+            Log.i("http", "D1 low: " + wp.getNextNthDayMinTempC(1));
+            Log.i("http", "D1 condition: " + wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE));
+            Log.i("http", "D2 date: " + wp.getNextNthDayDate(2));
+            Log.i("http", "D2 high: " + wp.getNextNthDayMaxTempC(2));
+            Log.i("http", "D2 low: " + wp.getNextNthDayMinTempC(2));
+            Log.i("http", "D2 condition: " + wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_NOT_TRANSLATE));
+            Log.i("http", "D3 date: " + wp.getNextNthDayDate(3));
+            Log.i("http", "D3 high: " + wp.getNextNthDayMaxTempC(3));
+            Log.i("http", "D3 low: " + wp.getNextNthDayMinTempC(3));
+            Log.i("http", "D3 condition: " + wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_NOT_TRANSLATE));
 
             activity.runOnUiThread(
                     new Runnable() {
