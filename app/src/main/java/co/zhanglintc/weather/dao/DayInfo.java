@@ -7,13 +7,13 @@ public class DayInfo {
 
     private String cityId;
 
-    private String day;
+    private String date;
 
     private String time;
 
     private String week;
 
-    private String tempc;
+    private String tempC;
 
     private String desc;
 
@@ -25,12 +25,12 @@ public class DayInfo {
         this.cityId = cityId;
     }
 
-    public String getDay() {
-        return day;
+    public String getDate() {
+        return date;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getTime() {
@@ -49,12 +49,12 @@ public class DayInfo {
         this.week = week;
     }
 
-    public String getTempc() {
-        return tempc;
+    public String getTempC() {
+        return tempC;
     }
 
-    public void setTempc(String tempc) {
-        this.tempc = tempc;
+    public void setTempC(String tempC) {
+        this.tempC = tempC;
     }
 
     public String getDesc() {

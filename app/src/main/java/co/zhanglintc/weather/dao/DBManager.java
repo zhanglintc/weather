@@ -35,7 +35,7 @@ public class DBManager {
         try {
             for (DayInfo dayInfo : dayInfoList) {
                 db.execSQL("INSERT INTO day_info VALUES('?', '?', '?', '?', '?', '?', '?')",
-                        new Object[]{dayInfo.getCityId(), dayInfo.getDay(), dayInfo.getTime(), dayInfo.getWeek(), dayInfo.getTempc(), dayInfo.getDesc(), t});
+                        new Object[]{dayInfo.getCityId(), dayInfo.getDate(), dayInfo.getTime(), dayInfo.getWeek(), dayInfo.getTempC(), dayInfo.getDesc(), t});
             }
             db.setTransactionSuccessful();  //设置事务成功完成
         } finally {
@@ -97,7 +97,7 @@ public class DBManager {
             DayInfo dayInfo = new DayInfo();
 
             dayInfo.setCityId(c.getString(c.getColumnIndex("city_id")));
-            dayInfo.setDay(c.getString(c.getColumnIndex("day")));
+            dayInfo.setDate(c.getString(c.getColumnIndex("day")));
             dayInfo.setTime(c.getString(c.getColumnIndex("time")));
             dayInfo.setWeek(c.getString(c.getColumnIndex("week")));
             dayInfo.setDesc(c.getString(c.getColumnIndex("tempc")));

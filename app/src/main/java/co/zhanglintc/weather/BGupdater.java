@@ -91,40 +91,40 @@ public class BGupdater extends Thread {
             // 当天天气情况
             DayInfo dayInfo = new DayInfo();
             dayInfo.setCityId("xxx");
-            dayInfo.setDay(sysDate);
+            dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.LONG_FORMAT));
-            dayInfo.setTempc(wp.getCurTemp_C());
+            dayInfo.setTempC(wp.getCurTemp_C());
             dayInfo.setDesc(curDesc);
             dayInfoList.add(dayInfo);
 
             // 后一天天气情况
             dayInfo = new DayInfo();
             dayInfo.setCityId("xxx");
-            dayInfo.setDay(sysDate);
+            dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(WeatherUtils.getWeek(1, WeatherUtils.SHORT_FORMAT));
-            dayInfo.setTempc(wp.getNextNthDayCompleteTempC(1));
+            dayInfo.setTempC(wp.getNextNthDayCompleteTempC(1));
             dayInfo.setDesc(nd1Desc);
             dayInfoList.add(dayInfo);
 
             // 后二天天气情况
             dayInfo = new DayInfo();
             dayInfo.setCityId("xxx");
-            dayInfo.setDay(sysDate);
+            dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(WeatherUtils.getWeek(2, WeatherUtils.SHORT_FORMAT));
-            dayInfo.setTempc(wp.getNextNthDayCompleteTempC(2));
+            dayInfo.setTempC(wp.getNextNthDayCompleteTempC(2));
             dayInfo.setDesc(nd2Desc);
             dayInfoList.add(dayInfo);
 
             // 后三天天气情况
             dayInfo = new DayInfo();
             dayInfo.setCityId("xxx");
-            dayInfo.setDay(sysDate);
+            dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(WeatherUtils.getWeek(3, WeatherUtils.SHORT_FORMAT));
-            dayInfo.setTempc(wp.getNextNthDayCompleteTempC(3));
+            dayInfo.setTempC(wp.getNextNthDayCompleteTempC(3));
             dayInfo.setDesc(nd3Desc);
             dayInfoList.add(dayInfo);
 
@@ -190,22 +190,22 @@ public class BGupdater extends Thread {
         curTimeView.setText(activity.getString(R.string.updated) + " " + sysTime);
 
         // 当天天气状况
-        curTempCView.setText(dayInfoList.get(0).getTempc());
+        curTempCView.setText(dayInfoList.get(0).getTempC());
         curDescView.setText(dayInfoList.get(0).getDesc());
         curWeekView.setText(dayInfoList.get(0).getWeek());
 
         // 后一天天气情况
-        nd1TempCView.setText(dayInfoList.get(1).getTempc());
+        nd1TempCView.setText(dayInfoList.get(1).getTempC());
         nd1DescView.setText(dayInfoList.get(1).getDesc());
         nd1WeekView.setText(dayInfoList.get(1).getWeek());
 
         // 后二天天气情况
-        nd2TempCView.setText(dayInfoList.get(2).getTempc());
+        nd2TempCView.setText(dayInfoList.get(2).getTempC());
         nd2DescView.setText(dayInfoList.get(2).getDesc());
         nd2WeekView.setText(dayInfoList.get(2).getWeek());
 
         // 后三天天气情况
-        nd3TempCView.setText(dayInfoList.get(3).getTempc());
+        nd3TempCView.setText(dayInfoList.get(3).getTempC());
         nd3DescView.setText(dayInfoList.get(3).getDesc());
         nd3WeekView.setText(dayInfoList.get(3).getWeek());
     }
