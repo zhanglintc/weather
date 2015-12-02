@@ -34,10 +34,13 @@ public class WeatherParser {
     // Today's data
     /**
      * Return current temperature celsius.
-     * eg: 23
+     * eg: 23°C
      */
     public String getCurTemp_C() throws JSONException {
-        return this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getString("temp_C");
+        String tempC;
+
+        tempC = this.json.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getString("temp_C");
+        return String.format("%s°C", tempC);
     }
 
     /**
