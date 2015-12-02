@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
-                android:textSize="21sp"
+                android:textSize="20sp"
                 android:text="*Tue"
                 android:layout_marginTop="45sp" />
 
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
-                android:textSize="19sp"
+                android:textSize="20sp"
                 android:text="*Thu"
                 android:layout_marginTop="45sp" />
 
