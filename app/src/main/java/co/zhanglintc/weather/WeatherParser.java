@@ -96,6 +96,20 @@ public class WeatherParser {
     }
 
     /**
+     * Return next Nth day's temperature celsius.
+     * eg: 16~19°C
+     */
+    public String getNextNthDayCompleteTempC(int Nth) throws JSONException {
+        String maxC;
+        String minC;
+
+        maxC = this.getNextNthDayMaxTempC(Nth);
+        minC = this.getNextNthDayMinTempC(Nth);
+
+        return String.format("%s~%s°C", minC, maxC);
+    }
+
+    /**
      * Return next Nth day's weather condition.
      * 取出所有的可能的天气状态作为HashMap, 然后排序, 取出第0个数据(最大的数据, 可能性最大的数据)
      * eg: 1. Clear 2. Overcast 3. Rainy
