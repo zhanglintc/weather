@@ -5,11 +5,11 @@ package co.zhanglintc.weather.dao;
  */
 public class CityInfo {
 
-    public String cityId;
+    private String cityId;
 
-    public String cityName;
+    private String cityName;
 
-    public String cityNation;
+    private String cityNation;
 
     public String getCityId() {
         return cityId;
