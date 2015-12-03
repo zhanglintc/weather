@@ -62,7 +62,7 @@ public class DBManager {
     /**
      * delete old dayInfo
      *
-     * @param dayInfo
+     * @param city
      */
     public void deleteDayInfo(String city) {
         db.delete("day_info", "city_id = ?", new String[]{String.valueOf(city)});
