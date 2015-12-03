@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             View view = getWindow().getDecorView().findViewById(android.R.id.content);
 
             TextView cityNameView = (TextView) findViewById(R.id.cityName);
-            Log.i("iii", (String) cityNameView.getText());
+            Log.i("menu", (String) cityNameView.getText());
 
             new BGupdater(this).start();
             return true;

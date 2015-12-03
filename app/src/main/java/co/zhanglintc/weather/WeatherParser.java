@@ -129,7 +129,7 @@ public class WeatherParser {
         String key;
         String DescKey = translate ? "lang_" + WeatherUtils.getLanguge() : "weatherDesc";
         for (int i = 0; i < hourly.length(); i++) {
-            Log.i("test", hourly.getJSONObject(i).getJSONArray(DescKey).getJSONObject(0).getString("value"));
+            Log.i("desc", hourly.getJSONObject(i).getJSONArray(DescKey).getJSONObject(0).getString("value"));
             key = hourly.getJSONObject(i).getJSONArray(DescKey).getJSONObject(0).getString("value");
             WeatherDesc.put(key, WeatherDesc.containsKey(key) ? WeatherDesc.get(key) + 1 : 1);
         }
