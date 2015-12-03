@@ -9,6 +9,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import co.zhanglintc.weather.common.WeatherUtils;
+import co.zhanglintc.weather.dao.CityInfo;
 import co.zhanglintc.weather.dao.DBManager;
 import co.zhanglintc.weather.dao.DayInfo;
 
@@ -36,7 +37,9 @@ public class BGupdater extends Thread {
 
     String rawJsonData;
     String sysLang;
-    String APIurl;
+    String cqURL;
+    String bjURL;
+    String shURL;
 
     String curTempC;
     String curDesc;
@@ -53,7 +56,9 @@ public class BGupdater extends Thread {
 
     BGupdater(Activity activity) {
         this.activity = activity;
-        this.APIurl = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&nu%20m_of_days=3&format=json&lang=" + WeatherUtils.getLanguge();
+        this.cqURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=newyork&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
+        this.bjURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=beijing&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
+        this.shURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=shanghai&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
         rawJsonData = activity.getResources().getString(R.string.rawJsonData);
 
         mgr = new DBManager(activity);
@@ -62,13 +67,15 @@ public class BGupdater extends Thread {
     public void run() {
         Log.i("http", "Getting weather data...");
         httpHandler http = new httpHandler();
-        String retVal = http.get(APIurl);
+        String cqWeather = http.get(cqURL);
+//        String bjWeather = http.get(bjURL);
+//        String shWeather = http.get(shURL);
 
         final ArrayList<DayInfo> dayInfoList = new ArrayList<DayInfo>();
 
         try {
 
-            WeatherParser wp = new WeatherParser(retVal);
+            WeatherParser wp = new WeatherParser(cqWeather);
 
             sysLang = WeatherUtils.getLanguge();
             if ("en".equals(sysLang)) {
@@ -84,6 +91,21 @@ public class BGupdater extends Thread {
             }
 
             cityName = wp.getRequestCity();
+            CityInfo cityInfo = new CityInfo();
+            cityInfo.setCityId("1");
+            try {
+                cityInfo.setCityName(cityName.split(",")[0].trim());
+                cityInfo.setCityNation(cityName.split(",")[1].trim());
+            } catch (ArrayIndexOutOfBoundsException e) {
+                Log.i("db_err", e.toString());
+                cityInfo.setCityName(cityName.trim());
+                cityInfo.setCityNation(""); // set a null string
+            }
+            Log.i("db", cityInfo.getCityId());
+            Log.i("db", cityInfo.getCityName());
+            Log.i("db", cityInfo.getCityNation());
+            // TODO: 2015/12/03 这里调用报错, 需要修复 => to yanbin
+            // mgr.addCityInfo(cityInfo);
 
             sysDate = WeatherUtils.getSysDate();
             sysTime = WeatherUtils.getSysTime();
