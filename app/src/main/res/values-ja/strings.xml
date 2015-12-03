@@ -5,4 +5,9 @@
     <string name="welcome_loading">データ取得している</string>
     <string name="updated">最終更新</string>
 
+    <string name="refresh">更新</string>
+    <string name="chonqing">重慶</string>
+    <string name="beijing">北京</string>
+    <string name="shanghai">上海</string>
+
 </resources>

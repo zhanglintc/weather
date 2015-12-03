@@ -7,19 +7,25 @@
     <!--orderInCategory数值较小者排序靠上-->
     <item
         android:id="@+id/action_refresh"
-        android:title="Refresh"
+        android:title="@string/refresh"
         android:orderInCategory="100"
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/action_act_1"
-        android:title="Act_1"
+        android:id="@+id/action_chongqing"
+        android:title="@string/chonqing"
         android:orderInCategory="100"
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/action_act_2"
-        android:title="Act_2"
+        android:id="@+id/action_beijing"
+        android:title="@string/beijing"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_shanghai"
+        android:title="@string/shanghai"
         android:orderInCategory="100"
         app:showAsAction="never"
         />

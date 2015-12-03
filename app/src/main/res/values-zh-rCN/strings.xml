@@ -5,4 +5,10 @@
     <string name="welcome_loading">正在更新天气数据</string>
     <string name="updated">更新于</string>
 
+    <string name="refresh">更新</string>
+    <string name="chonqing">重庆</string>
+    <string name="beijing">北京</string>
+    <string name="shanghai">上海</string>
+
+
 </resources>
