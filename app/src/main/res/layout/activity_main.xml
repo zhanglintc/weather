@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="*Tue"
                 android:layout_marginTop="45sp" />
 
@@ -156,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="*Wed"
                 android:layout_marginTop="45sp" />
 
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|bottom"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:text="*Thu"
                 android:layout_marginTop="45sp" />
 

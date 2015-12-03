@@ -44,7 +44,14 @@ public class BGupdater extends Thread {
     String curTempC;
     String curDesc;
     String cityName;
+    String curWeek;
 
+    String nd1Week;
+    String nd2Week;
+    String nd3Week;
+    String nd1TempC;
+    String nd2TempC;
+    String nd3TempC;
     String nd1Desc;
     String nd2Desc;
     String nd3Desc;
@@ -56,7 +63,7 @@ public class BGupdater extends Thread {
 
     BGupdater(Activity activity) {
         this.activity = activity;
-        this.cqURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=newyork&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
+        this.cqURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
         this.bjURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=beijing&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
         this.shURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=shanghai&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
         rawJsonData = activity.getResources().getString(R.string.rawJsonData);
@@ -79,18 +86,39 @@ public class BGupdater extends Thread {
 
             sysLang = WeatherUtils.getLanguge();
             if ("en".equals(sysLang)) {
+                // 如果是英语, 则取不翻译的数据, 而且未来星期使用[短格式]
                 curDesc = wp.getCurWeatherDesc(WeatherUtils.DO_NOT_TRANSLATE);
+
+                nd1Week = WeatherUtils.getWeek(1, WeatherUtils.SHORT_FORMAT);
+                nd2Week = WeatherUtils.getWeek(2, WeatherUtils.SHORT_FORMAT);
+                nd3Week = WeatherUtils.getWeek(3, WeatherUtils.SHORT_FORMAT);
+
                 nd1Desc = wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE);
                 nd2Desc = wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_NOT_TRANSLATE);
                 nd3Desc = wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_NOT_TRANSLATE);
             } else {
+                // 如果是英语以外, 则取翻译过后的数据, 而且未来星期使用[长格式]
                 curDesc = wp.getCurWeatherDesc(WeatherUtils.DO_TRANSLATE);
+
+                nd1Week = WeatherUtils.getWeek(1, WeatherUtils.LONG_FORMAT);
+                nd2Week = WeatherUtils.getWeek(2, WeatherUtils.LONG_FORMAT);
+                nd3Week = WeatherUtils.getWeek(3, WeatherUtils.LONG_FORMAT);
+
                 nd1Desc = wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_TRANSLATE);
                 nd2Desc = wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_TRANSLATE);
                 nd3Desc = wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_TRANSLATE);
             }
 
             cityName = wp.getRequestCity();
+            sysTime = WeatherUtils.getSysTime();
+            curTempC = wp.getCurTemp_C();
+            sysDate = WeatherUtils.getSysDate();
+            curWeek = WeatherUtils.getWeek(0, WeatherUtils.LONG_FORMAT);
+
+            nd1TempC = wp.getNextNthDayCompleteTempC(1);
+            nd2TempC = wp.getNextNthDayCompleteTempC(2);
+            nd3TempC = wp.getNextNthDayCompleteTempC(3);
+
             CityInfo cityInfo = new CityInfo();
             cityInfo.setCityId("1");
             try {
@@ -107,16 +135,13 @@ public class BGupdater extends Thread {
             // TODO: 2015/12/03 这里调用报错, 需要修复 => to yanbin
             // mgr.addCityInfo(cityInfo);
 
-            sysDate = WeatherUtils.getSysDate();
-            sysTime = WeatherUtils.getSysTime();
-
             // 当天天气情况
             DayInfo dayInfo = new DayInfo();
             dayInfo.setCityId("xxx");
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
-            dayInfo.setWeek(WeatherUtils.getWeek(0, WeatherUtils.LONG_FORMAT));
-            dayInfo.setTempC(wp.getCurTemp_C());
+            dayInfo.setWeek(curWeek);
+            dayInfo.setTempC(curTempC);
             dayInfo.setDesc(curDesc);
             dayInfoList.add(dayInfo);
 
@@ -125,8 +150,8 @@ public class BGupdater extends Thread {
             dayInfo.setCityId("xxx");
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
-            dayInfo.setWeek(WeatherUtils.getWeek(1, WeatherUtils.SHORT_FORMAT));
-            dayInfo.setTempC(wp.getNextNthDayCompleteTempC(1));
+            dayInfo.setWeek(nd1Week);
+            dayInfo.setTempC(nd1TempC);
             dayInfo.setDesc(nd1Desc);
             dayInfoList.add(dayInfo);
 
@@ -135,8 +160,8 @@ public class BGupdater extends Thread {
             dayInfo.setCityId("xxx");
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
-            dayInfo.setWeek(WeatherUtils.getWeek(2, WeatherUtils.SHORT_FORMAT));
-            dayInfo.setTempC(wp.getNextNthDayCompleteTempC(2));
+            dayInfo.setWeek(nd2Week);
+            dayInfo.setTempC(nd2TempC);
             dayInfo.setDesc(nd2Desc);
             dayInfoList.add(dayInfo);
 
@@ -145,8 +170,8 @@ public class BGupdater extends Thread {
             dayInfo.setCityId("xxx");
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
-            dayInfo.setWeek(WeatherUtils.getWeek(3, WeatherUtils.SHORT_FORMAT));
-            dayInfo.setTempC(wp.getNextNthDayCompleteTempC(3));
+            dayInfo.setWeek(nd3Week);
+            dayInfo.setTempC(nd3TempC);
             dayInfo.setDesc(nd3Desc);
             dayInfoList.add(dayInfo);
 
