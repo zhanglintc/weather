@@ -62,10 +62,10 @@ public class DBManager {
     /**
      * get MaxCityId
      */
-    public int selectMaxCityId() {
-        Cursor c = db.rawQuery("SELECT MAX(city_id) AS max_city_id FROM city_info", null);
-
+    public int getMaxCityId() {
         int maxCityId = 0;
+
+        Cursor c = db.rawQuery("SELECT MAX(city_id) AS max_city_id FROM city_info", null);
         while (c.moveToNext()) {
             maxCityId = c.getInt(c.getColumnIndex("max_city_id"));
         }
