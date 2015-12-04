@@ -101,10 +101,13 @@ public class DBManager {
         Cursor c = db.rawQuery("SELECT * FROM city_info WHERE city_id = '" + cityId + "'", null);
 
         while (c.moveToNext()) {
+            cityInfo.setCityId(cityId);
             cityInfo.setCityName(c.getString(c.getColumnIndex("city_name")));
             cityInfo.setCityNation(c.getString(c.getColumnIndex("city_nation")));
         }
+
         c.close();
+
         return cityInfo;
     }
 
