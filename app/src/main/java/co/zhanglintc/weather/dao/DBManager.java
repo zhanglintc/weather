@@ -30,15 +30,16 @@ public class DBManager {
      */
     public void addDayInfo(ArrayList<DayInfo> dayInfoList) {
         Timestamp t = new Timestamp(new Date().getTime());
-        db.beginTransaction();  //开始事务
+        db.beginTransaction();
         try {
+            db.execSQL("DELETE FROM day_info"); // 插入数据前清空day_info表
             for (DayInfo dayInfo : dayInfoList) {
                 db.execSQL("INSERT INTO day_info VALUES(?, ?, ?, ?, ?, ?, ?)",
                         new Object[]{dayInfo.getCityId(), dayInfo.getDate(), dayInfo.getTime(), dayInfo.getWeek(), dayInfo.getTempC(), dayInfo.getDesc(), t});
             }
-            db.setTransactionSuccessful();  //设置事务成功完成
+            db.setTransactionSuccessful();
         } finally {
-            db.endTransaction();    //结束事务
+            db.endTransaction();
         }
     }
 
@@ -48,13 +49,13 @@ public class DBManager {
      * @param cityInfo
      */
     public void addCityInfo(CityInfo cityInfo) {
-        db.beginTransaction();  //开始事务
+        db.beginTransaction();
         try {
             db.execSQL("INSERT INTO city_info VALUES( ?, ?, ?)",
                     new Object[]{cityInfo.getCityId(), cityInfo.getCityName(), cityInfo.getCityNation()});
-            db.setTransactionSuccessful();  //设置事务成功完成
+            db.setTransactionSuccessful();
         } finally {
-            db.endTransaction();    //结束事务
+            db.endTransaction();
         }
     }
 
@@ -68,6 +69,8 @@ public class DBManager {
         while (c.moveToNext()) {
             maxCityId = c.getInt(c.getColumnIndex("max_city_id"));
         }
+
+        c.close();
 
         return maxCityId;
     }
@@ -98,8 +101,7 @@ public class DBManager {
     public CityInfo queryCityInfo(String cityId) {
         CityInfo cityInfo = new CityInfo();
 
-        Cursor c = db.rawQuery("SELECT * FROM city_info WHERE city_id = '" + cityId + "'", null);
-
+        Cursor c = db.rawQuery(String.format("SELECT * FROM city_info WHERE city_id = '%s'", cityId), null);
         while (c.moveToNext()) {
             cityInfo.setCityId(cityId);
             cityInfo.setCityName(c.getString(c.getColumnIndex("city_name")));
@@ -116,9 +118,10 @@ public class DBManager {
      *
      * @return List<DayInfo>
      */
-    public ArrayList<DayInfo> queryDayInfo() {
+    public ArrayList<DayInfo> queryDayInfo(String cityId) {
         ArrayList<DayInfo> dayInfoList = new ArrayList<>();
-        Cursor c = db.rawQuery("SELECT * FROM day_info ORDER BY updateTime DESC LIMIT 4", null);
+
+        Cursor c = db.rawQuery(String.format("SELECT * FROM day_info WHERE city_id = %s", cityId), null);
         while (c.moveToNext()) {
             DayInfo dayInfo = new DayInfo();
 
@@ -131,7 +134,9 @@ public class DBManager {
 
             dayInfoList.add(dayInfo);
         }
+
         c.close();
+
         return dayInfoList;
     }
 
