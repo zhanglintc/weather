@@ -1,6 +1,5 @@
 package co.zhanglintc.weather.dao;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -74,12 +73,21 @@ public class DBManager {
     }
 
     /**
+     * delete cityInfo
+     *
+     * @param cityId
+     */
+    public void deleteCityInfo(String cityId) {
+        db.delete("city_info", "city_id = ?", new String[]{String.valueOf(cityId)});
+    }
+
+    /**
      * delete dayInfo
      *
-     * @param city
+     * @param cityId
      */
-    public void deleteDayInfo(String city) {
-        db.delete("day_info", "city_id = ?", new String[]{String.valueOf(city)});
+    public void deleteDayInfo(String cityId) {
+        db.delete("day_info", "city_id = ?", new String[]{String.valueOf(cityId)});
     }
 
     /**
