@@ -34,7 +34,7 @@ public class DBManager {
         db.beginTransaction();  //开始事务
         try {
             for (DayInfo dayInfo : dayInfoList) {
-                db.execSQL("INSERT INTO day_info VALUES('?', '?', '?', '?', '?', '?', '?')",
+                db.execSQL("INSERT INTO day_info VALUES(?, ?, ?, ?, ?, ?, ?)",
                         new Object[]{dayInfo.getCityId(), dayInfo.getDate(), dayInfo.getTime(), dayInfo.getWeek(), dayInfo.getTempC(), dayInfo.getDesc(), t});
             }
             db.setTransactionSuccessful();  //设置事务成功完成
@@ -51,7 +51,7 @@ public class DBManager {
     public void addCityInfo(CityInfo cityInfo) {
         db.beginTransaction();  //开始事务
         try {
-            db.execSQL("INSERT INTO city_info VALUES( '?', '?', '?')",
+            db.execSQL("INSERT INTO city_info VALUES( ?, ?, ?)",
                     new Object[]{cityInfo.getCityId(), cityInfo.getCityName(), cityInfo.getCityNation()});
             db.setTransactionSuccessful();  //设置事务成功完成
         } finally {

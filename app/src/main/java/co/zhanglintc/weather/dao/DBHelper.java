@@ -26,10 +26,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 "  [city_nation] CHAR(50), \n" +
                 "  CONSTRAINT [] PRIMARY KEY ([city_id]))" );
 
-        // 这个地方的day应该改成date吧...
         db.execSQL("CREATE TABLE IF NOT EXISTS day_info" +
                 "(  [city_id] CHAR(15) NOT NULL ON CONFLICT ROLLBACK, \n" +
-                "  [day] CHAR(10) NOT NULL ON CONFLICT ROLLBACK, \n" +
+                "  [day] CHAR(10) , \n" +
                 "  [time] CHAR(8), \n" +
                 "  [week] VARCHAR2(9), \n" +
                 "  [tempc] VARCHAR NOT NULL ON CONFLICT ROLLBACK, \n" +
