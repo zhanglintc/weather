@@ -132,7 +132,7 @@ public class BGupdater extends Thread {
             Log.i("db", String.valueOf(cityInfo.getCityId()));
             Log.i("db", cityInfo.getCityName());
             Log.i("db", cityInfo.getCityNation());
-            // TODO: 2015/12/03 这里调用报错, 需要修复 => to yanbin
+
             mgr.addCityInfo(cityInfo);
             mgr.deleteDayInfo(1);
 
