@@ -60,7 +60,21 @@ public class DBManager {
     }
 
     /**
-     * delete old dayInfo
+     * get MaxCityId
+     */
+    public int selectMaxCityId() {
+        Cursor c = db.rawQuery("SELECT MAX(city_id) AS max_city_id FROM city_info", null);
+
+        int maxCityId = 0;
+        while (c.moveToNext()) {
+            maxCityId = c.getInt(c.getColumnIndex("max_city_id"));
+        }
+
+        return maxCityId;
+    }
+
+    /**
+     * delete dayInfo
      *
      * @param city
      */
@@ -74,9 +88,10 @@ public class DBManager {
      * @return cityInfo
      */
     public CityInfo queryCityInfo(String cityId) {
+        CityInfo cityInfo = new CityInfo();
+
         Cursor c = db.rawQuery("SELECT * FROM city_info WHERE city_id = '" + cityId + "'", null);
 
-        CityInfo cityInfo = new CityInfo();
         while (c.moveToNext()) {
             cityInfo.setCityName(c.getString(c.getColumnIndex("city_name")));
             cityInfo.setCityNation(c.getString(c.getColumnIndex("city_nation")));
@@ -100,8 +115,8 @@ public class DBManager {
             dayInfo.setDate(c.getString(c.getColumnIndex("day")));
             dayInfo.setTime(c.getString(c.getColumnIndex("time")));
             dayInfo.setWeek(c.getString(c.getColumnIndex("week")));
-            dayInfo.setDesc(c.getString(c.getColumnIndex("tempc")));
-            dayInfo.setTime(c.getString(c.getColumnIndex("desc")));
+            dayInfo.setDesc(c.getString(c.getColumnIndex("desc")));
+            dayInfo.setTempC(c.getString(c.getColumnIndex("tempC")));
 
             dayInfoList.add(dayInfo);
         }

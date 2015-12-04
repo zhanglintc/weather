@@ -31,9 +31,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 "  [day] CHAR(10) , \n" +
                 "  [time] CHAR(8), \n" +
                 "  [week] VARCHAR2(9), \n" +
-                "  [tempc] VARCHAR NOT NULL ON CONFLICT ROLLBACK, \n" +
+                "  [tempC] VARCHAR NOT NULL ON CONFLICT ROLLBACK, \n" +
                 "  [desc] VARCHAR2(20), \n" +
-                "  [updatetime] TIMESTAMP NOT NULL ON CONFLICT ROLLBACK)");
+                "  [updateTime] TIMESTAMP NOT NULL ON CONFLICT ROLLBACK)");
     }
 
     //如果DATABASE_VERSION值被改为2,系统发现现有数据库版本不同,即会调用onUpgrade
