@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 
 /**
  * Created by yanbin on 2015/12/02.
@@ -28,7 +28,7 @@ public class DBManager {
      *
      * @param dayInfoList
      */
-    public void addDayInfo(List<DayInfo> dayInfoList) {
+    public void addDayInfo(ArrayList<DayInfo> dayInfoList) {
         Timestamp t = new Timestamp(new Date().getTime());
         db.beginTransaction();  //开始事务
         try {
@@ -116,9 +116,9 @@ public class DBManager {
      *
      * @return List<DayInfo>
      */
-    public List<DayInfo> queryDayInfo() {
-        ArrayList<DayInfo> dayInfoList = new ArrayList<DayInfo>();
-        Cursor c = db.rawQuery("SELECT * FROM day_info ORDER BY updatetime DESC LIMIT 4", null);
+    public ArrayList<DayInfo> queryDayInfo() {
+        ArrayList<DayInfo> dayInfoList = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT * FROM day_info ORDER BY updateTime DESC LIMIT 4", null);
         while (c.moveToNext()) {
             DayInfo dayInfo = new DayInfo();
 
