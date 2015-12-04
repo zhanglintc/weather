@@ -17,53 +17,53 @@ import co.zhanglintc.weather.dao.DayInfo;
  * Created by zhanglin on 2015/11/06.
  */
 public class BGupdater extends Thread {
-    Activity activity;
+    private Activity activity;
 
-    String apiUrl;
+    private String apiUrl;
 
-    TextView cityNameView;
-    TextView curTimeView;
-    TextView curTempCView;
-    TextView curDescView;
-    TextView curDateView;
-    TextView curWeekView;
-    TextView nd1WeekView;
-    TextView nd1TempCView;
-    TextView nd1DescView;
-    TextView nd2WeekView;
-    TextView nd2TempCView;
-    TextView nd2DescView;
-    TextView nd3WeekView;
-    TextView nd3TempCView;
-    TextView nd3DescView;
+    private TextView cityNameView;
+    private TextView curTimeView;
+    private TextView curTempCView;
+    private TextView curDescView;
+    private TextView curDateView;
+    private TextView curWeekView;
+    private TextView nd1WeekView;
+    private TextView nd1TempCView;
+    private TextView nd1DescView;
+    private TextView nd2WeekView;
+    private TextView nd2TempCView;
+    private TextView nd2DescView;
+    private TextView nd3WeekView;
+    private TextView nd3TempCView;
+    private TextView nd3DescView;
 
-    String rawJsonData;
-    String sysLang;
+    // private String rawJsonData;
+    private String sysLang;
 
-    String curTempC;
-    String curDesc;
-    String cityName;
-    String curWeek;
+    private String curTempC;
+    private String curDesc;
+    private String cityName;
+    private String curWeek;
 
-    String nd1Week;
-    String nd2Week;
-    String nd3Week;
-    String nd1TempC;
-    String nd2TempC;
-    String nd3TempC;
-    String nd1Desc;
-    String nd2Desc;
-    String nd3Desc;
+    private String nd1Week;
+    private String nd2Week;
+    private String nd3Week;
+    private String nd1TempC;
+    private String nd2TempC;
+    private String nd3TempC;
+    private String nd1Desc;
+    private String nd2Desc;
+    private String nd3Desc;
 
-    String sysDate;
-    String sysTime;
+    private String sysDate;
+    private String sysTime;
 
     private DBManager dbMgr;
 
     BGupdater(Activity activity, String apiUrl) {
         this.activity = activity;
         this.apiUrl = apiUrl;
-        rawJsonData = activity.getResources().getString(R.string.rawJsonData);
+        // this.rawJsonData = activity.getResources().getString(R.string.rawJsonData);
 
         dbMgr = new DBManager(activity);
     }
