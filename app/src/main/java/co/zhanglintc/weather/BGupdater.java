@@ -19,6 +19,8 @@ import co.zhanglintc.weather.dao.DayInfo;
 public class BGupdater extends Thread {
     Activity activity;
 
+    String apiUrl;
+
     TextView cityNameView;
     TextView curTimeView;
     TextView curTempCView;
@@ -37,9 +39,6 @@ public class BGupdater extends Thread {
 
     String rawJsonData;
     String sysLang;
-    String cqURL;
-    String bjURL;
-    String shURL;
 
     String curTempC;
     String curDesc;
@@ -59,24 +58,20 @@ public class BGupdater extends Thread {
     String sysDate;
     String sysTime;
 
-    private DBManager mgr;
+    private DBManager dbMgr;
 
-    BGupdater(Activity activity) {
+    BGupdater(Activity activity, String apiUrl) {
         this.activity = activity;
-        this.cqURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
-        this.bjURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=beijing&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
-        this.shURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=shanghai&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
+        this.apiUrl = apiUrl;
         rawJsonData = activity.getResources().getString(R.string.rawJsonData);
 
-        mgr = new DBManager(activity);
+        dbMgr = new DBManager(activity);
     }
 
     public void run() {
         Log.i("http", "Getting weather data...");
         httpHandler http = new httpHandler();
-        String cqWeather = http.get(cqURL);
-//        String bjWeather = http.get(bjURL);
-//        String shWeather = http.get(shURL);
+        String cqWeather = http.get(apiUrl);
 
         final ArrayList<DayInfo> dayInfoList = new ArrayList<DayInfo>();
 
@@ -133,8 +128,8 @@ public class BGupdater extends Thread {
             Log.i("db", cityInfo.getCityName());
             Log.i("db", cityInfo.getCityNation());
 
-            mgr.addCityInfo(cityInfo);
-            mgr.deleteDayInfo(1);
+            dbMgr.addCityInfo(cityInfo);
+            dbMgr.deleteCityInfo(1);
 
             // 当天天气情况
             DayInfo dayInfo = new DayInfo();

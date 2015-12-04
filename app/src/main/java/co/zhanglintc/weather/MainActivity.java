@@ -5,12 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import com.ant.liao.GifView;
 
+import co.zhanglintc.weather.common.WeatherUtils;
+
 public class MainActivity extends AppCompatActivity {
+
+    String cqURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
+    String bjURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=beijing&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
+    String shURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=shanghai&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
         gifView.setGifImage(R.drawable.welcome);
         gifView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
 
-        new BGupdater(this).start();
+        new BGupdater(this, cqURL).start();
+        new BGupdater(this, bjURL).start();
+        new BGupdater(this, shURL).start();
     }
 
     @Override
@@ -42,12 +49,14 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_refresh) {
-            View view = getWindow().getDecorView().findViewById(android.R.id.content);
+            // View view = getWindow().getDecorView().findViewById(android.R.id.content);
 
             TextView cityNameView = (TextView) findViewById(R.id.cityName);
             Log.i("menu", (String) cityNameView.getText());
 
-            new BGupdater(this).start();
+            new BGupdater(this, cqURL).start();
+            new BGupdater(this, bjURL).start();
+            new BGupdater(this, shURL).start();
             return true;
         }
 
