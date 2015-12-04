@@ -5,7 +5,7 @@ package co.zhanglintc.weather.dao;
  */
 public class DayInfo {
 
-    private String cityId;
+    private int cityId;
 
     private String date;
 
@@ -17,11 +17,11 @@ public class DayInfo {
 
     private String desc;
 
-    public String getCityId() {
+    public int getCityId() {
         return cityId;
     }
 
-    public void setCityId(String cityId) {
+    public void setCityId(int cityId) {
         this.cityId = cityId;
     }
 

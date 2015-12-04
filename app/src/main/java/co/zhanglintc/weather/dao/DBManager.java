@@ -80,7 +80,7 @@ public class DBManager {
      *
      * @param cityId
      */
-    public void deleteCityInfo(String cityId) {
+    public void deleteCityInfo(int cityId) {
         db.delete("city_info", "city_id = ?", new String[]{String.valueOf(cityId)});
     }
 
@@ -89,7 +89,7 @@ public class DBManager {
      *
      * @param cityId
      */
-    public void deleteDayInfo(String cityId) {
+    public void deleteDayInfo(int cityId) {
         db.delete("day_info", "city_id = ?", new String[]{String.valueOf(cityId)});
     }
 
@@ -98,7 +98,7 @@ public class DBManager {
      *
      * @return cityInfo
      */
-    public CityInfo queryCityInfo(String cityId) {
+    public CityInfo queryCityInfo(int cityId) {
         CityInfo cityInfo = new CityInfo();
 
         Cursor c = db.rawQuery(String.format("SELECT * FROM city_info WHERE city_id = '%s'", cityId), null);
@@ -118,14 +118,14 @@ public class DBManager {
      *
      * @return List<DayInfo>
      */
-    public ArrayList<DayInfo> queryDayInfo(String cityId) {
+    public ArrayList<DayInfo> queryDayInfo(int cityId) {
         ArrayList<DayInfo> dayInfoList = new ArrayList<>();
 
         Cursor c = db.rawQuery(String.format("SELECT * FROM day_info WHERE city_id = %s", cityId), null);
         while (c.moveToNext()) {
             DayInfo dayInfo = new DayInfo();
 
-            dayInfo.setCityId(c.getString(c.getColumnIndex("city_id")));
+            dayInfo.setCityId(cityId);
             dayInfo.setDate(c.getString(c.getColumnIndex("day")));
             dayInfo.setTime(c.getString(c.getColumnIndex("time")));
             dayInfo.setWeek(c.getString(c.getColumnIndex("week")));

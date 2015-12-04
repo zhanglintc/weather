@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "  CONSTRAINT [] PRIMARY KEY ([city_id]))" );
 
         db.execSQL("CREATE TABLE IF NOT EXISTS day_info" +
-                "(  [city_id] CHAR(15) NOT NULL ON CONFLICT ROLLBACK, \n" +
+                "( [city_id] CHAR(15) NOT NULL ON CONFLICT ROLLBACK, \n" +
                 "  [day] CHAR(10) , \n" +
                 "  [time] CHAR(8), \n" +
                 "  [week] VARCHAR2(9), \n" +

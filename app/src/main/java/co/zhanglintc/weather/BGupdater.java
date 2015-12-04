@@ -120,7 +120,7 @@ public class BGupdater extends Thread {
             nd3TempC = wp.getNextNthDayCompleteTempC(3);
 
             CityInfo cityInfo = new CityInfo();
-            cityInfo.setCityId("1");
+            cityInfo.setCityId(1);
             try {
                 cityInfo.setCityName(cityName.split(",")[0].trim());
                 cityInfo.setCityNation(cityName.split(",")[1].trim());
@@ -129,15 +129,16 @@ public class BGupdater extends Thread {
                 cityInfo.setCityName(cityName.trim());
                 cityInfo.setCityNation(""); // set a null string
             }
-            Log.i("db", cityInfo.getCityId());
+            Log.i("db", String.valueOf(cityInfo.getCityId()));
             Log.i("db", cityInfo.getCityName());
             Log.i("db", cityInfo.getCityNation());
             // TODO: 2015/12/03 这里调用报错, 需要修复 => to yanbin
-            // mgr.addCityInfo(cityInfo);
+            mgr.addCityInfo(cityInfo);
+            mgr.deleteDayInfo(1);
 
             // 当天天气情况
             DayInfo dayInfo = new DayInfo();
-            dayInfo.setCityId("xxx");
+            dayInfo.setCityId(1);
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(curWeek);
@@ -147,7 +148,7 @@ public class BGupdater extends Thread {
 
             // 后一天天气情况
             dayInfo = new DayInfo();
-            dayInfo.setCityId("xxx");
+            dayInfo.setCityId(1);
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(nd1Week);
@@ -157,7 +158,7 @@ public class BGupdater extends Thread {
 
             // 后二天天气情况
             dayInfo = new DayInfo();
-            dayInfo.setCityId("xxx");
+            dayInfo.setCityId(1);
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(nd2Week);
@@ -167,7 +168,7 @@ public class BGupdater extends Thread {
 
             // 后三天天气情况
             dayInfo = new DayInfo();
-            dayInfo.setCityId("xxx");
+            dayInfo.setCityId(1);
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(nd3Week);
