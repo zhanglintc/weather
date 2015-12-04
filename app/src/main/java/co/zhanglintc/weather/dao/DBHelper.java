@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS city_info (\n" +
                 "  [city_id] CHAR(15) NOT NULL ON CONFLICT ROLLBACK REFERENCES [city_info]([city_id]), \n" +
-                "  [city_Name] VARCHAR2(50) NOT NULL ON CONFLICT ROLLBACK, \n" +
+                "  [city_name] VARCHAR2(50) NOT NULL ON CONFLICT ROLLBACK, \n" +
                 "  [city_nation] CHAR(50), \n" +
                 "  CONSTRAINT [] PRIMARY KEY ([city_id]))" );
 
