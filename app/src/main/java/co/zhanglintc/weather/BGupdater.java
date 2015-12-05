@@ -20,6 +20,7 @@ public class BGupdater extends Thread {
     private Activity activity;
 
     private String apiUrl;
+    private int cityId;
 
     private TextView cityNameView;
     private TextView curTimeView;
@@ -58,14 +59,15 @@ public class BGupdater extends Thread {
     private String sysDate;
     private String sysTime;
 
-    private DBManager dbMgr;
+//    private DBManager dbMgr;
 
-    BGupdater(Activity activity, String apiUrl) {
+    BGupdater(Activity activity, String apiUrl, int cityId) {
         this.activity = activity;
         this.apiUrl = apiUrl;
+        this.cityId = cityId;
         // this.rawJsonData = activity.getResources().getString(R.string.rawJsonData);
 
-        dbMgr = new DBManager(activity);
+//        dbMgr = new DBManager(activity);
     }
 
     public void run() {
@@ -115,7 +117,7 @@ public class BGupdater extends Thread {
             nd3TempC = wp.getNextNthDayCompleteTempC(3);
 
             CityInfo cityInfo = new CityInfo();
-            cityInfo.setCityId(1);
+//            cityInfo.setCityId(cityId);
             try {
                 cityInfo.setCityName(cityName.split(",")[0].trim());
                 cityInfo.setCityNation(cityName.split(",")[1].trim());
@@ -124,16 +126,17 @@ public class BGupdater extends Thread {
                 cityInfo.setCityName(cityName.trim());
                 cityInfo.setCityNation(""); // set a null string
             }
-            Log.i("db", String.valueOf(cityInfo.getCityId()));
-            Log.i("db", cityInfo.getCityName());
-            Log.i("db", cityInfo.getCityNation());
-
-            dbMgr.addCityInfo(cityInfo);
-            dbMgr.deleteCityInfo(1);
+//            Log.i("db", String.valueOf(cityInfo.getCityId()));
+//            Log.i("db", cityInfo.getCityName());
+//            Log.i("db", cityInfo.getCityNation());
+//
+//            dbMgr.addCityInfo(cityInfo);
+//            dbMgr.deleteCityInfo(1);
+//            dbMgr.closeDB();
 
             // 当天天气情况
             DayInfo dayInfo = new DayInfo();
-            dayInfo.setCityId(1);
+            dayInfo.setCityId(cityId);
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(curWeek);
@@ -143,7 +146,7 @@ public class BGupdater extends Thread {
 
             // 后一天天气情况
             dayInfo = new DayInfo();
-            dayInfo.setCityId(1);
+            dayInfo.setCityId(cityId);
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(nd1Week);
@@ -153,7 +156,7 @@ public class BGupdater extends Thread {
 
             // 后二天天气情况
             dayInfo = new DayInfo();
-            dayInfo.setCityId(1);
+            dayInfo.setCityId(cityId);
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(nd2Week);
@@ -163,13 +166,25 @@ public class BGupdater extends Thread {
 
             // 后三天天气情况
             dayInfo = new DayInfo();
-            dayInfo.setCityId(1);
+            dayInfo.setCityId(cityId);
             dayInfo.setDate(sysDate);
             dayInfo.setTime(sysTime);
             dayInfo.setWeek(nd3Week);
             dayInfo.setTempC(nd3TempC);
             dayInfo.setDesc(nd3Desc);
             dayInfoList.add(dayInfo);
+
+            DBManager dbMgr = new DBManager(activity);
+            dbMgr.addDayInfo(dayInfoList);
+            ArrayList<DayInfo> dl = dbMgr.queryDayInfo(cityId);
+            for (int i = 0; i < dl.size(); i++) {
+                Log.i("db", String.valueOf(dl.get(i).getCityId()));
+                Log.i("db", dl.get(i).getWeek());
+                Log.i("db", dl.get(i).getDate());
+                Log.i("db", dl.get(i).getDesc());
+                Log.i("db", dl.get(i).getTempC());
+                Log.i("db", dl.get(i).getTime());
+            }
 
             Log.i("http", "Current temperature: " + wp.getCurTemp_C());
             Log.i("http", "Current condition: " + curDesc);

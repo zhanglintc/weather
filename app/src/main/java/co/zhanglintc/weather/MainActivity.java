@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         gifView.setGifImage(R.drawable.welcome);
         gifView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
 
-        new BGupdater(this, cqURL).start();
-        new BGupdater(this, bjURL).start();
-        new BGupdater(this, shURL).start();
+        new BGupdater(this, cqURL, 1).start();
+        new BGupdater(this, bjURL, 2).start();
+        new BGupdater(this, shURL, 3).start();
     }
 
     @Override
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
             TextView cityNameView = (TextView) findViewById(R.id.cityName);
             Log.i("menu", (String) cityNameView.getText());
 
-            new BGupdater(this, cqURL).start();
-            new BGupdater(this, bjURL).start();
-            new BGupdater(this, shURL).start();
+            new BGupdater(this, cqURL, 1).start();
+            new BGupdater(this, bjURL, 2).start();
+            new BGupdater(this, shURL, 3).start();
             return true;
         }
 
