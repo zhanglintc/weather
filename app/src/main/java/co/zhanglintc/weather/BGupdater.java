@@ -16,27 +16,12 @@ import co.zhanglintc.weather.dao.DayInfo;
 /**
  * Created by zhanglin on 2015/11/06.
  */
+// TODO: 2015/12/05 这部分希望改造成为纯粹的取数据到数据库, 然后WeatherDisplay纯粹的从数据库取数据然后显示 => zhanglin 
 public class BGupdater extends Thread {
     private Activity activity;
 
     private String apiUrl;
     private int cityId;
-
-    private TextView cityNameView;
-    private TextView curTimeView;
-    private TextView curTempCView;
-    private TextView curDescView;
-    private TextView curDateView;
-    private TextView curWeekView;
-    private TextView nd1WeekView;
-    private TextView nd1TempCView;
-    private TextView nd1DescView;
-    private TextView nd2WeekView;
-    private TextView nd2TempCView;
-    private TextView nd2DescView;
-    private TextView nd3WeekView;
-    private TextView nd3TempCView;
-    private TextView nd3DescView;
 
     // private String rawJsonData;
     private String sysLang;
@@ -59,7 +44,6 @@ public class BGupdater extends Thread {
     private String sysDate;
     private String sysTime;
 
-//    private DBManager dbMgr;
 
     BGupdater(Activity activity, String apiUrl, int cityId) {
         this.activity = activity;
@@ -116,24 +100,6 @@ public class BGupdater extends Thread {
             nd2TempC = wp.getNextNthDayCompleteTempC(2);
             nd3TempC = wp.getNextNthDayCompleteTempC(3);
 
-            CityInfo cityInfo = new CityInfo();
-//            cityInfo.setCityId(cityId);
-            try {
-                cityInfo.setCityName(cityName.split(",")[0].trim());
-                cityInfo.setCityNation(cityName.split(",")[1].trim());
-            } catch (ArrayIndexOutOfBoundsException e) {
-                Log.i("db_err", e.toString());
-                cityInfo.setCityName(cityName.trim());
-                cityInfo.setCityNation(""); // set a null string
-            }
-//            Log.i("db", String.valueOf(cityInfo.getCityId()));
-//            Log.i("db", cityInfo.getCityName());
-//            Log.i("db", cityInfo.getCityNation());
-//
-//            dbMgr.addCityInfo(cityInfo);
-//            dbMgr.deleteCityInfo(1);
-//            dbMgr.closeDB();
-
             // 当天天气情况
             DayInfo dayInfo = new DayInfo();
             dayInfo.setCityId(cityId);
@@ -174,7 +140,7 @@ public class BGupdater extends Thread {
             dayInfo.setDesc(nd3Desc);
             dayInfoList.add(dayInfo);
 
-            DBManager dbMgr = new DBManager(activity);
+            final DBManager dbMgr = new DBManager(activity);
             dbMgr.addDayInfo(dayInfoList);
             ArrayList<DayInfo> dl = dbMgr.queryDayInfo(cityId);
             for (int i = 0; i < dl.size(); i++) {
@@ -185,6 +151,8 @@ public class BGupdater extends Thread {
                 Log.i("db", dl.get(i).getTempC());
                 Log.i("db", dl.get(i).getTime());
             }
+
+            final CityInfo cityInfo = dbMgr.queryCityInfo(cityId);
 
             Log.i("http", "Current temperature: " + wp.getCurTemp_C());
             Log.i("http", "Current condition: " + curDesc);
@@ -211,60 +179,13 @@ public class BGupdater extends Thread {
                         public void run() {
                             activity.setContentView(R.layout.activity_main);
 
-                            setTextView(dayInfoList);
+                            WeatherDisplay wd = new WeatherDisplay(activity);
+                            wd.setTextView(cityInfo, dayInfoList);
                         }
                     }
             );
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-    private void setTextView(ArrayList<DayInfo> dayInfoList){
-
-        // TextView
-        cityNameView = (TextView) activity.findViewById(R.id.cityName);
-        curTimeView = (TextView) activity.findViewById(R.id.curTime);
-        curTempCView = (TextView) activity.findViewById(R.id.curTempC);
-        curDescView = (TextView) activity.findViewById(R.id.curDesc);
-        curDateView = (TextView) activity.findViewById(R.id.curDate);
-        curWeekView = (TextView) activity.findViewById(R.id.curWeek);
-
-        nd1WeekView = (TextView) activity.findViewById(R.id.nd1Week);
-        nd1TempCView = (TextView) activity.findViewById(R.id.nd1TempC);
-        nd1DescView = (TextView) activity.findViewById(R.id.nd1Desc);
-
-        nd2WeekView = (TextView) activity.findViewById(R.id.nd2Week);
-        nd2TempCView = (TextView) activity.findViewById(R.id.nd2TempC);
-        nd2DescView = (TextView) activity.findViewById(R.id.nd2Desc);
-
-        nd3WeekView = (TextView) activity.findViewById(R.id.nd3Week);
-        nd3TempCView = (TextView) activity.findViewById(R.id.nd3TempC);
-        nd3DescView = (TextView) activity.findViewById(R.id.nd3Desc);
-
-        // Set Text
-        cityNameView.setText(cityName);
-        curDateView.setText(sysDate);
-        curTimeView.setText(activity.getString(R.string.updated) + " " + sysTime);
-
-        // 当天天气状况
-        curTempCView.setText(dayInfoList.get(0).getTempC());
-        curDescView.setText(dayInfoList.get(0).getDesc());
-        curWeekView.setText(dayInfoList.get(0).getWeek());
-
-        // 后一天天气情况
-        nd1TempCView.setText(dayInfoList.get(1).getTempC());
-        nd1DescView.setText(dayInfoList.get(1).getDesc());
-        nd1WeekView.setText(dayInfoList.get(1).getWeek());
-
-        // 后二天天气情况
-        nd2TempCView.setText(dayInfoList.get(2).getTempC());
-        nd2DescView.setText(dayInfoList.get(2).getDesc());
-        nd2WeekView.setText(dayInfoList.get(2).getWeek());
-
-        // 后三天天气情况
-        nd3TempCView.setText(dayInfoList.get(3).getTempC());
-        nd3DescView.setText(dayInfoList.get(3).getDesc());
-        nd3WeekView.setText(dayInfoList.get(3).getWeek());
     }
 }

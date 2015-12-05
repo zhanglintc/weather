@@ -30,7 +30,8 @@ public class DBManager {
         Timestamp t = new Timestamp(new Date().getTime());
         db.beginTransaction();
         try {
-            db.execSQL("DELETE FROM day_info"); // 插入数据前清空day_info表
+            // TODO: 2015/12/05 这里没有清空数据表, 会导致数据库越来越大, 需要改进(应该是每次更新) =>yanbin #1
+            // db.execSQL("DELETE FROM day_info"); // 插入数据前清空day_info表
             for (DayInfo dayInfo : dayInfoList) {
                 db.execSQL("INSERT INTO day_info VALUES(?, ?, ?, ?, ?, ?, ?)",
                         new Object[]{dayInfo.getCityId(), dayInfo.getDate(), dayInfo.getTime(), dayInfo.getWeek(), dayInfo.getTempC(), dayInfo.getDesc(), t});
@@ -92,6 +93,20 @@ public class DBManager {
     }
 
     /**
+     * clear the whole city_info table
+     */
+    public void clearCityInfoAll() {
+        db.execSQL("DELETE FROM city_info");
+    }
+
+    /**
+     * clear the whole day_info table
+     */
+    public void clearDayInfoAll() {
+        db.execSQL("DELETE FROM day_info");
+    }
+
+    /**
      * query a cityInfo, return cityInfo
      *
      * @return cityInfo
@@ -119,7 +134,8 @@ public class DBManager {
     public ArrayList<DayInfo> queryDayInfo(int cityId) {
         ArrayList<DayInfo> dayInfoList = new ArrayList<>();
 
-        Cursor c = db.rawQuery(String.format("SELECT * FROM day_info WHERE city_id = %s", cityId), null);
+        // TODO: 2015/12/05 #1同件, 因为数据库没有清空, 所以只能取最新4个数据来暂时解决 => yanbin
+        Cursor c = db.rawQuery(String.format("SELECT * FROM day_info WHERE city_id = %s ORDER BY updateTime DESC LIMIT 4", cityId), null);
         while (c.moveToNext()) {
             DayInfo dayInfo = new DayInfo();
 

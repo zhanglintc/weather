@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.ant.liao.GifView;
 
 import co.zhanglintc.weather.common.WeatherUtils;
+import co.zhanglintc.weather.dao.CityInfo;
+import co.zhanglintc.weather.dao.DBManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +30,28 @@ public class MainActivity extends AppCompatActivity {
         GifView gifView = (GifView) super.findViewById(R.id.gifView);
         gifView.setGifImage(R.drawable.welcome);
         gifView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
+
+        DBManager dbMgr = new DBManager(this);
+        dbMgr.clearCityInfoAll();
+        CityInfo cityCQ = new CityInfo();
+        CityInfo cityBJ = new CityInfo();
+        CityInfo citySH = new CityInfo();
+
+        cityCQ.setCityId(1);
+        cityCQ.setCityName("Chongqing");
+        cityCQ.setCityNation("China");
+
+        cityBJ.setCityId(2);
+        cityBJ.setCityName("Beijing");
+        cityBJ.setCityNation("China");
+
+        citySH.setCityId(3);
+        citySH.setCityName("Shanghai");
+        citySH.setCityNation("China");
+
+        dbMgr.addCityInfo(cityCQ);
+        dbMgr.addCityInfo(cityBJ);
+        dbMgr.addCityInfo(citySH);
 
         new BGupdater(this, cqURL, 1).start();
         new BGupdater(this, bjURL, 2).start();
@@ -58,6 +82,21 @@ public class MainActivity extends AppCompatActivity {
             new BGupdater(this, bjURL, 2).start();
             new BGupdater(this, shURL, 3).start();
             return true;
+        }
+
+        if (id == R.id.action_chongqing) {
+            WeatherDisplayer wd = new WeatherDisplayer(this);
+            wd.displayInfo(1);
+        }
+
+        if (id == R.id.action_beijing) {
+            WeatherDisplayer wd = new WeatherDisplayer(this);
+            wd.displayInfo(2);
+        }
+
+        if (id == R.id.action_shanghai) {
+            WeatherDisplayer wd = new WeatherDisplayer(this);
+            wd.displayInfo(3);
         }
 
         //noinspection SimplifiableIfStatement
