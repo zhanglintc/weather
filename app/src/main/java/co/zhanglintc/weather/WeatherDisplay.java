@@ -29,9 +29,11 @@ public class WeatherDisplay {
 
         activity.setContentView(R.layout.activity_main);
         setTextView(cityInfo, dayInfoList);
+
+        dbMgr.closeDB();
     }
 
-    public void setTextView(CityInfo cityInfo, ArrayList<DayInfo> dayInfoList){
+    private void setTextView(CityInfo cityInfo, ArrayList<DayInfo> dayInfoList){
         // TextView
         TextView cityNameView = (TextView) activity.findViewById(R.id.cityName);
         TextView curTimeView = (TextView) activity.findViewById(R.id.curTime);

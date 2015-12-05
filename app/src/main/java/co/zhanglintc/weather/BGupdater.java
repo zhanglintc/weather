@@ -22,6 +22,7 @@ public class BGupdater extends Thread {
 
     private String apiUrl;
     private int cityId;
+    private long timeStamp;
 
     // private String rawJsonData;
     private String sysLang;
@@ -45,10 +46,11 @@ public class BGupdater extends Thread {
     private String sysTime;
 
 
-    BGupdater(Activity activity, String apiUrl, int cityId) {
+    BGupdater(Activity activity, String apiUrl, int cityId, long timeStamp) {
         this.activity = activity;
         this.apiUrl = apiUrl;
         this.cityId = cityId;
+        this.timeStamp = timeStamp;
         // this.rawJsonData = activity.getResources().getString(R.string.rawJsonData);
 
 //        dbMgr = new DBManager(activity);
@@ -58,8 +60,6 @@ public class BGupdater extends Thread {
         Log.i("http", "Getting weather data...");
         httpHandler http = new httpHandler();
         String cqWeather = http.get(apiUrl);
-
-        final ArrayList<DayInfo> dayInfoList = new ArrayList<DayInfo>();
 
         try {
 
@@ -99,6 +99,8 @@ public class BGupdater extends Thread {
             nd1TempC = wp.getNextNthDayCompleteTempC(1);
             nd2TempC = wp.getNextNthDayCompleteTempC(2);
             nd3TempC = wp.getNextNthDayCompleteTempC(3);
+
+            ArrayList<DayInfo> dayInfoList = new ArrayList<>();
 
             // 当天天气情况
             DayInfo dayInfo = new DayInfo();
@@ -140,19 +142,19 @@ public class BGupdater extends Thread {
             dayInfo.setDesc(nd3Desc);
             dayInfoList.add(dayInfo);
 
-            final DBManager dbMgr = new DBManager(activity);
-            dbMgr.addDayInfo(dayInfoList);
-            ArrayList<DayInfo> dl = dbMgr.queryDayInfo(cityId);
-            for (int i = 0; i < dl.size(); i++) {
-                Log.i("db", String.valueOf(dl.get(i).getCityId()));
-                Log.i("db", dl.get(i).getWeek());
-                Log.i("db", dl.get(i).getDate());
-                Log.i("db", dl.get(i).getDesc());
-                Log.i("db", dl.get(i).getTempC());
-                Log.i("db", dl.get(i).getTime());
-            }
+            DBManager dbMgr = new DBManager(activity);
+            dbMgr.addDayInfo(dayInfoList, timeStamp);
+            dbMgr.closeDB();
 
-            final CityInfo cityInfo = dbMgr.queryCityInfo(cityId);
+//            ArrayList<DayInfo> dl = dbMgr.queryDayInfo(cityId);
+//            for (int i = 0; i < dl.size(); i++) {
+//                Log.i("db", String.valueOf(dl.get(i).getCityId()));
+//                Log.i("db", dl.get(i).getWeek());
+//                Log.i("db", dl.get(i).getDate());
+//                Log.i("db", dl.get(i).getDesc());
+//                Log.i("db", dl.get(i).getTempC());
+//                Log.i("db", dl.get(i).getTime());
+//            }
 
             Log.i("http", "Current temperature: " + wp.getCurTemp_C());
             Log.i("http", "Current condition: " + curDesc);
@@ -177,10 +179,8 @@ public class BGupdater extends Thread {
                     new Runnable() {
                         @Override
                         public void run() {
-                            activity.setContentView(R.layout.activity_main);
-
                             WeatherDisplay wd = new WeatherDisplay(activity);
-                            wd.setTextView(cityInfo, dayInfoList);
+                            wd.displayInfo(cityId);
                         }
                     }
             );

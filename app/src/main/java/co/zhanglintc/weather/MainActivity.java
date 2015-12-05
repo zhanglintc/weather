@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         DBManager dbMgr = new DBManager(this);
         dbMgr.clearCityInfoAll();
+
         CityInfo cityCQ = new CityInfo();
         CityInfo cityBJ = new CityInfo();
         CityInfo citySH = new CityInfo();
@@ -53,9 +54,12 @@ public class MainActivity extends AppCompatActivity {
         dbMgr.addCityInfo(cityBJ);
         dbMgr.addCityInfo(citySH);
 
-        new BGupdater(this, cqURL, 1).start();
-        new BGupdater(this, bjURL, 2).start();
-        new BGupdater(this, shURL, 3).start();
+        dbMgr.closeDB();
+
+        long ts = System.currentTimeMillis();
+        new BGupdater(this, cqURL, 1, ts).start();
+        new BGupdater(this, bjURL, 2, ts).start();
+        new BGupdater(this, shURL, 3, ts).start();
     }
 
     @Override
@@ -78,9 +82,10 @@ public class MainActivity extends AppCompatActivity {
             TextView cityNameView = (TextView) findViewById(R.id.cityName);
             Log.i("menu", (String) cityNameView.getText());
 
-            new BGupdater(this, cqURL, 1).start();
-            new BGupdater(this, bjURL, 2).start();
-            new BGupdater(this, shURL, 3).start();
+            long ts = System.currentTimeMillis();
+            new BGupdater(this, cqURL, 1, ts).start();
+            new BGupdater(this, bjURL, 2, ts).start();
+            new BGupdater(this, shURL, 3, ts).start();
             return true;
         }
 

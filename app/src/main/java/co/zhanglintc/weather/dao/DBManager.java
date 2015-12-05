@@ -15,6 +15,7 @@ import java.util.Date;
 public class DBManager {
 
     private SQLiteDatabase db;
+    private static long ts = 0; // 用于决定是否清空数据库的timeStamp
 
     public DBManager(Context context) {
         DBHelper h = new DBHelper(context);
@@ -26,12 +27,15 @@ public class DBManager {
      *
      * @param dayInfoList
      */
-    public void addDayInfo(ArrayList<DayInfo> dayInfoList) {
+    public void addDayInfo(ArrayList<DayInfo> dayInfoList, long ts) {
         Timestamp t = new Timestamp(new Date().getTime());
         db.beginTransaction();
         try {
-            // TODO: 2015/12/05 这里没有清空数据表, 会导致数据库越来越大, 需要改进(应该是每次更新) =>yanbin #1
-            // db.execSQL("DELETE FROM day_info"); // 插入数据前清空day_info表
+            if (ts != this.ts) {
+                // TODO: 2015/12/05 能否定点只更新相应cityId的数据? => yanbin
+                db.execSQL("DELETE FROM day_info"); // 如果不是同一次存储(时间标签不同), 则插入数据前清空day_info表
+                this.ts = ts;
+            }
             for (DayInfo dayInfo : dayInfoList) {
                 db.execSQL("INSERT INTO day_info VALUES(?, ?, ?, ?, ?, ?, ?)",
                         new Object[]{dayInfo.getCityId(), dayInfo.getDate(), dayInfo.getTime(), dayInfo.getWeek(), dayInfo.getTempC(), dayInfo.getDesc(), t});
@@ -134,7 +138,6 @@ public class DBManager {
     public ArrayList<DayInfo> queryDayInfo(int cityId) {
         ArrayList<DayInfo> dayInfoList = new ArrayList<>();
 
-        // TODO: 2015/12/05 #1同件, 因为数据库没有清空, 所以只能取最新4个数据来暂时解决 => yanbin
         Cursor c = db.rawQuery(String.format("SELECT * FROM day_info WHERE city_id = %s ORDER BY updateTime DESC LIMIT 4", cityId), null);
         while (c.moveToNext()) {
             DayInfo dayInfo = new DayInfo();
