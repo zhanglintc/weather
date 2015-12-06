@@ -15,7 +15,6 @@ import java.util.Date;
 public class DBManager {
 
     private SQLiteDatabase db;
-    private static long ts = 0; // 用于决定是否清空数据库的timeStamp
 
     public DBManager(Context context) {
         DBHelper h = new DBHelper(context);
