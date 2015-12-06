@@ -48,8 +48,6 @@ public class BGupdater extends Thread {
         this.apiUrl = apiUrl;
         this.cityId = cityId;
         // this.rawJsonData = activity.getResources().getString(R.string.rawJsonData);
-
-//        dbMgr = new DBManager(activity);
     }
 
     public void run() {
@@ -141,35 +139,6 @@ public class BGupdater extends Thread {
             DBManager dbMgr = new DBManager(activity);
             dbMgr.addDayInfo(dayInfoList);
             dbMgr.closeDB();
-
-//            ArrayList<DayInfo> dl = dbMgr.queryDayInfo(cityId);
-//            for (int i = 0; i < dl.size(); i++) {
-//                Log.i("db", String.valueOf(dl.get(i).getCityId()));
-//                Log.i("db", dl.get(i).getWeek());
-//                Log.i("db", dl.get(i).getDate());
-//                Log.i("db", dl.get(i).getDesc());
-//                Log.i("db", dl.get(i).getTempC());
-//                Log.i("db", dl.get(i).getTime());
-//            }
-
-            Log.i("http", "Current temperature: " + wp.getCurTemp_C());
-            Log.i("http", "Current condition: " + curDesc);
-            Log.i("http", "Current weather icon URL: " + wp.getCurWeatherIconUrl());
-            Log.i("http", "Requested city: " + wp.getRequestCity());
-            // 登录: http://www.worldweatheronline.com
-            // 选择 FULL FORECAST 确认数据正确性
-            Log.i("http", "D1 date: " + wp.getNextNthDayDate(1));
-            Log.i("http", "D1 high: " + wp.getNextNthDayMaxTempC(1));
-            Log.i("http", "D1 low: " + wp.getNextNthDayMinTempC(1));
-            Log.i("http", "D1 condition: " + wp.getNextNthDayWeatherDesc(1, WeatherUtils.DO_NOT_TRANSLATE));
-            Log.i("http", "D2 date: " + wp.getNextNthDayDate(2));
-            Log.i("http", "D2 high: " + wp.getNextNthDayMaxTempC(2));
-            Log.i("http", "D2 low: " + wp.getNextNthDayMinTempC(2));
-            Log.i("http", "D2 condition: " + wp.getNextNthDayWeatherDesc(2, WeatherUtils.DO_NOT_TRANSLATE));
-            Log.i("http", "D3 date: " + wp.getNextNthDayDate(3));
-            Log.i("http", "D3 high: " + wp.getNextNthDayMaxTempC(3));
-            Log.i("http", "D3 low: " + wp.getNextNthDayMinTempC(3));
-            Log.i("http", "D3 condition: " + wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_NOT_TRANSLATE));
 
             activity.runOnUiThread(
                     new Runnable() {
