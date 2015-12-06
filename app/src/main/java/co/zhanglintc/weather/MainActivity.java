@@ -24,12 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        // setContentView(R.layout.activity_main);
-        setContentView(R.layout.main_loading);
-
-        GifView gifView = (GifView) super.findViewById(R.id.gifView);
-        gifView.setGifImage(R.drawable.welcome);
-        gifView.setGifImageType(GifView.GifImageType.SYNC_DECODER);
+        setContentView(R.layout.activity_main);
 
         DBManager dbMgr = new DBManager(this);
         dbMgr.clearCityInfoAll();
@@ -81,26 +76,32 @@ public class MainActivity extends AppCompatActivity {
             TextView cityNameView = (TextView) findViewById(R.id.cityName);
             Log.i("menu", (String) cityNameView.getText());
 
-            long ts = System.currentTimeMillis();
             new BGupdater(this, cqURL, 1).start();
             new BGupdater(this, bjURL, 2).start();
             new BGupdater(this, shURL, 3).start();
+
             return true;
         }
 
         if (id == R.id.action_chongqing) {
             WeatherDisplay wd = new WeatherDisplay(this);
             wd.displayInfo(1);
+
+            return true;
         }
 
         if (id == R.id.action_beijing) {
             WeatherDisplay wd = new WeatherDisplay(this);
             wd.displayInfo(2);
+
+            return true;
         }
 
         if (id == R.id.action_shanghai) {
             WeatherDisplay wd = new WeatherDisplay(this);
             wd.displayInfo(3);
+
+            return true;
         }
 
         //noinspection SimplifiableIfStatement

@@ -3,6 +3,8 @@ package co.zhanglintc.weather;
 import android.app.Activity;
 import android.util.Log;
 
+import com.ant.liao.GifView;
+
 import org.json.JSONException;
 
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ import co.zhanglintc.weather.dao.DayInfo;
 /**
  * Created by zhanglin on 2015/11/06.
  */
-// TODO: 2015/12/05 这部分希望改造成为纯粹的取数据到数据库, 然后WeatherDisplay纯粹的从数据库取数据然后显示 => zhanglin 
+// TODO: 2015/12/05 这部分希望改造成为纯粹的取数据到数据库, 然后WeatherDisplay纯粹的从数据库取数据然后显示 => to zhanglin
 public class BGupdater extends Thread {
     private Activity activity;
 
@@ -51,6 +53,27 @@ public class BGupdater extends Thread {
     }
 
     public void run() {
+        activity.runOnUiThread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        // TODO: 2015/12/06 这个try主要是应付数据库中完全没有数据的情况, 以后通过其他方式保证数据库不为空后就可以取消这个try => by zhanglin
+                        try {
+                            WeatherDisplay wd = new WeatherDisplay(activity);
+                            wd.displayInfo(cityId);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        GifView gif = (GifView) activity.findViewById(R.id.loc_ref_Icon);
+                        // TODO: 2015/12/06 这里setBackgroundResource(0)表现不太稳定, 原因未知 => to zhanlgin
+                        gif.setBackgroundResource(0);
+                        // TODO: 2015/12/06 可以考虑把gif与静态图的转换挪到WeatherDisplay类中, 通过参数控制 => to zhanglin
+                        gif.setGifImage(R.drawable.refresh);
+                        gif.setGifImageType(GifView.GifImageType.SYNC_DECODER);
+                    }
+                }
+        );
+
         Log.i("http", "Getting weather data...");
         httpHandler http = new httpHandler();
         String cqWeather = http.get(apiUrl);
@@ -140,17 +163,20 @@ public class BGupdater extends Thread {
             dbMgr.addDayInfo(dayInfoList);
             dbMgr.closeDB();
 
-            activity.runOnUiThread(
-                    new Runnable() {
-                        @Override
-                        public void run() {
-                            WeatherDisplay wd = new WeatherDisplay(activity);
-                            wd.displayInfo(cityId);
-                        }
-                    }
-            );
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        activity.runOnUiThread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        WeatherDisplay wd = new WeatherDisplay(activity);
+                        wd.displayInfo(cityId);
+                        GifView gif = (GifView) activity.findViewById(R.id.loc_ref_Icon);
+                        gif.setBackgroundResource(R.drawable.pin_dot);
+                    }
+                }
+        );
     }
 }
