@@ -56,10 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
         dbMgr.closeDB();
 
-        long ts = System.currentTimeMillis();
-        new BGupdater(this, cqURL, 1, ts).start();
-        new BGupdater(this, bjURL, 2, ts).start();
-        new BGupdater(this, shURL, 3, ts).start();
+        new BGupdater(this, cqURL, 1).start();
+        new BGupdater(this, bjURL, 2).start();
+        new BGupdater(this, shURL, 3).start();
     }
 
     @Override
@@ -83,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
             Log.i("menu", (String) cityNameView.getText());
 
             long ts = System.currentTimeMillis();
-            new BGupdater(this, cqURL, 1, ts).start();
-            new BGupdater(this, bjURL, 2, ts).start();
-            new BGupdater(this, shURL, 3, ts).start();
+            new BGupdater(this, cqURL, 1).start();
+            new BGupdater(this, bjURL, 2).start();
+            new BGupdater(this, shURL, 3).start();
             return true;
         }
 

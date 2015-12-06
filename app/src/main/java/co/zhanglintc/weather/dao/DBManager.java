@@ -27,15 +27,11 @@ public class DBManager {
      *
      * @param dayInfoList
      */
-    public void addDayInfo(ArrayList<DayInfo> dayInfoList, long ts) {
+    public void addDayInfo(ArrayList<DayInfo> dayInfoList) {
         Timestamp t = new Timestamp(new Date().getTime());
         db.beginTransaction();
         try {
-            if (ts != this.ts) {
-                // TODO: 2015/12/05 能否定点只更新相应cityId的数据? => yanbin
-                db.execSQL("DELETE FROM day_info"); // 如果不是同一次存储(时间标签不同), 则插入数据前清空day_info表
-                this.ts = ts;
-            }
+            deleteDayInfo(dayInfoList.get(0).getCityId()); // 先清空该city_id的数据再存入
             for (DayInfo dayInfo : dayInfoList) {
                 db.execSQL("INSERT INTO day_info VALUES(?, ?, ?, ?, ?, ?, ?)",
                         new Object[]{dayInfo.getCityId(), dayInfo.getDate(), dayInfo.getTime(), dayInfo.getWeek(), dayInfo.getTempC(), dayInfo.getDesc(), t});

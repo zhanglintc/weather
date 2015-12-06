@@ -2,14 +2,12 @@ package co.zhanglintc.weather;
 
 import android.app.Activity;
 import android.util.Log;
-import android.widget.TextView;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
 
 import co.zhanglintc.weather.common.WeatherUtils;
-import co.zhanglintc.weather.dao.CityInfo;
 import co.zhanglintc.weather.dao.DBManager;
 import co.zhanglintc.weather.dao.DayInfo;
 
@@ -22,7 +20,6 @@ public class BGupdater extends Thread {
 
     private String apiUrl;
     private int cityId;
-    private long timeStamp;
 
     // private String rawJsonData;
     private String sysLang;
@@ -46,11 +43,10 @@ public class BGupdater extends Thread {
     private String sysTime;
 
 
-    BGupdater(Activity activity, String apiUrl, int cityId, long timeStamp) {
+    BGupdater(Activity activity, String apiUrl, int cityId) {
         this.activity = activity;
         this.apiUrl = apiUrl;
         this.cityId = cityId;
-        this.timeStamp = timeStamp;
         // this.rawJsonData = activity.getResources().getString(R.string.rawJsonData);
 
 //        dbMgr = new DBManager(activity);
@@ -143,7 +139,7 @@ public class BGupdater extends Thread {
             dayInfoList.add(dayInfo);
 
             DBManager dbMgr = new DBManager(activity);
-            dbMgr.addDayInfo(dayInfoList, timeStamp);
+            dbMgr.addDayInfo(dayInfoList);
             dbMgr.closeDB();
 
 //            ArrayList<DayInfo> dl = dbMgr.queryDayInfo(cityId);
