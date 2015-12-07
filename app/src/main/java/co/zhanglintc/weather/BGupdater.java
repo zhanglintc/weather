@@ -19,40 +19,36 @@ import co.zhanglintc.weather.dao.DayInfo;
 // TODO: 2015/12/05 这部分希望改造成为纯粹的取数据到数据库, 然后WeatherDisplay纯粹的从数据库取数据然后显示 => to zhanglin
 public class BGupdater extends Thread {
     private Activity activity;
-
     private String apiUrl;
     private int cityId;
-
-    // private String rawJsonData;
-    private String sysLang;
-
-    private String curTempC;
-    private String curDesc;
-    private String cityName;
-    private String curWeek;
-
-    private String nd1Week;
-    private String nd2Week;
-    private String nd3Week;
-    private String nd1TempC;
-    private String nd2TempC;
-    private String nd3TempC;
-    private String nd1Desc;
-    private String nd2Desc;
-    private String nd3Desc;
-
-    private String sysDate;
-    private String sysTime;
-
 
     BGupdater(Activity activity, String apiUrl, int cityId) {
         this.activity = activity;
         this.apiUrl = apiUrl;
         this.cityId = cityId;
-        // this.rawJsonData = activity.getResources().getString(R.string.rawJsonData);
     }
 
     public void run() {
+//        String rawJsonData = activity.getResources().getString(R.string.rawJsonData);
+
+        String sysLang;
+
+        String sysDate;
+        String curTempC;
+        String curDesc;
+        String sysTime;
+        String curWeek;
+
+        String nd1Week;
+        String nd2Week;
+        String nd3Week;
+        String nd1TempC;
+        String nd2TempC;
+        String nd3TempC;
+        String nd1Desc;
+        String nd2Desc;
+        String nd3Desc;
+
         activity.runOnUiThread(
                 new Runnable() {
                     @Override
@@ -107,7 +103,6 @@ public class BGupdater extends Thread {
                 nd3Desc = wp.getNextNthDayWeatherDesc(3, WeatherUtils.DO_TRANSLATE);
             }
 
-            cityName = wp.getRequestCity();
             sysTime = WeatherUtils.getSysTime();
             curTempC = wp.getCurTemp_C();
             sysDate = WeatherUtils.getSysDate();
