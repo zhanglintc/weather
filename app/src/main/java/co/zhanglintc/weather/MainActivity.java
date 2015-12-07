@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
+        // TODO: 2015/12/07 考虑activity_main.xml中, todayInfo和futureInfo不再使用weight来分配比例 => to zhanglin
         setContentView(R.layout.activity_main);
 
         DBManager dbMgr = new DBManager(this);

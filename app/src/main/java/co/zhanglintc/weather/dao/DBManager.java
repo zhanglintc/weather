@@ -13,6 +13,7 @@ import java.util.Date;
  * Created by yanbin on 2015/12/02.
  */
 public class DBManager {
+    // TODO: 2015/12/07 解决报错信息: 12-07 22:05:37.534 6252-6587/co.zhanglintc.weather E/SQLiteLog: (5) database is locked => to yanbin
 
     private SQLiteDatabase db;
 
