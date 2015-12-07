@@ -31,8 +31,8 @@
 
             <com.ant.liao.GifView
                 android:id="@+id/loc_ref_Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
                 android:background="@drawable/pin_dot"
                 android:layout_marginRight="5sp" />
 
