@@ -2,11 +2,13 @@ package co.zhanglintc.weather;
 
 import android.app.Activity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.ant.liao.GifView;
 
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import co.zhanglintc.weather.common.WeatherUtils;
@@ -22,33 +24,13 @@ public class BGupdater extends Thread {
     private String apiUrl;
     private int cityId;
 
-    BGupdater(Activity activity, String apiUrl, int cityId) {
+    public BGupdater(Activity activity, String apiUrl, int cityId) {
         this.activity = activity;
         this.apiUrl = apiUrl;
         this.cityId = cityId;
     }
 
-    public void run() {
-//        String rawJsonData = activity.getResources().getString(R.string.rawJsonData);
-
-        String sysLang;
-
-        String sysDate;
-        String curTempC;
-        String curDesc;
-        String sysTime;
-        String curWeek;
-
-        String nd1Week;
-        String nd2Week;
-        String nd3Week;
-        String nd1TempC;
-        String nd2TempC;
-        String nd3TempC;
-        String nd1Desc;
-        String nd2Desc;
-        String nd3Desc;
-
+    private void startRefresh() {
         activity.runOnUiThread(
                 new Runnable() {
                     @Override
@@ -69,15 +51,41 @@ public class BGupdater extends Thread {
                     }
                 }
         );
+    }
 
-        Log.i("http", "Getting weather data...");
-        httpHandler http = new httpHandler();
-        String cqWeather = http.get(apiUrl);
+    private void stopRefresh() {
+        activity.runOnUiThread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        WeatherDisplay wd = new WeatherDisplay(activity);
+                        wd.displayInfo(cityId);
+                        GifView gif = (GifView) activity.findViewById(R.id.loc_ref_Icon);
+                        gif.setBackgroundResource(R.drawable.pin_dot);
+                    }
+                }
+        );
+    }
+
+    private void updateDatabase() {
+        String sysLang;
+
+        String sysDate;
+        String curTempC;
+        String curDesc;
+        String sysTime;
+        String curWeek;
+
+        String nd1Week,  nd2Week,  nd3Week;
+        String nd1TempC, nd2TempC, nd3TempC;
+        String nd1Desc,  nd2Desc,  nd3Desc;
 
         try {
+            Log.i("http", "Getting weather data...");
+            httpHandler http = new httpHandler();
+            String weatherData = http.get(apiUrl);
 
-            WeatherParser wp = new WeatherParser(cqWeather);
-
+            WeatherParser wp = new WeatherParser(weatherData);
             sysLang = WeatherUtils.getLanguge();
             if ("en".equals(sysLang)) {
                 // 如果是英语, 则取不翻译的数据, 而且未来星期使用[短格式]
@@ -158,20 +166,22 @@ public class BGupdater extends Thread {
             dbMgr.addDayInfo(dayInfoList);
             dbMgr.closeDB();
 
+        } catch (IOException e) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(activity, activity.getString(R.string.netErr), Toast.LENGTH_SHORT).show();
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
 
-        activity.runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        WeatherDisplay wd = new WeatherDisplay(activity);
-                        wd.displayInfo(cityId);
-                        GifView gif = (GifView) activity.findViewById(R.id.loc_ref_Icon);
-                        gif.setBackgroundResource(R.drawable.pin_dot);
-                    }
-                }
-        );
+    public void run() {
+//        String rawJsonData = activity.getResources().getString(R.string.rawJsonData);
+        startRefresh();
+        updateDatabase();
+        stopRefresh();
     }
 }

@@ -10,5 +10,7 @@
     <string name="beijing">北京</string>
     <string name="shanghai">上海</string>
 
+    <string name="netErr">网络异常</string>
+
 
 </resources>

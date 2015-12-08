@@ -7,8 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.ant.liao.GifView;
-
 import co.zhanglintc.weather.common.WeatherUtils;
 import co.zhanglintc.weather.dao.CityInfo;
 import co.zhanglintc.weather.dao.DBManager;
@@ -53,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         dbMgr.closeDB();
 
         new BGupdater(this, cqURL, 1).start();
-        new BGupdater(this, bjURL, 2).start();
-        new BGupdater(this, shURL, 3).start();
+//        new BGupdater(this, bjURL, 2).start();
+//        new BGupdater(this, shURL, 3).start();
     }
 
     @Override
@@ -78,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
             Log.i("menu", (String) cityNameView.getText());
 
             new BGupdater(this, cqURL, 1).start();
-            new BGupdater(this, bjURL, 2).start();
-            new BGupdater(this, shURL, 3).start();
+//            new BGupdater(this, bjURL, 2).start();
+//            new BGupdater(this, shURL, 3).start();
 
             return true;
         }
