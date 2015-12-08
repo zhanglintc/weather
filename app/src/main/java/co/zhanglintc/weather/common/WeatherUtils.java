@@ -28,6 +28,8 @@ public class WeatherUtils {
     final public static boolean DO_NOT_TRANSLATE = false;
     final public static boolean LONG_FORMAT = false;
     final public static boolean SHORT_FORMAT = true;
+    final public static boolean DO_REFRESH = true;
+    final public static boolean STOP_REFRESH = false;
 
     /**
      * 名字我没改, 沿用的urlRun

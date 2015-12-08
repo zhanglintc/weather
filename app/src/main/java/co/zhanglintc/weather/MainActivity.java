@@ -84,21 +84,21 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_chongqing) {
             WeatherDisplay wd = new WeatherDisplay(this);
-            wd.displayInfo(1);
+            wd.displayInfo(1, WeatherUtils.STOP_REFRESH);
 
             return true;
         }
 
         if (id == R.id.action_beijing) {
             WeatherDisplay wd = new WeatherDisplay(this);
-            wd.displayInfo(2);
+            wd.displayInfo(2, WeatherUtils.STOP_REFRESH);
 
             return true;
         }
 
         if (id == R.id.action_shanghai) {
             WeatherDisplay wd = new WeatherDisplay(this);
-            wd.displayInfo(3);
+            wd.displayInfo(3, WeatherUtils.STOP_REFRESH);
 
             return true;
         }

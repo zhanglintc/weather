@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.ant.liao.GifView;
-
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -32,38 +30,30 @@ public class BGupdater extends Thread {
 
     private void startRefresh() {
         activity.runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        // TODO: 2015/12/06 这个try主要是应付数据库中完全没有数据的情况, 以后通过其他方式保证数据库不为空后就可以取消这个try => by zhanglin
-                        try {
-                            WeatherDisplay wd = new WeatherDisplay(activity);
-                            wd.displayInfo(cityId);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        GifView gif = (GifView) activity.findViewById(R.id.loc_ref_Icon);
-                        // TODO: 2015/12/06 这里setBackgroundResource(0)表现不太稳定, 原因未知 => to zhanlgin
-                        gif.setBackgroundResource(0);
-                        // TODO: 2015/12/06 可以考虑把gif与静态图的转换挪到WeatherDisplay类中, 通过参数控制 => to zhanglin
-                        gif.setGifImage(R.drawable.refresh);
-                        gif.setGifImageType(GifView.GifImageType.SYNC_DECODER);
+            new Runnable() {
+                @Override
+                public void run() {
+                    // TODO: 2015/12/06 这个try主要是应付数据库中完全没有数据的情况, 以后通过其他方式保证数据库不为空后就可以取消这个try => by zhanglin
+                    try {
+                        WeatherDisplay wd = new WeatherDisplay(activity);
+                        wd.displayInfo(cityId, WeatherUtils.DO_REFRESH);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
+            }
         );
     }
 
     private void stopRefresh() {
         activity.runOnUiThread(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        WeatherDisplay wd = new WeatherDisplay(activity);
-                        wd.displayInfo(cityId);
-                        GifView gif = (GifView) activity.findViewById(R.id.loc_ref_Icon);
-                        gif.setBackgroundResource(R.drawable.pin_dot);
-                    }
+            new Runnable() {
+                @Override
+                public void run() {
+                    WeatherDisplay wd = new WeatherDisplay(activity);
+                    wd.displayInfo(cityId, WeatherUtils.STOP_REFRESH);
                 }
+            }
         );
     }
 

@@ -3,6 +3,8 @@ package co.zhanglintc.weather;
 import android.app.Activity;
 import android.widget.TextView;
 
+import com.ant.liao.GifView;
+
 import java.util.ArrayList;
 
 import co.zhanglintc.weather.dao.CityInfo;
@@ -15,12 +17,15 @@ import co.zhanglintc.weather.dao.DayInfo;
 public class WeatherDisplay {
 
     private Activity activity;
+    private boolean refreshing;
 
     WeatherDisplay(Activity activity) {
         this.activity = activity;
     }
 
-    public void displayInfo(int cityId) {
+    public void displayInfo(int cityId, boolean refreshing) {
+        
+        this.refreshing = refreshing;
 
         DBManager dbMgr = new DBManager(activity);
 
@@ -53,6 +58,16 @@ public class WeatherDisplay {
         TextView nd3WeekView = (TextView) activity.findViewById(R.id.nd3Week);
         TextView nd3TempCView = (TextView) activity.findViewById(R.id.nd3TempC);
         TextView nd3DescView = (TextView) activity.findViewById(R.id.nd3Desc);
+
+        // refresh or not refresh
+        GifView gif = (GifView) activity.findViewById(R.id.loc_ref_Icon);
+        if (refreshing) {
+            gif.setBackgroundResource(0);
+            gif.setGifImage(R.drawable.refresh);
+            gif.setGifImageType(GifView.GifImageType.SYNC_DECODER);
+        } else {
+            gif.setBackgroundResource(R.drawable.pin_dot);
+        }
 
         String cityName = String.format("%s, %s", cityInfo.getCityName(), cityInfo.getCityNation());
         String sysDate = dayInfoList.get(0).getDate();
