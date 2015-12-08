@@ -25,6 +25,7 @@ public class ThreadController {
         tList.add(new BGupdater(activity, cqURL, 1));
         tList.add(new BGupdater(activity, bjURL, 2));
         tList.add(new BGupdater(activity, shURL, 3));
+        dbMgr.closeDB();
     }
 
     public static ThreadController getInstance(Activity activity) {
