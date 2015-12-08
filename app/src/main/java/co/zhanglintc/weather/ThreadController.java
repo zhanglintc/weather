@@ -12,7 +12,7 @@ import co.zhanglintc.weather.dao.DBManager;
  * Singleton, lazy initialization
  */
 public class ThreadController {
-    public static int curCityId;
+    public static int curCityId = 1; // 暂定为显示重庆
 
     private static ThreadController tController = null;
     private String cqURL = "http://api.worldweatheronline.com/free/v2/weather.ashx?key=55f1fdd05fba23be0a18043d0a017&q=chongqing&num_of_days=4&format=json&lang=" + WeatherUtils.getLanguge();
