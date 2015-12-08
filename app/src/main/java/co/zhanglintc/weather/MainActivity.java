@@ -97,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_chongqing) {
             ThreadController.curCityId = 1;
             WeatherDisplay wd = new WeatherDisplay(this);
+            // TODO: 2015/12/08 这里将不能够再一刀切的设置为STOP_REFRESH, 而应该根据每个城市的状态来决定, 状态由ThreadController来管理 #1 => to zhanglin
             wd.displayInfo(1, WeatherUtils.STOP_REFRESH);
 
             return true;
