@@ -67,7 +67,31 @@ public class BGupdater extends Thread {
         );
     }
 
-    private void updateDatabase() {
+    private String getWeatherData() {
+        Log.i("http", "Getting weather data...");
+
+        String weatherData = "";
+
+        try {
+            httpHandler http = new httpHandler();
+            weatherData = http.get(apiUrl);
+
+            return weatherData;
+
+        } catch (IOException e) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // 如果获取不到数据, 则认为网络异常, Toast显示
+                    Toast.makeText(activity, activity.getString(R.string.netErr), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        return weatherData;
+    }
+
+    private void setDatabase(String weatherData) {
         String sysLang;
 
         String sysDate;
@@ -81,10 +105,6 @@ public class BGupdater extends Thread {
         String nd1Desc,  nd2Desc,  nd3Desc;
 
         try {
-            Log.i("http", "Getting weather data...");
-            httpHandler http = new httpHandler();
-            String weatherData = http.get(apiUrl);
-
             WeatherParser wp = new WeatherParser(weatherData);
             sysLang = WeatherUtils.getLanguge();
             if ("en".equals(sysLang)) {
@@ -120,59 +140,54 @@ public class BGupdater extends Thread {
             nd2TempC = wp.getNextNthDayCompleteTempC(2);
             nd3TempC = wp.getNextNthDayCompleteTempC(3);
 
+            // 设置当前天气情况
+            DayInfo dayInfo0 = new DayInfo();
+            dayInfo0.setCityId(cityId);
+            dayInfo0.setDate(sysDate);
+            dayInfo0.setTime(sysTime);
+            dayInfo0.setWeek(curWeek);
+            dayInfo0.setTempC(curTempC);
+            dayInfo0.setDesc(curDesc);
+
+            // 设置后一天天气情况
+            DayInfo dayInfo1 = new DayInfo();
+            dayInfo1.setCityId(cityId);
+            dayInfo1.setDate(sysDate);
+            dayInfo1.setTime(sysTime);
+            dayInfo1.setWeek(nd1Week);
+            dayInfo1.setTempC(nd1TempC);
+            dayInfo1.setDesc(nd1Desc);
+
+            // 设置后二天天气情况
+            DayInfo dayInfo2 = new DayInfo();
+            dayInfo2.setCityId(cityId);
+            dayInfo2.setDate(sysDate);
+            dayInfo2.setTime(sysTime);
+            dayInfo2.setWeek(nd2Week);
+            dayInfo2.setTempC(nd2TempC);
+            dayInfo2.setDesc(nd2Desc);
+
+            // 设置后三天天气情况
+            DayInfo dayInfo3 = new DayInfo();
+            dayInfo3.setCityId(cityId);
+            dayInfo3.setDate(sysDate);
+            dayInfo3.setTime(sysTime);
+            dayInfo3.setWeek(nd3Week);
+            dayInfo3.setTempC(nd3TempC);
+            dayInfo3.setDesc(nd3Desc);
+
+            // 添加到dayInfoList
             ArrayList<DayInfo> dayInfoList = new ArrayList<>();
+            dayInfoList.add(dayInfo0);
+            dayInfoList.add(dayInfo1);
+            dayInfoList.add(dayInfo2);
+            dayInfoList.add(dayInfo3);
 
-            // 当天天气情况
-            DayInfo dayInfo = new DayInfo();
-            dayInfo.setCityId(cityId);
-            dayInfo.setDate(sysDate);
-            dayInfo.setTime(sysTime);
-            dayInfo.setWeek(curWeek);
-            dayInfo.setTempC(curTempC);
-            dayInfo.setDesc(curDesc);
-            dayInfoList.add(dayInfo);
-
-            // 后一天天气情况
-            dayInfo = new DayInfo();
-            dayInfo.setCityId(cityId);
-            dayInfo.setDate(sysDate);
-            dayInfo.setTime(sysTime);
-            dayInfo.setWeek(nd1Week);
-            dayInfo.setTempC(nd1TempC);
-            dayInfo.setDesc(nd1Desc);
-            dayInfoList.add(dayInfo);
-
-            // 后二天天气情况
-            dayInfo = new DayInfo();
-            dayInfo.setCityId(cityId);
-            dayInfo.setDate(sysDate);
-            dayInfo.setTime(sysTime);
-            dayInfo.setWeek(nd2Week);
-            dayInfo.setTempC(nd2TempC);
-            dayInfo.setDesc(nd2Desc);
-            dayInfoList.add(dayInfo);
-
-            // 后三天天气情况
-            dayInfo = new DayInfo();
-            dayInfo.setCityId(cityId);
-            dayInfo.setDate(sysDate);
-            dayInfo.setTime(sysTime);
-            dayInfo.setWeek(nd3Week);
-            dayInfo.setTempC(nd3TempC);
-            dayInfo.setDesc(nd3Desc);
-            dayInfoList.add(dayInfo);
-
+            // 存入数据库
             DBManager dbMgr = new DBManager(activity);
             dbMgr.addDayInfo(dayInfoList);
             dbMgr.closeDB();
 
-        } catch (IOException e) {
-            activity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(activity, activity.getString(R.string.netErr), Toast.LENGTH_SHORT).show();
-                }
-            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -181,7 +196,7 @@ public class BGupdater extends Thread {
     public void run() {
 //        String rawJsonData = activity.getResources().getString(R.string.rawJsonData);
         startRefresh();
-        updateDatabase();
+        setDatabase(getWeatherData());
         stopRefresh();
     }
 }
