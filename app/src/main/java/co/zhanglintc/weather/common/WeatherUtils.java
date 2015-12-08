@@ -161,6 +161,7 @@ public class WeatherUtils {
         return inputStream;
     }
 
+    // TODO: 2015/12/08 以下3个函数new SimpleDateFormat()部分有警告, 最好去掉一下 => to yanbin
     public static String getWeek(int day, boolean shorten) {
         long offset = 86400 * 1000;
 
