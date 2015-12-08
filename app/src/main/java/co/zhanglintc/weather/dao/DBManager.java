@@ -127,11 +127,33 @@ public class DBManager {
     }
 
     /**
+     * query all cityInfoList, return list
+     *
+     * @return List<CityInfo>
+     */
+    public ArrayList<CityInfo> queryCityInfoList() {
+        ArrayList<CityInfo> cityInfoList = new ArrayList<>();
+
+        Cursor c = db.rawQuery("SELECT * FROM city_info ORDER BY city_id", null);
+        while (c.moveToNext()) {
+            CityInfo cityInfo = new CityInfo();
+
+            cityInfo.setCityId(c.getInt(c.getColumnIndex("city_id")));
+            cityInfo.setCityName(c.getString(c.getColumnIndex("city_name")));
+            cityInfo.setCityNation(c.getString(c.getColumnIndex("city_nation")));
+
+            cityInfoList.add(cityInfo);
+        }
+
+        return cityInfoList;
+    }
+
+    /**
      * query all dayInfoList, return list
      *
      * @return List<DayInfo>
      */
-    public ArrayList<DayInfo> queryDayInfo(int cityId) {
+    public ArrayList<DayInfo> queryDayInfoList(int cityId) {
         ArrayList<DayInfo> dayInfoList = new ArrayList<>();
 
         Cursor c = db.rawQuery(String.format("SELECT * FROM day_info WHERE city_id = %s ORDER BY updateTime DESC LIMIT 4", cityId), null);

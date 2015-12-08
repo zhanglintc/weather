@@ -30,7 +30,7 @@ public class WeatherDisplay {
         DBManager dbMgr = new DBManager(activity);
 
         CityInfo cityInfo = dbMgr.queryCityInfo(cityId);
-        ArrayList<DayInfo> dayInfoList = dbMgr.queryDayInfo(cityId);
+        ArrayList<DayInfo> dayInfoList = dbMgr.queryDayInfoList(cityId);
 
         activity.setContentView(R.layout.activity_main);
         setTextView(cityInfo, dayInfoList);
