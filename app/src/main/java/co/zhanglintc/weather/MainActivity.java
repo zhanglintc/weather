@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             CityManager.curCityId = 1;
             WeatherDisplay wd = new WeatherDisplay(this);
             // TODO: 2015/12/08 这里将不能够再一刀切的设置为STOP_REFRESH, 而应该根据每个城市的状态来决定, 状态由CityManager来管理 #1 => to zhanglin
-            wd.displayInfo(1, WeatherUtils.STOP_REFRESH);
+            wd.displayInfo(1, CityManager.cityStatus.get(CityManager.curCityId));
 
             return true;
         }
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_beijing) {
             CityManager.curCityId = 2;
             WeatherDisplay wd = new WeatherDisplay(this);
-            wd.displayInfo(2, WeatherUtils.STOP_REFRESH);
+            wd.displayInfo(2, CityManager.cityStatus.get(CityManager.curCityId));
 
             return true;
         }
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_shanghai) {
             CityManager.curCityId = 3;
             WeatherDisplay wd = new WeatherDisplay(this);
-            wd.displayInfo(3, WeatherUtils.STOP_REFRESH);
+            wd.displayInfo(3, CityManager.cityStatus.get(CityManager.curCityId));
 
             return true;
         }

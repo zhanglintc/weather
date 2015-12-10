@@ -35,6 +35,7 @@ public class BGupdater extends Thread {
                 public void run() {
                     // TODO: 2015/12/06 这个try主要是应付数据库中完全没有数据的情况, 以后通过其他方式保证数据库不为空后就可以取消这个try => by zhanglin
                     try {
+                        CityManager.cityStatus.put(cityId, true);
                         if (cityId == CityManager.curCityId) {
                             new WeatherDisplay(activity).displayInfo(cityId, WeatherUtils.DO_REFRESH);
                         }
@@ -51,6 +52,7 @@ public class BGupdater extends Thread {
             new Runnable() {
                 @Override
                 public void run() {
+                    CityManager.cityStatus.put(cityId, false);
                     if (cityId == CityManager.curCityId) {
                         new WeatherDisplay(activity).displayInfo(cityId, WeatherUtils.STOP_REFRESH);
                     }
