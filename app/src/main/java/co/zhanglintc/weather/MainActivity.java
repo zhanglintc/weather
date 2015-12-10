@@ -95,16 +95,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_chongqing) {
-            ThreadController.curCityId = 1;
+            CityManager.curCityId = 1;
             WeatherDisplay wd = new WeatherDisplay(this);
-            // TODO: 2015/12/08 这里将不能够再一刀切的设置为STOP_REFRESH, 而应该根据每个城市的状态来决定, 状态由ThreadController来管理 #1 => to zhanglin
+            // TODO: 2015/12/08 这里将不能够再一刀切的设置为STOP_REFRESH, 而应该根据每个城市的状态来决定, 状态由CityManager来管理 #1 => to zhanglin
             wd.displayInfo(1, WeatherUtils.STOP_REFRESH);
 
             return true;
         }
 
         if (id == R.id.action_beijing) {
-            ThreadController.curCityId = 2;
+            CityManager.curCityId = 2;
             WeatherDisplay wd = new WeatherDisplay(this);
             wd.displayInfo(2, WeatherUtils.STOP_REFRESH);
 
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_shanghai) {
-            ThreadController.curCityId = 3;
+            CityManager.curCityId = 3;
             WeatherDisplay wd = new WeatherDisplay(this);
             wd.displayInfo(3, WeatherUtils.STOP_REFRESH);
 
