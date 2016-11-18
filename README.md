@@ -1,5 +1,5 @@
 # Weather app
-开发者 [zhanglintc](https://github.com/zhanglintc), [smilebin818](https://github.com/smilebin818),  [liulu110210](https://github.com/liulu110210).
+开发者 [zhanglintc](https://github.com/zhanglintc), [smilebin818](https://github.com/smilebin818), ~~[liulu110210](https://github.com/liulu110210)~~.
 
 ---
 
